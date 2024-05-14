@@ -1,0 +1,95 @@
+body {
+    background-image: url('img/fondo.png');
+    background-size: cover; 
+    background-position: center;
+}
+
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px;
+    background-color: transparent;
+    
+}
+
+.logo-container {
+    margin-left: 50px;
+}
+
+.logo {
+    width: 120px;
+    height: auto;
+}
+
+.text1-container {
+    text-align: right;
+    margin-left: auto;
+    margin-right: 70px;
+}
+
+.text1-container a {
+    text-decoration: none;
+    font-size: 18px;
+    color: black;
+    font-family: "Jost", sans-serif;
+}
+
+.icons-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-right: 50px;
+}
+
+.icons-container img {
+    margin: 0 10px;
+    width: 40px;
+}
+
+.container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 70vh;
+    margin-right: 80px;
+}
+
+.image-container {
+    margin-right: 50px;
+    margin-left: 100px;
+}
+
+.undraw {
+    width: 500px;
+    height: auto;
+}
+
+.text-container {
+    text-align: left;
+    font-family: "Jost", sans-serif;
+}
+
+button {
+    border: none;
+    border-radius: 50px;
+    background-color: #119822;
+    color: white;
+    padding: 10px 20px; 
+    font-size: 16px;
+    cursor: pointer; 
+    width: 200px;
+    height: 40px;
+    margin-top: 40px;
+}
+
+button:hover {
+    background-color: #0c8d1d; 
+}
+
+.jostS{
+  font-family: "Jost", sans-serif;
+  font-optical-sizing: auto;
+  font-style: normal;
+}
+  
