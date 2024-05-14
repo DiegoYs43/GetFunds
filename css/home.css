@@ -1,5 +1,5 @@
 body {
-    background-image: url('img/fondo.png');
+    background-image: url('../img/fondo.png');
     background-size: cover; 
     background-position: center;
 }
@@ -45,6 +45,10 @@ header {
 .icons-container img {
     margin: 0 10px;
     width: 40px;
+}
+
+h3 {
+    font-size: 25px;
 }
 
 .container {
