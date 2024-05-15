@@ -47,6 +47,10 @@ header {
     width: 40px;
 }
 
+h3 {
+    font-size: 25px;
+}
+
 .container {
     display: flex;
     justify-content: center;
