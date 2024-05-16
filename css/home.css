@@ -96,4 +96,17 @@ button:hover {
   font-optical-sizing: auto;
   font-style: normal;
 }
+
+a{
+    text-decoration: none;
+    color: aliceblue;
+}
+a {
+    color: inherit;
+    transition: color 0.3s ease, background-color 0.3s ease; 
+  }
+  
+  a:hover {
+    color: black; /* Cambiamos el color del texto al negro */
+  }
   

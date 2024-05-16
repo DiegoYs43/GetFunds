@@ -4,12 +4,12 @@ import { getFirestore, collection, addDoc, query, where, getDocs } from "https:/
 // Verificar si la aplicación de Firebase ya está inicializada
 if (!getApps().length) {
     const firebaseConfig = {
-        apiKey: "AIzaSyCOX4l0eA8l-NNtX6j0XN96PBnZepzWBh0",
-    authDomain: "getfunds-d99f9.firebaseapp.com",
-    projectId: "getfunds-d99f9",
-    storageBucket: "getfunds-d99f9.appspot.com",
-    messagingSenderId: "915683707396",
-    appId: "1:915683707396:web:4b8c39399776e2a62a8351"
+      apiKey: "AIzaSyCOX4l0eA8l-NNtX6j0XN96PBnZepzWBh0",
+      authDomain: "getfunds-d99f9.firebaseapp.com",
+      projectId: "getfunds-d99f9",
+      storageBucket: "getfunds-d99f9.appspot.com",
+      messagingSenderId: "915683707396",
+      appId: "1:915683707396:web:4b8c39399776e2a62a8351"
     };
     
     initializeApp(firebaseConfig);
@@ -20,10 +20,16 @@ const firestore = getFirestore();
 document.getElementById("Subir").addEventListener("click", async function (event) {
   event.preventDefault();
 
-  const nombre = document.getElementById("nombre").value;
-  const correo = document.getElementById("correo").value;
+  const nombre = document.getElementById("nombre").value.trim();
+  const correo = document.getElementById("correo").value.trim();
   const contrasena = document.getElementById("contrasena").value;
   const confirmarContrasena = document.getElementById("confirmarContrasena").value;
+
+  // Validación de campos vacíos
+  if (!nombre || !correo || !contrasena || !confirmarContrasena) {
+    alert("Por favor, completa todos los campos del formulario.");
+    return;
+  }
 
   // Validación de contraseña
   if (contrasena !== confirmarContrasena) {
@@ -47,11 +53,25 @@ document.getElementById("Subir").addEventListener("click", async function (event
 
   // Registro de usuario si las validaciones son exitosas
   try {
+    // Registro de usuario en la colección "usuarios"
     await addDoc(collection(firestore, "usuarios"), {
       nombre: nombre,
       correo: correo,
       contraseña: contrasena
     });
+
+    // Registro de correo electrónico en la colección "ingresos"
+    await addDoc(collection(firestore, "ingresos"), {
+      correo: correo,
+      // Otros detalles del ingreso...
+    });
+
+    // Registro de correo electrónico en la colección "gastos"
+    await addDoc(collection(firestore, "gastos"), {
+      correo: correo,
+      // Otros detalles del gasto...
+    });
+
     alert("Registro exitoso. ¡Bienvenido!");
   } catch (error) {
     console.error("Error al agregar datos", error);
