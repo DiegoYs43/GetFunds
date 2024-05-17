@@ -1,3 +1,7 @@
+* {
+    font-family: "Jost", sans-serif;
+}
+
 .jost {
     font-family: "Jost", sans-serif;
     font-optical-sizing: auto;
@@ -5,8 +9,6 @@
     font-style: normal;
   }
   
-
-
 
 
 /* Container del nav */
