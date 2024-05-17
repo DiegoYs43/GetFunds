@@ -1,0 +1,274 @@
+* {
+    font-family: "Jost", sans-serif;
+    background-color: #2A3B47;
+}
+
+.jost {
+    font-family: "Jost", sans-serif;
+    font-optical-sizing: auto;
+    font-weight: 100;
+    font-style: normal;
+  }
+  
+
+
+/* Container del nav */
+
+
+
+.container {
+    display: flex;
+    min-width: 100vh;
+}
+
+.sidebar{
+    width: 250px;
+    height: 690px;
+    padding: 20px;
+}
+
+.sidebar ul {
+    list-style: none;
+    padding: 10px;
+    align-items: center;
+}
+
+.sidebar li {
+    margin-bottom: 10px;
+}
+
+.sidebar a {
+    display: block;
+    justify-content: space-between;
+    align-items: center;
+    text-decoration: none;
+    color: gray;
+    padding: 10px;
+}
+
+
+
+.sidebar img {
+    width: 100%;
+    height: auto;
+    padding-bottom: 100px;
+}
+
+.sidebar a:hover{
+    color: #45a049;
+}
+
+
+
+/*  container de registros monetarios  */
+
+
+.right-container {
+    width: 150vh;
+    height: 690px;
+    background-color:#212E36;
+    padding: 20px;
+    border-radius: 20px;
+}
+
+.header{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+    border-radius: 20px;
+}
+
+.header h1{
+    margin: 0;
+    font-size: 24px;
+    color: #333;
+}
+
+.header h2{
+    margin-left: 70px;
+    color: gray;
+}
+
+.header button{
+    font-size: 30px;
+    margin-right: 70px;
+    border-radius: 20px;
+    background-color: #45a049;
+    border: none;
+}
+
+.header i{
+    background-color: #45a049;
+}
+
+
+
+
+
+
+.registro{
+    display: flex;
+    align-items: flex-start;
+    width: 80%;
+    margin: 0 auto;
+    background-color: #2A3B47;
+    padding: 20px;
+    box-shadow: 0 5px rgba(0, 0, 0, 0.1);
+    min-height: 20px;
+    border-radius: 20px;
+    margin-top: 20px;
+
+
+
+}
+
+.registro h1{
+    font-size: 25px;
+    margin-right: 20px;
+    color: gray;
+}
+
+
+.derecho{
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
+}
+
+.texto-arriba{
+    font-size: 15px;
+    color: #C2C3CC;
+    margin-top: 10px;
+}
+
+.texto-abajo{
+    font-size: 15px;
+}
+
+.izquierdo{
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
+    align-items: end;
+}
+
+.texto-arribaM{
+    font-size: 15px;
+    margin-top: 10px;
+    color: #45a049;
+}
+
+.texto-abajoM{
+    font-size: 15px;
+    color: red;
+}
+
+
+/*  container de la informacion de la cuenta  */
+
+.container-info{
+    width: 50vh;
+    height: 690px;
+  
+    padding: 20px;
+    border-radius: 20px;
+    display: flex;
+   
+}
+
+.header-info{
+    display: flex;
+    flex-direction: column;
+    align-items: start;
+    margin-top: 30px;
+}
+
+.imagen-container{
+    width: 10vh;
+    height: 10vh;
+    border-radius: 50%;
+    overflow: hidden;
+    
+}
+.imagen-container img{
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.text-container{
+    margin-top: 20px;
+   
+}
+
+.text-container p{
+    margin: 5px 0;
+    font-size: 24px;
+    color: white;
+}
+
+
+.text-container h3{
+    color: #787878fd;
+}
+
+.datos-container{
+    display: flex;
+    width: 70%;
+    margin: 0 auto;
+    background-color:#212E36;
+    padding: 30px;
+    min-height: 300px;
+    border-radius: 20px;
+    margin-top: 20px;
+
+
+
+}
+
+.dato-info{
+    display: flex;
+    flex-grow: 1;
+}
+
+.datos-info{
+    background-color: #212E36;
+}
+
+.texto-info-cuenta{
+    font-size: 20px;
+    color: #C2C3CC;
+    margin-top: 10px;
+    background-color: #212E36;
+}
+
+.texto-info{
+    font-size: 17px;
+    background-color: #212E36;
+    color: white;
+}
+
+.icon-text i {
+    font-size: 20px;
+    color: #45a049;
+    margin-top: 20px;
+    background-color: #212E36;
+}
+
+.icon-text{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-top: 20px;
+    background-color: #212E36;
+}
+
+.icon-text span{
+    margin-top: 20px;
+    margin-left: 70px;
+    color: #45a049;
+    font-size: 17px;
+    background-color: #212E36;
+}
+
