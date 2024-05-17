@@ -25,6 +25,9 @@ document.querySelector("form").addEventListener("submit", async function(event) 
       // Usuario encontrado en la base de datos
       const usuario = querySnapshot.docs[0].data();
       alert(`¡Hola ${usuario.nombre}! Bienvenido`);
+      
+      // Redireccionar a la página "registroMonetario.html"
+      window.location.href = "/html/rM.html";
     } else {
       // Usuario no encontrado en la base de datos
       alert("Credenciales inválidas. Por favor, inténtalo de nuevo.");
