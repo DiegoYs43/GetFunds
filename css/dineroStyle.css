@@ -84,17 +84,18 @@
 }
 
 .header h2{
-    margin-left: 80px;
+    margin-left: 62px;
     margin-right: 270px;
 }
 
 .btnAdd{
-    padding: 10px 20px;
+    padding: 5px 20px;
     background-color: #4CAF50;
     color: white;
     border: none;
     border-radius: 10px;
     cursor: pointer;
+    margin-right: 8px;
 }
 
 .btnAdd:hover{
@@ -102,7 +103,7 @@
 }
 
 .btn{
-    padding: 10px 20px;
+    padding: 5px 20px;
     background-color: red;
     color: white;
     border: none;
