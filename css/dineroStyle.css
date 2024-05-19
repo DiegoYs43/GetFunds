@@ -7,20 +7,15 @@
     font-optical-sizing: auto;
     font-weight: 100;
     font-style: normal;
-  }
-  
-
+}
 
 /* Container del nav */
-
-
-
 .container {
     display: flex;
     min-width: 100vh;
 }
 
-.sidebar{
+.sidebar {
     width: 250px;
     height: 690px;
     padding: 20px;
@@ -34,6 +29,7 @@
 
 .sidebar li {
     margin-bottom: 10px;
+    position: relative; 
 }
 
 .sidebar a {
@@ -45,50 +41,71 @@
     padding: 10px;
 }
 
-
-
 .sidebar img {
     width: 100%;
     height: auto;
     padding-bottom: 100px;
 }
 
-.sidebar a:hover{
+.sidebar a:hover {
+    color: #4CAF50;
+}
+
+/* Estilo del dropdown */
+.dropdown-content {
+    display: none;
+    position: absolute;
+    left: 100%;
+    top: 0;
+    background-color: #f9f9f9;
+    min-width: 160px;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    z-index: 1;
+    border-radius: 10px;
+}
+
+.dropdown-content a {
+    padding: 8px 10px;
+    display: block;
+    color: #333;
+}
+
+.dropdown-content a:hover {
     color: #45a049;
 }
 
+.dropdown .show {
+    display: block;
+}
 
-
-/*  container de registros monetarios  */
-
-
+/* Container de registros monetarios */
 .right-container {
     width: 150vh;
     height: 690px;
-    background-color:#f0f0f0;
+    background-color: #f0f0f0;
     padding: 20px;
     border-radius: 20px;
 }
 
-.header{
+.header {
     display: flex;
     justify-content: space-between;
     align-items: center;
     margin-bottom: 20px;
 }
 
-.header h1{
+.header h1 {
     margin: 0;
     font-size: 24px;
     color: #333;
 }
 
-.header h2{
+.header h2 {
     margin-left: 62px;
     margin-right: 270px;
 }
 
-.btnAdd{
+.btnAdd {
     padding: 5px 20px;
     background-color: #4CAF50;
     color: white;
@@ -98,11 +115,11 @@
     margin-right: 8px;
 }
 
-.btnAdd:hover{
+.btnAdd:hover {
     background-color: #38713a;
 }
 
-.btn{
+.btn {
     padding: 5px 20px;
     background-color: red;
     color: white;
@@ -112,14 +129,11 @@
     margin-right: 80px;
 }
 
-.btn:hover{
+.btn:hover {
     background-color: rgb(175, 22, 22);
 }
 
-
-
-
-.registro{
+.registro {
     display: flex;
     align-items: flex-start;
     width: 80%;
@@ -130,79 +144,68 @@
     min-height: 20px;
     border-radius: 20px;
     margin-top: 20px;
-
-
-
 }
 
-.registro h1{
+.registro h1 {
     font-size: 25px;
     margin-right: 20px;
-
-    
 }
 
-
-.derecho{
+.derecho {
     display: flex;
     flex-direction: column;
     flex-grow: 1;
 }
 
-.texto-arriba{
+.texto-arriba {
     font-size: 15px;
     color: #C2C3CC;
     margin-top: 10px;
 }
 
-.texto-abajo{
+.texto-abajo {
     font-size: 15px;
 }
 
-.izquierdo{
+.izquierdo {
     display: flex;
     flex-direction: column;
     flex-grow: 1;
     align-items: end;
 }
 
-.texto-arribaM{
+.texto-arribaM {
     font-size: 15px;
     margin-top: 10px;
     color: #45a049;
 }
 
-.texto-abajoM{
+.texto-abajoM {
     font-size: 15px;
     color: red;
 }
 
-
-
-
-.accordion li{
+.accordion li {
     list-style: none;
-
 }
 
-.accordion li label{
+.accordion li label {
     margin-left: 0;
     padding-left: 0;
     display: block;
-
 }
-input[type="radio"]{
+
+input[type="radio"] {
     display: none;
 }
 
-.accordion .content{
+.accordion .content {
     color: #555;
     padding: 0 10px;
     line-height: 26px;
     max-height: 0;
     overflow: hidden;
     transition: max-height 0.5s, padding 0.5s;
-
 }
 
 .accordion input[type="radio"]:checked + label + .content {
@@ -210,82 +213,71 @@ input[type="radio"]{
     padding: 10px 10px 20px;
 }
 
-
-
-/*  container de la informacion de la cuenta  */
-
-.container-info{
+/* Container de la información de la cuenta */
+.container-info {
     width: 50vh;
     height: 690px;
-  
     padding: 20px;
     border-radius: 20px;
     display: flex;
-   
 }
 
-.header-info{
+.header-info {
     display: flex;
     flex-direction: column;
     align-items: start;
     margin-top: 30px;
 }
 
-.imagen-container{
+.imagen-container {
     width: 10vh;
     height: 10vh;
     border-radius: 50%;
     overflow: hidden;
-    
 }
-.imagen-container img{
+
+.imagen-container img {
     width: 100%;
     height: 100%;
     object-fit: cover;
 }
 
-.text-container{
+.text-container {
     margin-top: 20px;
-   
 }
 
-.text-container p{
+.text-container p {
     margin: 5px 0;
     font-size: 24px;
 }
 
-
-.text-container h3{
+.text-container h3 {
     color: #787878fd;
 }
 
-.datos-container{
+.datos-container {
     display: flex;
     width: 70%;
     margin: 0 auto;
-    background-color:#f0f0f0;
+    background-color: #f0f0f0;
     padding: 30px;
     min-height: 300px;
     border-radius: 20px;
     margin-top: 20px;
-
-
-
 }
 
-.dato-info{
+.dato-info {
     display: flex;
     flex-grow: 1;
-
 }
 
-.texto-info-cuenta{
+.texto-info-cuenta {
     font-size: 20px;
     color: #C2C3CC;
     margin-top: 10px;
 }
 
-.texto-info{
+.texto-info {
     font-size: 17px;
 }
 
@@ -293,30 +285,24 @@ input[type="radio"]{
     font-size: 20px;
     color: #45a049;
     margin-top: 20px;
-
 }
 
-.icon-text{
+.icon-text {
     display: flex;
     align-items: center;
     justify-content: space-between;
     margin-top: 20px;
 }
 
-.icon-text span{
+.icon-text span {
     margin-top: 20px;
     margin-left: 70px;
     color: #45a049;
     font-size: 17px;
 }
 
-
-
-
-/*  informacion de los registros monetarios   */
-
-
-.info-registro{
+/* Información de los registros monetarios */
+.info-registro {
     display: flex;
     align-items: flex-start;
     width: 60%;
@@ -327,18 +313,15 @@ input[type="radio"]{
     min-height: 20px;
     border-radius: 20px;
     margin-top: 10px;
-
-
-
 }
 
-.iconos{
+.iconos {
     display: flex;
     flex-direction: column;
     align-items: center;    
 }
 
-.iconos i{
+.iconos i {
     font-size: 25px;
     margin-right: 20px;
     margin-left: 5px;
@@ -347,40 +330,38 @@ input[type="radio"]{
     color: #4CAF50;
 }
 
-
-.derecho{
+.derecho {
     display: flex;
     flex-direction: column;
     flex-grow: 1;
 }
 
-.texto-arriba{
+.texto-arriba {
     font-size: 15px;
     color: #C2C3CC;
     margin-top: 10px;
 }
 
-.texto-abajo{
+.texto-abajo {
     font-size: 15px;
     margin-bottom: 20px;
 }
 
-.izquierdo{
+.izquierdo {
     display: flex;
     flex-direction: column;
     flex-grow: 1;
     align-items: end;
 }
 
-.texto-arribaM{
+.texto-arribaM {
     font-size: 15px;
     margin-top: 10px;
     color: #45a049;
 }
 
-.texto-abajoM-Margin{
+.texto-abajoM-Margin {
     font-size: 15px;
     color: red;
     margin-bottom: 20px;
 }
-

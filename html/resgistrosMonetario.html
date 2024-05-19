@@ -12,145 +12,170 @@
 </head>
 <body>
 
-        <div class="container">
-            <div class="sidebar">
-                <img src="/img/logo.png" alt="">
-                <ul>
-                    <li><a href="#"> <i class="fas fa-home" style="font-size: 30px; margin-right: 10px;  color: #45a049;"></i>Inicio </a></li>
-                    <li><a href="#"> <i class="fas fa-piggy-bank" style="font-size: 30px; margin-right: 10px; color: #C2C3CC; "></i>Ahorro</a></li>
-                    <li><a href="#"> <i class="fas fa-chart-bar" style="font-size: 30px; margin-right: 10px;  color: #C2C3CC" ></i>Estadisticas</a></li>
-                    <li><a href="#"> <i class="fas fa-cog" style="font-size: 30px; margin-right: 10px" ></i>Configuración</a></li>
-                    <li><a href="../html/resgistrosMonetarioDark.html"> <i class="fas fa-moon" aria-hidden="true" style="font-size: 30px; margin-right: 10px"></i>Tema Oscuro</a></li>
+<div class="container">
+    <div class="sidebar">
+        <img src="/img/logo.png" alt="">
+        <ul>
+            <li><a href="#"> <i class="fas fa-home" style="font-size: 30px; margin-right: 10px;  color: #45a049;"></i>Inicio </a></li>
+            <li><a href="#"> <i class="fas fa-piggy-bank" style="font-size: 30px; margin-right: 10px; color: #C2C3CC; "></i>Ahorro</a></li>
+            <li><a href="#"> <i class="fas fa-chart-bar" style="font-size: 30px; margin-right: 10px;  color: #C2C3CC" ></i>Estadisticas</a></li>
+            <li class="dropdown">
+                <a href="#" id="configuracion-link"> <i class="fas fa-cog" style="font-size: 30px; margin-right: 10px" ></i>Configuración</a>
+                <ul class="dropdown-content" id="dropdown-content">
+                    <li><a href="#">Perfil</a></li>
+                    <li><a href="#">Seguridad</a></li>
+                    <li><a href="#">Preferencias</a></li>
                 </ul>
-            </div>
-            <div class="right-container">
-                <div class="header">
-                    <h2>Tus registros</h2>
-                    <button class="btnAdd">Agregar un Ingreso</button>
-                    <button class="btn">Agregar un Egreso</button>
-                </div>
+            </li>
+            <li><a href="../html/resgistrosMonetarioDark.html"> <i class="fas fa-moon" aria-hidden="true" style="font-size: 30px; margin-right: 10px"></i>Tema Oscuro</a></li>
+        </ul>
+    </div>
+    <div class="right-container">
+        <div class="header">
+            <h2>Tus registros</h2>
+            <button class="btnAdd">Agregar un Ingreso</button>
+            <button class="btn">Agregar un Egreso</button>
+        </div>
 
-                <ul class="accordion">
-                    <li>
-                        <input type="radio" name="accordion" id="first" >
-                        <label for="first">
-                            <div class="registro">
-                            <h1>02</h1>
-                        
-                            <div class="derecho">
-                                <div class="texto-arriba">Martes</div>
-                                <div class="texto-abajo">Abril 2024</div>
-                            </div>
-                            <div class="izquierdo">
-                                <div class="texto-arribaM">$36.500</div>
-                                <div class="texto-abajoM">$0.00</div>
-                            </div>
-                        </div>
-                    </label>
-
-                    <div class="content">
-                        <div class="info-registro">
-                            <div class="iconos">
-                                <i class="fas fa-dollar-sign"></i>
-                                <i class="fas fa-coins"></i>
-                            </div>
-                            
-                            <div class="derecho">
-                                <div class="texto-arriba">Salario</div>
-                                <div class="texto-abajo">Ingresos</div>
-                                <div class="texto-arriba">Bonificación</div>
-                                <div class="texto-abajo">Ingresos adicionales</div>
-                            </div>
-                            <div class="izquierdo">
-                                <div class="texto-arribaM">$30.000</div>
-                                <div class="texto-abajoM-Margin">$30.000</div>
-                                <div class="texto-arribaM">$5.000</div>
-                                <div class="texto-abajoM">$5.000</div>
-                            </div>
-                        </div>
-                    </div>
-                    
-                    </li> 
-
-
-                    <li>
-                        <input type="radio" name="accordion" id="second" >
-                        <label for="second">
-                            <div class="registro">
-                            <h1>02</h1>
-                        
-                            <div class="derecho">
-                                <div class="texto-arriba">Martes</div>
-                                <div class="texto-abajo">Abril 2024</div>
-                            </div>
-                            <div class="izquierdo">
-                                <div class="texto-arribaM">$36.500</div>
-                                <div class="texto-abajoM">$0.00</div>
-                            </div>
-                        </div>
-                    </label>
-
-                    <div class="content">
-                        <div class="info-registro">
-                            <div class="iconos">
-                                <i class="fas fa-dollar-sign"></i>
-                                <i class="fas fa-coins"></i>
-                            </div>
-                            
-                            <div class="derecho">
-                                <div class="texto-arriba">Salario</div>
-                                <div class="texto-abajo">Ingresos</div>
-                                <div class="texto-arriba">Bonificación</div>
-                                <div class="texto-abajo">Ingresos adicionales</div>
-                            </div>
-                            <div class="izquierdo">
-                                <div class="texto-arribaM">$30.000</div>
-                                <div class="texto-abajoM-Margin">$30.000</div>
-                                <div class="texto-arribaM">$5.000</div>
-                                <div class="texto-abajoM">$5.000</div>
-                            </div>
-                        </div>
-                    </div>
-                    
-                    </li>     
+        <ul class="accordion">
+            <li>
+                <input type="radio" name="accordion" id="first" >
+                <label for="first">
+                    <div class="registro">
+                    <h1>02</h1>
                 
-
-                </ul>
-
-
-
-            </div>
-            <div class="container-info">
-                <div class="header-info">
-                    <div class="imagen-container">
-                        <img src="/img/facebook.png" alt="">
+                    <div class="derecho">
+                        <div class="texto-arriba">Martes</div>
+                        <div class="texto-abajo">Abril 2024</div>
                     </div>
-                    <div class="text-container">
-                        <p>David Sneyder</p>
-                        <h3>Desarrollador de Software</h3>
-                    </div>
-                    <div class="datos-container">
-                        <div class="datos-info">
-                            <div class="texto-info-cuenta">Saldo Total</div>
-                            <div class="texto-info">$125.000.00</div>
-                            <div class="icon-text">
-                                <i class="fas fa-arrow-up"></i>
-                                <span class="texto-monot">$127.000</span>
-                            </div>
-                            <div class="icon-text">
-                                <i class="fas fa-arrow-down " style="color: red;"></i>
-                                <span class="texto-monot" style="color: red;">$127.000</span>
-                            </div>
-                            <div class="icon-text">
-                                <i class="fas fa-balance-scale" style="color: #C2C3CC;"></i>
-                                <span class="texto-monot" style="color: #C2C3CC;">$127.000</span>
-                            </div>
-                        </div>
+                    <div class="izquierdo">
+                        <div class="texto-arribaM">$36.500</div>
+                        <div class="texto-abajoM">$0.00</div>
                     </div>
                 </div>
-                
+            </label>
+
+            <div class="content">
+                <div class="info-registro">
+                    <div class="iconos">
+                        <i class="fas fa-dollar-sign"></i>
+                        <i class="fas fa-coins"></i>
+                    </div>
+                    
+                    <div class="derecho">
+                        <div class="texto-arriba">Salario</div>
+                        <div class="texto-abajo">Ingresos</div>
+                        <div class="texto-arriba">Bonificación</div>
+                        <div class="texto-abajo">Ingresos adicionales</div>
+                    </div>
+                    <div class="izquierdo">
+                        <div class="texto-arribaM">$30.000</div>
+                        <div class="texto-abajoM-Margin">$30.000</div>
+                        <div class="texto-arribaM">$5.000</div>
+                        <div class="texto-abajoM">$5.000</div>
+                    </div>
+                </div>
             </div>
             
+            </li> 
+
+
+            <li>
+                <input type="radio" name="accordion" id="second" >
+                <label for="second">
+                    <div class="registro">
+                    <h1>02</h1>
+                
+                    <div class="derecho">
+                        <div class="texto-arriba">Martes</div>
+                        <div class="texto-abajo">Abril 2024</div>
+                    </div>
+                    <div class="izquierdo">
+                        <div class="texto-arribaM">$36.500</div>
+                        <div class="texto-abajoM">$0.00</div>
+                    </div>
+                </div>
+            </label>
+
+            <div class="content">
+                <div class="info-registro">
+                    <div class="iconos">
+                        <i class="fas fa-dollar-sign"></i>
+                        <i class="fas fa-coins"></i>
+                    </div>
+                    
+                    <div class="derecho">
+                        <div class="texto-arriba">Salario</div>
+                        <div class="texto-abajo">Ingresos</div>
+                        <div class="texto-arriba">Bonificación</div>
+                        <div class="texto-abajo">Ingresos adicionales</div>
+                    </div>
+                    <div class="izquierdo">
+                        <div class="texto-arribaM">$30.000</div>
+                        <div class="texto-abajoM-Margin">$30.000</div>
+                        <div class="texto-arribaM">$5.000</div>
+                        <div class="texto-abajoM">$5.000</div>
+                    </div>
+                </div>
+            </div>
+            
+            </li>     
+        
+
+        </ul>
+
+    </div>
+    <div class="container-info">
+        <div class="header-info">
+            <div class="imagen-container">
+                <img src="/img/facebook.png" alt="">
+            </div>
+            <div class="text-container">
+                <p>David Sneyder</p>
+                <h3>Desarrollador de Software</h3>
+            </div>
+            <div class="datos-container">
+                <div class="datos-info">
+                    <div class="texto-info-cuenta">Saldo Total</div>
+                    <div class="texto-info">$125.000.00</div>
+                    <div class="icon-text">
+                        <i class="fas fa-arrow-up"></i>
+                        <span class="texto-monot">$127.000</span>
+                    </div>
+                    <div class="icon-text">
+                        <i class="fas fa-arrow-down " style="color: red;"></i>
+                        <span class="texto-monot" style="color: red;">$127.000</span>
+                    </div>
+                    <div class="icon-text">
+                        <i class="fas fa-balance-scale" style="color: #C2C3CC;"></i>
+                        <span class="texto-monot" style="color: #C2C3CC;">$127.000</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+    </div>
+</div>
+
+<script>
+    document.addEventListener('DOMContentLoaded', (event) => {
+        const configuracionLink = document.getElementById('configuracion-link');
+        const dropdownContent = document.getElementById('dropdown-content');
+
+        configuracionLink.addEventListener('click', (e) => {
+            e.preventDefault();
+            dropdownContent.classList.toggle('show');
+        });
+
+        window.addEventListener('click', (e) => {
+            if (!e.target.matches('#configuracion-link') && !e.target.matches('#dropdown-content') && !e.target.closest('#dropdown-content')) {
+                if (dropdownContent.classList.contains('show')) {
+                    dropdownContent.classList.remove('show');
+                }
+            }
+        });
+    });
+</script>
 
 </body>
 </html>

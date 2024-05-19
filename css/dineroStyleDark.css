@@ -35,8 +35,8 @@
 
 .sidebar li {
     margin-bottom: 10px;
+    position: relative; 
 }
-
 .sidebar a {
     display: block;
     justify-content: space-between;
@@ -56,6 +56,33 @@
 
 .sidebar a:hover{
     color: #45a049;
+}
+
+/* Estilo del dropdown */
+.dropdown-content {
+    display: none;
+    position: absolute;
+    left: 100%;
+    top: 0;
+    background-color: #2A3B47;
+    min-width: 160px;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    z-index: 1;
+    border-radius: 10px;
+}
+
+.dropdown-content a {
+    padding: 8px 10px;
+    display: block;
+    color: gray;
+}
+
+.dropdown-content a:hover {
+    color: #45a049;
+}
+
+.dropdown .show {
+    display: block;
 }
 
 
