@@ -1,0 +1,89 @@
+@import url('https://fonts.googleapis.com/css2?family=Concert+One&family=Fugaz+One&family=Jost:ital,wght@0,100..900;1,100..900&family=Kode+Mono:wght@400..700&family=Paytone+One&family=Rammetto+One&family=Righteous&family=Titan+One&family=Zen+Dots&display=swap');
+
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "Jost", sans-serif;
+}
+
+
+.contenedor{
+    background-image: url(../img/imagenFondo_Terminos.svg);
+    background-repeat: no-repeat;
+    background-size: cover;
+    height: 100vh;
+}
+
+.header img{
+    width: 120px;
+}
+
+.header .btn{
+    color: white;
+    border: solid 1.5px white;
+    transition: .3s ease-in-out;
+    font-weight: 400;
+}
+
+.header .btn:hover{
+    background-color: white;
+    color: #119822;
+    font-weight: 600;
+}
+
+
+
+.terminosLogo{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.terminosLogo h1{
+    font-size: 6rem;
+    color: white;
+    font-family: "Kode Mono", monospace;
+    font-weight: 600;
+    animation:animacion 2.5s infinite;
+}
+
+@keyframes animacion{
+    0%{
+        transform: translateY(0px);
+    }
+    50%{
+        transform: translateY(-5px);
+        transform: scale(105%);
+    }
+    100%{
+        transform: translateY(0px);
+    }
+}
+
+.terminosHeader{
+    display: flex;
+    gap: 20px;
+    transition: .5s ease-in-out;
+}
+
+.terminosHeader a{
+    font-size: 1.5rem;
+}
+
+.terminosHeader p{
+    padding: 15px;
+    font-weight: 500;
+}
+
+.lista li{
+    font-size: 1rem;
+}
+
+
+.txtShow{
+    display: block;
+    transition: .5s ease-in;
+}
+
+
