@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="/css/dineroStyle.css">
+    <link rel="stylesheet" href="/css/ahorro.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -12,99 +12,108 @@
 </head>
 <body>
 
-        <div class="container">
-            <div class="sidebar">
-                <img src="/img/logo.png" alt="">
-                <ul>
-                    <li><a href="#"> <i class="fas fa-home" style="font-size: 30px; margin-right: 10px;  color: #45a049;"></i>Inicio </a></li>
-                    <li><a href="#"> <i class="fas fa-piggy-bank" style="font-size: 30px; margin-right: 10px; color: #C2C3CC; "></i>Ahorro</a></li>
-                    <li><a href="#"> <i class="fas fa-chart-bar" style="font-size: 30px; margin-right: 10px;  color: #C2C3CC" ></i>Estadisticas</a></li>
-                    <li><a href="#"> <i class="fas fa-cog" style="font-size: 30px; margin-right: 10px" ></i>Configuración</a></li>
-                    <li><a href="../html/resgistrosMonetarioDark.html"> <i class="fas fa-moon" aria-hidden="true" style="font-size: 30px; margin-right: 10px"></i>Tema Oscuro</a></li>
+<div class="container">
+    <div class="sidebar">
+        <img src="/img/logo.png" alt="">
+        <ul>
+            <li><a href="#"> <i class="fas fa-home" style="font-size: 30px; margin-right: 10px;  color: #45a049;"></i>Inicio </a></li>
+            <li><a href="/html/ahorro.html"> <i class="fas fa-piggy-bank" style="font-size: 30px; margin-right: 10px; color: #C2C3CC; "></i>Ahorro</a></li>
+            <li><a href="#"> <i class="fas fa-chart-bar" style="font-size: 30px; margin-right: 10px;  color: #C2C3CC" ></i>Estadisticas</a></li>
+            <li class="dropdown">
+                <a href="#" id="configuracion-link"> <i class="fas fa-cog" style="font-size: 30px; margin-right: 10px" ></i>Configuración</a>
+                <ul class="dropdown-content" id="dropdown-content">
+                    <li><a href="#"><i class="fas fa-user" style=" margin-right: 10px;"></i>Perfil</a></li>
+                    <li><a href="#"><i class="fas fa-file" style=" margin-right: 10px;"></i>Terminos</a></li>
+                    <li><a href="#"><i class="fas fa-info" style=" margin-right: 10px;"></i>Ayuda</a></li>
+                    <li><a href="#" style="color: red;">Cerrar sesión</a></li>
                 </ul>
-            </div>
-            <div class="right-container">
-                <div class="header">
-                    <h2>Tus registros</h2>
-                    <button class="sumit"><i class="fas fa-plus" style="color: white;"></i></button>
-                </div>
-                <div class="registro">
-                    <h1>02</h1>
+            </li>
+            <li><a href="../html/resgistrosMonetarioDark.html"> <i class="fas fa-moon" aria-hidden="true" style="font-size: 30px; margin-right: 10px"></i>Tema Oscuro</a></li>
+        </ul>
+    </div>
+    <div class="right-container">
+        <div class="header">
+            <h2>Crea tu Meta</h2>
+            <button class="btnAdd">Agregar Meta</button>
+        </div>
+        <div class="imagen">
+            <img src="/img/banco.png" alt="">
+        </div>
+
+                    <div class="registro">
+                    <i class="fas fa-wallet " style="color: #4CAF50;"></i>
                     <div class="derecho">
-                        <div class="texto-arriba">Martes</div>
-                        <div class="texto-abajo">Abril 2024</div>
-                    </div>
-                    <div class="izquierdo">
-                        <div class="texto-arribaM">$36.500</div>
-                        <div class="texto-abajoM">$0.00</div>
+                        <div class="texto-arriba">Viajes</div>
+                        <div class="texto-abajo">$250.000</div>
                     </div>
                 </div>
+
                 <div class="registro">
-                    <h1>02</h1>
+                    <i class="fas fa-wallet " style="color: #4CAF50;"></i>
                     <div class="derecho">
-                        <div class="texto-arriba">Martes</div>
-                        <div class="texto-abajo">Abril 2024</div>
-                    </div>
-                    <div class="izquierdo">
-                        <div class="texto-arribaM">$36.500</div>
-                        <div class="texto-abajoM">$0.00</div>
+                        <div class="texto-arriba">Viajes</div>
+                        <div class="texto-abajo">$250.000</div>
                     </div>
                 </div>
-                <div class="registro">
-                    <h1>02</h1>
-                    <div class="derecho">
-                        <div class="texto-arriba">Martes</div>
-                        <div class="texto-abajo">Abril 2024</div>
-                    </div>
-                    <div class="izquierdo">
-                        <div class="texto-arribaM">$36.500</div>
-                        <div class="texto-abajoM">$0.00</div>
-                    </div>
-                </div>
-                <div class="registro">
-                    <h1>02</h1>
-                    <div class="derecho">
-                        <div class="texto-arriba">Martes</div>
-                        <div class="texto-abajo">Abril 2024</div>
-                    </div>
-                    <div class="izquierdo">
-                        <div class="texto-arribaM">$36.500</div>
-                        <div class="texto-abajoM">$0.00</div>
-                    </div>
-                </div>
-    
-            </div>
-            <div class="container-info">
-                <div class="header-info">
-                    <div class="imagen-container">
-                        <img src="/img/facebook.png" alt="">
-                    </div>
-                    <div class="text-container">
-                        <p>David Sneyder</p>
-                        <h3>Desarrollador de Software</h3>
-                    </div>
-                    <div class="datos-container">
-                        <div class="datos-info">
-                            <div class="texto-info-cuenta">Saldo Total</div>
-                            <div class="texto-info">$125.000.00</div>
-                            <div class="icon-text">
-                                <i class="fas fa-arrow-up"></i>
-                                <span class="texto-monot">$127.000</span>
-                            </div>
-                            <div class="icon-text">
-                                <i class="fas fa-arrow-down " style="color: red;"></i>
-                                <span class="texto-monot" style="color: red;">$127.000</span>
-                            </div>
-                            <div class="icon-text">
-                                <i class="fas fa-balance-scale" style="color: #C2C3CC;"></i>
-                                <span class="texto-monot" style="color: #C2C3CC;">$127.000</span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                
-            </div>
+        
+        
+
+           
             
+        
+
+    </div>
+    <div class="container-info">
+        <div class="header-info">
+            <div class="imagen-container">
+                <img src="/img/facebook.png" alt="">
+            </div>
+            <div class="text-container">
+                <p>David Sneyder</p>
+                <h3>Desarrollador de Software</h3>
+            </div>
+            <div class="datos-container">
+                <div class="datos-info">
+                    <div class="texto-info-cuenta">Saldo Total</div>
+                    <div class="texto-info">$125.000.00</div>
+                    <div class="icon-text">
+                        <i class="fas fa-arrow-up"></i>
+                        <span class="texto-monot">$127.000</span>
+                    </div>
+                    <div class="icon-text">
+                        <i class="fas fa-arrow-down " style="color: red;"></i>
+                        <span class="texto-monot" style="color: red;">$127.000</span>
+                    </div>
+                    <div class="icon-text">
+                        <i class="fas fa-balance-scale" style="color: #C2C3CC;"></i>
+                        <span class="texto-monot" style="color: #C2C3CC;">$127.000</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+    </div>
+</div>
+
+<script>
+    document.addEventListener('DOMContentLoaded', (event) => {
+        const configuracionLink = document.getElementById('configuracion-link');
+        const dropdownContent = document.getElementById('dropdown-content');
+
+        configuracionLink.addEventListener('click', (e) => {
+            e.preventDefault();
+            dropdownContent.classList.toggle('show');
+        });
+
+        window.addEventListener('click', (e) => {
+            if (!e.target.matches('#configuracion-link') && !e.target.matches('#dropdown-content') && !e.target.closest('#dropdown-content')) {
+                if (dropdownContent.classList.contains('show')) {
+                    dropdownContent.classList.remove('show');
+                }
+            }
+        });
+    });
+</script>
 
 </body>
 </html>
