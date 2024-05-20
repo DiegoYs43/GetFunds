@@ -1,4 +1,7 @@
 * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
     font-family: "Jost", sans-serif;
 }
 
@@ -25,6 +28,7 @@
     list-style: none;
     padding: 10px;
     align-items: center;
+    justify-content: center;
 }
 
 .sidebar li {
@@ -80,30 +84,25 @@
 
 /* Container de registros monetarios */
 .right-container {
-    width: 150vh;
-    height: 690px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100vw;
+    height: 100vh;
     background-color: #f0f0f0;
     padding: 20px;
     border-radius: 20px;
 }
 
-.header {
+.right-container .header {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    margin-bottom: 20px;
+    padding: 10px;
 }
 
-.header h1 {
-    margin: 0;
-    font-size: 24px;
-    color: #333;
-}
 
-.header h2 {
-    margin-left: 62px;
-    margin-right: 270px;
-}
+
 
 .btnAdd {
     padding: 5px 20px;
@@ -112,7 +111,6 @@
     border: none;
     border-radius: 10px;
     cursor: pointer;
-    margin-right: 8px;
 }
 
 .btnAdd:hover {
@@ -126,7 +124,6 @@
     border: none;
     border-radius: 10px;
     cursor: pointer;
-    margin-right: 80px;
 }
 
 .btn:hover {
@@ -136,11 +133,10 @@
 .registro {
     display: flex;
     align-items: flex-start;
-    width: 80%;
     margin: 0 auto;
     background-color: white;
     padding: 10px;
-    box-shadow: 0 5px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 3px 6px 0px rgba(0, 0, 0, 0.1);
     min-height: 20px;
     border-radius: 20px;
     margin-top: 20px;
@@ -154,13 +150,11 @@
 .derecho {
     display: flex;
     flex-direction: column;
-    flex-grow: 1;
 }
 
 .texto-arriba {
     font-size: 15px;
     color: #C2C3CC;
-    margin-top: 10px;
 }
 
 .texto-abajo {
@@ -170,7 +164,6 @@
 .izquierdo {
     display: flex;
     flex-direction: column;
-    flex-grow: 1;
     align-items: end;
 }
 
