@@ -17,7 +17,7 @@
         <img src="/img/logo.png" alt="">
         <ul>
             <li><a href="#"> <i class="fas fa-home" style="font-size: 30px; margin-right: 10px;  color: #45a049;"></i>Inicio </a></li>
-            <li><a href="#"> <i class="fas fa-piggy-bank" style="font-size: 30px; margin-right: 10px; color: #C2C3CC; "></i>Ahorro</a></li>
+            <li><a href="/html/ahorro.html"> <i class="fas fa-piggy-bank" style="font-size: 30px; margin-right: 10px; color: #C2C3CC; "></i>Ahorro</a></li>
             <li><a href="#"> <i class="fas fa-chart-bar" style="font-size: 30px; margin-right: 10px;  color: #C2C3CC" ></i>Estadisticas</a></li>
             <li class="dropdown">
                 <a href="#" id="configuracion-link"> <i class="fas fa-cog" style="font-size: 30px; margin-right: 10px" ></i>Configuración</a>
@@ -34,8 +34,8 @@
     <div class="right-container">
         <div class="header">
             <h2>Tus registros</h2>
-            <button class="btnAdd">Agregar un Ingreso</button>
-            <button class="btn">Agregar un Egreso</button>
+            <button class="btnAdd">Agregar Ingreso</button>
+            <button class="btn">Agregar Egreso</button>
         </div>
 
         <ul class="accordion">
@@ -159,6 +159,9 @@
 </div>
 
 <script>
+    
+
+
     document.addEventListener('DOMContentLoaded', (event) => {
         const configuracionLink = document.getElementById('configuracion-link');
         const dropdownContent = document.getElementById('dropdown-content');
