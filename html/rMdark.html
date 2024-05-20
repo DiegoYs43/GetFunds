@@ -22,9 +22,9 @@
             <li class="dropdown">
                 <a href="#" id="configuracion-link"> <i class="fas fa-cog" style="font-size: 30px; margin-right: 10px" ></i>Configuración</a>
                 <ul class="dropdown-content" id="dropdown-content">
-                    <li><a href="#"><i class="fas fa-user" style=" margin-right: 10px;"></i>Perfil</a></li>
-                    <li><a href="#"><i class="fas fa-file" style=" margin-right: 10px;"></i>Terminos</a></li>
-                    <li><a href="#"><i class="fas fa-info" style=" margin-right: 10px;"></i>Ayuda</a></li>
+                    <li><a href="#perfil"><i class="fas fa-user" style=" margin-right: 10px;"></i>Perfil</a></li>
+                    <li><a href="../html/terminos.html"><i class="fas fa-file" style=" margin-right: 10px;"></i>Terminos</a></li>
+                    <li><a href="../html/ayuda.html"><i class="fas fa-info" style=" margin-right: 10px;"></i>Ayuda</a></li>
                     <li><a href="#" style="color: red;">Cerrar sesión</a></li>
                 </ul>
             </li>
@@ -166,22 +166,6 @@
     </div>
 </div>
 
-<div id="modalTerminos" class="modal">
-    <div class="modal-content">
-        <span class="close" data-modal="modalTerminos">&times;</span>
-        <h2>Términos</h2>
-        <p>Contenido de términos...</p>
-    </div>
-</div>
-
-<div id="modalAyuda" class="modal">
-    <div class="modal-content">
-        <span class="close" data-modal="modalAyuda">&times;</span>
-        <h2>Ayuda</h2>
-        <p>Contenido de ayuda...</p>
-    </div>
-</div>
-
 
 <script>
     document.addEventListener('DOMContentLoaded', (event) => {
@@ -201,20 +185,13 @@
         }
     });
 
-    // Modales
-    
-    const modals = document.querySelectorAll('.modal');
+    // Modal
+    const modalPerfil = document.getElementById('modalPerfil');
     const closeModalButtons = document.querySelectorAll('.close');
 
-    document.querySelectorAll('.dropdown-content a').forEach((item) => {
-        item.addEventListener('click', (e) => {
-            e.preventDefault();
-            const modalId = item.textContent.trim().toLowerCase();
-            const modal = document.getElementById(`modal${modalId.charAt(0).toUpperCase() + modalId.slice(1)}`);
-            if (modal) {
-                modal.style.display = 'block';
-            }
-        });
+    document.querySelector('.dropdown-content a[href="#perfil"]').addEventListener('click', (e) => {
+        e.preventDefault();
+        modalPerfil.style.display = 'block';
     });
 
     closeModalButtons.forEach((button) => {
@@ -225,11 +202,9 @@
     });
 
     window.addEventListener('click', (event) => {
-        modals.forEach((modal) => {
-            if (event.target === modal) {
-                modal.style.display = 'none';
-            }
-        });
+        if (event.target === modalPerfil) {
+            modalPerfil.style.display = 'none';
+        }
     });
 });
 
