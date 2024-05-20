@@ -1,0 +1,78 @@
+.imgLogo img{
+    width: 125px;
+    margin-bottom: 80px;
+    margin-top: 15px;
+}
+.contactUs{
+    margin-top: 35px;
+}
+.title{
+    margin-bottom: 50px;
+}
+.informacion p{
+    color: gray;
+    font-weight: 450;
+}
+.img{
+    background-color: #119822;
+    padding: 6px;
+    width: 32px;
+    border-radius: 8px;
+    text-align: center;
+    
+}
+.img img{
+    width: 16px;
+    margin-bottom: 3px;
+}
+.info{
+    margin-top: 25px;
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+.info span{
+    color: gray;
+    font-weight: 500;
+}
+
+.formHelp {
+    background-image: url(../img/fondForm.svg);
+    border-radius: 16px;
+    height: 450px;
+}
+form {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    align-items: center;
+    justify-content: center;
+    margin-top: 40px;
+}
+form input{
+    width: 350px;
+    height: 35px;
+    border: none;
+    border-radius: 8px;
+}
+input[type=number]::-webkit-inner-spin-button, 
+input[type=number]::-webkit-outer-spin-button { 
+    -webkit-appearance: none; 
+    margin: 0; 
+}
+#msj{
+    height: 150px;
+}
+button{
+    border: none;
+    padding: 10px;
+    color: #119822;
+    background-color: white;
+    font-weight: 500;
+    border-radius: 8px !important;
+    width: 120px;
+}
+button:hover{
+    transform: translateY(-5px);
+    transition: .5s ease-in-out;
+}
