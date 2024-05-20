@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="/css/dineroStyle.css">
+    <link rel="stylesheet" href="/css/ahorro.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -22,108 +22,39 @@
             <li class="dropdown">
                 <a href="#" id="configuracion-link"> <i class="fas fa-cog" style="font-size: 30px; margin-right: 10px" ></i>Configuración</a>
                 <ul class="dropdown-content" id="dropdown-content">
-                    <li><a href=""><i class="fas fa-user" style=" margin-right: 10px;"></i>Perfil</a></li>
+                    <li><a href="#"><i class="fas fa-user" style=" margin-right: 10px;"></i>Perfil</a></li>
                     <li><a href="#"><i class="fas fa-file" style=" margin-right: 10px;"></i>Terminos</a></li>
                     <li><a href="#"><i class="fas fa-info" style=" margin-right: 10px;"></i>Ayuda</a></li>
                     <li><a href="#" style="color: red;">Cerrar sesión</a></li>
                 </ul>
             </li>
-            <li><a href="../html/rMdark.html"> <i class="fas fa-moon" aria-hidden="true" style="font-size: 30px; margin-right: 10px"></i>Tema Oscuro</a></li>
+            <li><a href="../html/ahorroDark.html"> <i class="fas fa-moon" aria-hidden="true" style="font-size: 30px; margin-right: 10px"></i>Tema Oscuro</a></li>
         </ul>
     </div>
     <div class="right-container">
         <div class="header">
-            <h2>Tus registros</h2>
-            <button class="btnAdd">Agregar Ingreso</button>
-            <button class="btn">Agregar Egreso</button>
+            <h2>Crea tu Meta</h2>
+            <button class="btnAdd">Agregar Meta</button>
+        </div>
+        <div class="imagen">
+            <img src="/img/banco.png" alt="">
         </div>
 
-        <ul class="accordion">
-            <li>
-                <input type="radio" name="accordion" id="first" >
-                <label for="first">
                     <div class="registro">
-                    <h1>02</h1>
-                
+                    <i class="fas fa-wallet " style="color: #4CAF50;"></i>
                     <div class="derecho">
-                        <div class="texto-arriba">Martes</div>
-                        <div class="texto-abajo">Abril 2024</div>
-                    </div>
-                    <div class="izquierdo">
-                        <div class="texto-arribaM">$36.500</div>
-                        <div class="texto-abajoM">$0.00</div>
+                        <div class="texto-arriba">Viajes</div>
+                        <div class="texto-abajo">$250.000</div>
                     </div>
                 </div>
-            </label>
 
-            <div class="content">
-                <div class="info-registro">
-                    <div class="iconos">
-                        <i class="fas fa-dollar-sign"></i>
-                        <i class="fas fa-coins"></i>
-                    </div>
-                    
+                <div class="registro">
+                    <i class="fas fa-wallet " style="color: #4CAF50;"></i>
                     <div class="derecho">
-                        <div class="texto-arriba">Salario</div>
-                        <div class="texto-abajo">Ingresos</div>
-                        <div class="texto-arriba">Bonificación</div>
-                        <div class="texto-abajo">Ingresos adicionales</div>
-                    </div>
-                    <div class="izquierdo">
-                        <div class="texto-arribaM">$30.000</div>
-                        <div class="texto-abajoM-Margin">$30.000</div>
-                        <div class="texto-arribaM">$5.000</div>
-                        <div class="texto-abajoM">$5.000</div>
+                        <div class="texto-arriba">Viajes</div>
+                        <div class="texto-abajo">$250.000</div>
                     </div>
                 </div>
-            </div>
-            
-            </li> 
-
-
-            <li>
-                <input type="radio" name="accordion" id="second" >
-                <label for="second">
-                    <div class="registro">
-                    <h1>02</h1>
-                
-                    <div class="derecho">
-                        <div class="texto-arriba">Martes</div>
-                        <div class="texto-abajo">Abril 2024</div>
-                    </div>
-                    <div class="izquierdo">
-                        <div class="texto-arribaM">$36.500</div>
-                        <div class="texto-abajoM">$0.00</div>
-                    </div>
-                </div>
-            </label>
-
-            <div class="content">
-                <div class="info-registro">
-                    <div class="iconos">
-                        <i class="fas fa-dollar-sign"></i>
-                        <i class="fas fa-coins"></i>
-                    </div>
-                    
-                    <div class="derecho">
-                        <div class="texto-arriba">Salario</div>
-                        <div class="texto-abajo">Ingresos</div>
-                        <div class="texto-arriba">Bonificación</div>
-                        <div class="texto-abajo">Ingresos adicionales</div>
-                    </div>
-                    <div class="izquierdo">
-                        <div class="texto-arribaM">$30.000</div>
-                        <div class="texto-abajoM-Margin">$30.000</div>
-                        <div class="texto-arribaM">$5.000</div>
-                        <div class="texto-abajoM">$5.000</div>
-                    </div>
-                </div>
-            </div>
-            
-            </li>     
-        
-
-        </ul>
 
     </div>
     <div class="container-info">
@@ -158,6 +89,7 @@
     </div>
 </div>
 
+
 <div id="modalPerfil" class="modal">
     <div class="modal-content">
         <span class="close" data-modal="modalPerfil">&times;</span>
@@ -181,7 +113,6 @@
         <p>Contenido de ayuda...</p>
     </div>
 </div>
-
 
 <script>
     document.addEventListener('DOMContentLoaded', (event) => {
@@ -231,7 +162,6 @@
         });
     });
 });
-
 </script>
 
 </body>

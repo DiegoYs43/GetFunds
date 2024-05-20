@@ -102,7 +102,7 @@
 
 .header h2 {
     margin-left: 62px;
-    margin-right: 270px;
+    margin-right: 20px;
 }
 
 .btnAdd {
@@ -112,33 +112,26 @@
     border: none;
     border-radius: 10px;
     cursor: pointer;
-    margin-right: 8px;
+    margin-right: 80px;
 }
 
 .btnAdd:hover {
     background-color: #38713a;
 }
 
-.btn {
-    padding: 5px 20px;
-    background-color: red;
-    color: white;
-    border: none;
-    border-radius: 10px;
-    cursor: pointer;
-    margin-right: 80px;
+.imagen img{
+    width: 200px;
+    height: 200px;
+    margin-left: 350px;
 }
 
-.btn:hover {
-    background-color: rgb(175, 22, 22);
-}
 
 .registro {
     display: flex;
     align-items: flex-start;
     width: 80%;
     margin: 0 auto;
-    background-color: white;
+    background-color: #a1eea3b0;
     padding: 10px;
     box-shadow: 0 5px rgba(0, 0, 0, 0.1);
     min-height: 20px;
@@ -146,9 +139,10 @@
     margin-top: 20px;
 }
 
-.registro h1 {
-    font-size: 25px;
+.registro i {
+    font-size: 30px;
     margin-right: 20px;
+    margin-top: 17px;
 }
 
 .derecho {
@@ -159,58 +153,12 @@
 
 .texto-arriba {
     font-size: 15px;
-    color: #C2C3CC;
     margin-top: 10px;
 }
 
 .texto-abajo {
     font-size: 15px;
-}
-
-.izquierdo {
-    display: flex;
-    flex-direction: column;
-    flex-grow: 1;
-    align-items: end;
-}
-
-.texto-arribaM {
-    font-size: 15px;
-    margin-top: 10px;
-    color: #45a049;
-}
-
-.texto-abajoM {
-    font-size: 15px;
-    color: red;
-}
-
-.accordion li {
-    list-style: none;
-}
-
-.accordion li label {
-    margin-left: 0;
-    padding-left: 0;
-    display: block;
-}
-
-input[type="radio"] {
-    display: none;
-}
-
-.accordion .content {
-    color: #555;
-    padding: 0 10px;
-    line-height: 26px;
-    max-height: 0;
-    overflow: hidden;
-    transition: max-height 0.5s, padding 0.5s;
-}
-
-.accordion input[type="radio"]:checked + label + .content {
-    max-height: 400px;
-    padding: 10px 10px 20px;
+    color: #4CAF50;
 }
 
 /* Container de la información de la cuenta */
@@ -300,72 +248,6 @@ input[type="radio"] {
     color: #45a049;
     font-size: 17px;
 }
-
-/* Información de los registros monetarios */
-.info-registro {
-    display: flex;
-    align-items: flex-start;
-    width: 60%;
-    margin: 0 auto;
-    background-color: white;
-    padding: 10px;
-    box-shadow: 0 5px rgba(0, 0, 0, 0.1);
-    min-height: 20px;
-    border-radius: 20px;
-    margin-top: 10px;
-}
-
-.iconos {
-    display: flex;
-    flex-direction: column;
-    align-items: center;    
-}
-
-.iconos i {
-    font-size: 25px;
-    margin-right: 20px;
-    margin-left: 5px;
-    margin-top: 27px;
-    margin-bottom: 25px;
-    color: #4CAF50;
-}
-
-.derecho {
-    display: flex;
-    flex-direction: column;
-    flex-grow: 1;
-}
-
-.texto-arriba {
-    font-size: 15px;
-    color: #C2C3CC;
-    margin-top: 10px;
-}
-
-.texto-abajo {
-    font-size: 15px;
-    margin-bottom: 20px;
-}
-
-.izquierdo {
-    display: flex;
-    flex-direction: column;
-    flex-grow: 1;
-    align-items: end;
-}
-
-.texto-arribaM {
-    font-size: 15px;
-    margin-top: 10px;
-    color: #45a049;
-}
-
-.texto-abajoM-Margin {
-    font-size: 15px;
-    color: red;
-    margin-bottom: 20px;
-}
-
 
 /* Estilos para los modales */
 
