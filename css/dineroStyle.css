@@ -410,3 +410,8 @@ input[type="radio"] {
     text-decoration: none;
     cursor: pointer;
 }
+
+.scroll-container {
+    max-height: 600px;
+    overflow-y: auto; 
+}

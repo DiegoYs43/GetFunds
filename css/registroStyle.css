@@ -4,13 +4,6 @@
     box-sizing: border-box;
     font-family: "Jost", sans-serif;
   }
-
-  .jost {
-    font-family: "Jost", sans-serif;
-    font-optical-sizing: auto;
-    font-weight: 100;
-    font-style: normal;
-  }
   
   .container {
     display: flex;
