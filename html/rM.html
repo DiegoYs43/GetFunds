@@ -282,8 +282,24 @@
 <div id="modalPerfil" class="modal">
     <div class="modal-content">
         <span class="close" data-modal="modalPerfil">&times;</span>
-        <h2>Perfil</h2>
-        <p>Contenido del perfil...</p>
+        <h2>Editar Perfil</h2>
+        <form id="perfilForm">
+            <div class="form-group">
+                <label for="fotoPerfil">Foto de Perfil:</label>
+                <input type="file" id="fotoPerfil" name="fotoPerfil" accept="image/*">
+            </div>
+            <div class="form-group">
+                <label for="nombre">Nombre:</label>
+                <input type="text" id="nombre" name="nombre" required>
+            </div>
+            <div class="form-group">
+                <label for="ocupacion">Ocupación:</label>
+                <input type="text" id="ocupacion" name="ocupacion" required>
+            </div>
+            <div class="form-group">
+                <button type="submit">Guardar Cambios</button>
+            </div>
+        </form>
     </div>
 </div>
 
