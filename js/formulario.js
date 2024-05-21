@@ -1,5 +1,6 @@
 import { getApps, initializeApp } from "https://www.gstatic.com/firebasejs/10.9.0/firebase-app.js";
 import { getFirestore, collection, addDoc, query, where, getDocs } from "https://www.gstatic.com/firebasejs/10.9.0/firebase-firestore.js";
+import { getAuth, createUserWithEmailAndPassword } from "https://www.gstatic.com/firebasejs/10.9.0/firebase-auth.js";
 
 // Verificar si la aplicación de Firebase ya está inicializada
 if (!getApps().length) {
@@ -16,8 +17,9 @@ if (!getApps().length) {
 }
 
 const firestore = getFirestore();
+const auth = getAuth();
 
-document.getElementById("Subir").addEventListener("click", async function (event) {
+document.getElementById("registroForm").addEventListener("submit", async function (event) {
   event.preventDefault();
 
   const nombre = document.getElementById("nombre").value.trim();
@@ -37,44 +39,30 @@ document.getElementById("Subir").addEventListener("click", async function (event
     return;
   }
 
-  // Validación de correo electrónico duplicado
+  // Validación de correo electrónico duplicado en Firestore
   const emailQuerySnapshot = await getDocs(query(collection(firestore, "usuarios"), where("correo", "==", correo)));
   if (!emailQuerySnapshot.empty) {
     alert("Este correo electrónico ya está registrado. Por favor, utiliza otro correo electrónico.");
     return;
   }
 
-  // Validación de nombre duplicado
-  const nombreQuerySnapshot = await getDocs(query(collection(firestore, "usuarios"), where("nombre", "==", nombre)));
-  if (!nombreQuerySnapshot.empty) {
-    alert("Este nombre ya está en uso. Por favor, elige otro nombre.");
-    return;
-  }
-
-  // Registro de usuario si las validaciones son exitosas
   try {
-    // Registro de usuario en la colección "usuarios"
+    // Registro del usuario en Firebase Authentication
+    const userCredential = await createUserWithEmailAndPassword(auth, correo, contrasena);
+    const user = userCredential.user;
+
+    // Registro de usuario en la colección "usuarios" en Firestore
     await addDoc(collection(firestore, "usuarios"), {
+      uid: user.uid,
       nombre: nombre,
-      correo: correo,
-      contraseña: contrasena
-    });
-
-    // Registro de correo electrónico en la colección "ingresos"
-    await addDoc(collection(firestore, "ingresos"), {
-      correo: correo,
-      // Otros detalles del ingreso...
-    });
-
-    // Registro de correo electrónico en la colección "gastos"
-    await addDoc(collection(firestore, "gastos"), {
-      correo: correo,
-      // Otros detalles del gasto...
+      correo: correo
     });
 
     alert("Registro exitoso. ¡Bienvenido!");
+    // Redireccionar a la página de inicio de sesión
+    window.location.href = "login.html";
   } catch (error) {
-    console.error("Error al agregar datos", error);
-    alert("Ocurrió un error durante el registro. Por favor, inténtalo de nuevo más tarde.");
+    console.error("Error al registrar usuario:", error);
+    alert(`Error al registrar usuario: ${error.message}`);
   }
 });

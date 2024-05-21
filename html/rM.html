@@ -8,6 +8,8 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Jost:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js" integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.min.js" integrity="sha384-0pUGZvbkm6XF6gxjEnlmuGrJXVbNuzT9qBBavbLwCsOGabYfZo0T0to5eqruptLy" crossorigin="anonymous"></script>
     <title>Registro Monetario</title>
 </head>
 <body>
@@ -16,7 +18,7 @@
     <div class="sidebar">
         <img src="/img/logo.png" alt="">
         <ul>
-            <li><a href="../html/resgistrosMonetario.html"> <i class="fas fa-home" style="font-size: 30px; margin-right: 10px;  color: #45a049;"></i>Inicio </a></li>
+            <li><a href="#"> <i class="fas fa-home" style="font-size: 30px; margin-right: 10px;  color: #45a049;"></i>Inicio </a></li>
             <li><a href="../html/ahorro.html"> <i class="fas fa-piggy-bank" style="font-size: 30px; margin-right: 10px; color: #C2C3CC; "></i>Ahorro</a></li>
             <li><a href="#"> <i class="fas fa-chart-bar" style="font-size: 30px; margin-right: 10px;  color: #C2C3CC" ></i>Estadisticas</a></li>
             <li class="dropdown">
@@ -34,9 +36,82 @@
     <div class="right-container">
         <div class="header">
             <h2>Tus registros</h2>
-            <button class="btnAdd">Agregar Ingreso</button>
-            <button class="btn">Agregar Egreso</button>
+            <button type="button" class="btnAdd" data-bs-toggle="modal" data-bs-target="#modalAgregarIngreso">Agregar Ingreso</button>
+            <button type="button" class="btn" data-bs-toggle="modal" data-bs-target="#modalAgregarIngreso">Agregar Egreso</button>
         </div>
+    
+        <!-- Modal para agregar ingresos -->
+        <div id="modalAgregarIngreso" class="modal">
+            <div class="modal-content">
+                <span class="close" data-modal="modalAgregarIngreso">&times;</span>
+                <h2>Agregar Ingreso</h2>
+                <form id="formularioIngreso">
+                    <div class="form-group">
+                      <label for="tipoIngreso">Tipo de Ingreso:</label>
+                      <select id="tipoIngreso" name="tipoIngreso">
+                        <option value="salario">Salario</option>
+                        <option value="ingresosPasivos">Ingresos Pasivos</option>
+                        <option value="cobroDeuda">Cobro de Deuda</option>
+                      </select>
+                    </div>
+                    <div class="form-group">
+                      <label for="emailIngreso">Correo:</label>
+                      <input type="email" class="form-control email-field" id="emailIngreso" name="emailIngreso" readonly>
+                    </div>
+                    <div class="form-group">
+                      <label for="descripcionIngreso">Descripción:</label>
+                      <textarea id="descripcionIngreso" name="descripcionIngreso"></textarea>
+                    </div>
+                    <div class="form-group">
+                      <label for="fechaIngreso">Fecha:</label>
+                      <input type="date" id="fechaIngreso" name="fechaIngreso">
+                    </div>
+                    <div class="form-group">
+                      <label for="montoIngreso">Monto:</label>
+                      <input type="number" id="montoIngreso" name="montoIngreso">
+                    </div>
+                    <button type="submit" class="btn btn-primary">Agregar</button>
+                  </form>
+            </div>
+        </div>
+
+<div id="modalAgregarEgreso" class="modal">
+    <div class="modal-content">
+        <span class="close" data-modal="modalAgregarEgreso">&times;</span>
+        <h2>Agregar Egreso</h2>
+        <form id="formularioEgreso">
+            <div class="form-group">
+              <label for="categoriaEgreso">Categoría:</label>
+              <select id="categoriaEgreso" name="categoriaEgreso">
+                <option value="factura">Factura</option>
+                <option value="servicios">Servicios</option>
+                <option value="recibosHogar">Recibos del Hogar</option>
+                <option value="microgasto">Microgasto</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <label for="emailEgreso">Correo:</label>
+              <input type="email" class="form-control email-field" id="emailEgreso" name="emailEgreso" readonly>
+            </div>
+            <div class="form-group">
+              <label for="descripcionEgreso">Descripción:</label>
+              <textarea id="descripcionEgreso" name="descripcionEgreso"></textarea>
+            </div>
+            <div class="form-group">
+              <label for="fechaEgreso">Fecha:</label>
+              <input type="date" id="fechaEgreso" name="fechaEgreso">
+            </div>
+            <div class="form-group">
+              <label for="montoEgreso">Monto:</label>
+              <input type="number" id="montoEgreso" name="montoEgreso">
+            </div>
+            <button type="submit" class="btn btn-primary">Agregar</button>
+          </form>
+    </div>
+</div>
+
+
+        
 
         <ul class="accordion">
             <li>
@@ -210,6 +285,6 @@
 
 
 </script>
-
+<script type="module"  src="/js/auth.js"></script>
 </body>
 </html>
