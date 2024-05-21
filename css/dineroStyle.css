@@ -439,7 +439,10 @@ input[type="radio"] {
 .form-group button:hover {
     background-color: #45a049;
 }
-
+.scroll-container {
+    max-height: 600px;
+    overflow-y: auto; 
+}
 /* CSS para mis form hecho por Diego (alguien mateme no usar css) */
 form {
     background: #fff;
