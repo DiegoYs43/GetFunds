@@ -19,20 +19,6 @@ if (!getApps().length) {
 const firestore = getFirestore();
 const auth = getAuth();
 
-// Función para obtener el correo electrónico del usuario autenticado
-function getAuthenticatedUserEmail(callback) {
-  auth.onAuthStateChanged(function(user) {
-    if (user) {
-      const email = user.email;
-      console.log("Correo del usuario autenticado: ", email);
-      callback(email);
-    } else {
-      console.log("No hay usuario autenticado");
-      callback(null);
-    }
-  });
-}
-
 // Función de validación de formularios
 function validarFormulario(formulario) {
   let valido = true;
@@ -46,90 +32,96 @@ function validarFormulario(formulario) {
 }
 
 // Función para manejar el envío del formulario de ingresos
-function handleIngresoSubmit(event) {
+async function handleIngresoSubmit(event) {
   event.preventDefault();
-  
+
   const formularioIngreso = event.target;
+  const correo = document.getElementById("emailIngreso").value;
+
   if (!validarFormulario(formularioIngreso)) {
     alert("Por favor, complete todos los campos obligatorios.");
     return;
   }
 
   const tipoIngreso = document.getElementById("tipoIngreso").value;
-  const descripcion = document.getElementById("descripcionIngreso").value;
   const fecha = document.getElementById("fechaIngreso").value;
   const monto = parseFloat(document.getElementById("montoIngreso").value);
-  
-  getAuthenticatedUserEmail(async (correo) => {
+
+  try {
     if (correo) {
-      try {
-        await addDoc(collection(firestore, "ingresos"), {
-          tipo: tipoIngreso,
-          descripcion: descripcion,
-          fecha: fecha,
-          monto: monto,
-          correo: correo
-        });
-        alert("Ingreso registrado exitosamente");
-        formularioIngreso.reset();
-        location.reload(); // Recargar la página después de enviar el formulario
-      } catch (error) {
-        console.error("Error al registrar ingreso: ", error);
-        alert("Ocurrió un error al registrar el ingreso. Por favor, inténtalo de nuevo.");
-      }
+      await addDoc(collection(firestore, "ingresos"), {
+        tipo: tipoIngreso,
+        fecha: fecha,
+        monto: monto,
+        correo: correo
+      });
+      alert("Ingreso registrado exitosamente");
+      formularioIngreso.reset();
+      location.reload(); // Recargar la página después de enviar el formulario
     } else {
       alert("No se pudo obtener el correo del usuario. Por favor, inicia sesión nuevamente.");
     }
-  });
+  } catch (error) {
+    console.error("Error al registrar ingreso: ", error);
+    alert("Ocurrió un error al registrar el ingreso. Por favor, inténtalo de nuevo.");
+  }
 }
 
 // Función para manejar el envío del formulario de egresos
-function handleEgresoSubmit(event) {
+async function handleEgresoSubmit(event) {
   event.preventDefault();
-  
+
   const formularioEgreso = event.target;
+  const correo = document.getElementById("emailEgreso").value;
+
   if (!validarFormulario(formularioEgreso)) {
     alert("Por favor, complete todos los campos obligatorios.");
     return;
   }
 
   const categoriaEgreso = document.getElementById("categoriaEgreso").value;
-  const descripcion = document.getElementById("descripcionEgreso").value;
   const fecha = document.getElementById("fechaEgreso").value;
   const monto = parseFloat(document.getElementById("montoEgreso").value);
-  
-  getAuthenticatedUserEmail(async (correo) => {
+
+  try {
     if (correo) {
-      try {
-        await addDoc(collection(firestore, "gastos"), {
-          categoria: categoriaEgreso,
-          descripcion: descripcion,
-          fecha: fecha,
-          monto: monto,
-          correo: correo
-        });
-        alert("Egreso registrado exitosamente");
-        formularioEgreso.reset();
-        location.reload(); // Recargar la página después de enviar el formulario
-      } catch (error) {
-        console.error("Error al registrar egreso: ", error);
-        alert("Ocurrió un error al registrar el egreso. Por favor, inténtalo de nuevo.");
-      }
+      await addDoc(collection(firestore, "gastos"), {
+        categoria: categoriaEgreso,
+        fecha: fecha,
+        monto: monto,
+        correo: correo
+      });
+      alert("Egreso registrado exitosamente");
+      formularioEgreso.reset();
+      location.reload(); // Recargar la página después de enviar el formulario
     } else {
       alert("No se pudo obtener el correo del usuario. Por favor, inicia sesión nuevamente.");
     }
-  });
+  } catch (error) {
+    console.error("Error al registrar egreso: ", error);
+    alert("Ocurrió un error al registrar el egreso. Por favor, inténtalo de nuevo.");
+  }
 }
 
-document.getElementById("formularioIngreso").addEventListener("submit", handleIngresoSubmit);
-document.getElementById("formularioEgreso").addEventListener("submit", handleEgresoSubmit);
+// Obtener el correo del usuario autenticado y rellenar el formulario
+auth.onAuthStateChanged((user) => {
+  if (user) {
+    const email = user.email;
 
-// Espera a que el DOM esté completamente cargado para ejcutar recargar pagina 
-document.addEventListener('DOMContentLoaded', function() {
-    var closeButtons = document.querySelectorAll('.close');
-    closeButtons.forEach(function(button) {
-        button.addEventListener('click', function() {
-            location.reload(true);
-        });
-    });
+    // Rellenar los campos de correo en los formularios
+    document.getElementById("emailIngreso").value = email;
+    document.getElementById("emailEgreso").value = email;
+  }
+});
+
+document.addEventListener('DOMContentLoaded', () => {
+  document.getElementById("formularioIngreso").addEventListener("submit", handleIngresoSubmit);
+  document.getElementById("formularioEgreso").addEventListener("submit", handleEgresoSubmit);
+
+  var closeButtons = document.querySelectorAll('.close');
+  closeButtons.forEach(function(button) {
+      button.addEventListener('click', function() {
+          location.reload(true);
+      });
+  });
 });
