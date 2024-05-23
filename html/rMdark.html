@@ -38,155 +38,49 @@
     <div class="right-container">
         <div class="header">
             <h2>Tus registros</h2>
-            <button type="button" class="btnAdd" data-bs-toggle="modal" data-bs-target="#modalAgregarIngreso">Agregar Ingreso</button>
-            <button type="button" class="btn" data-bs-toggle="modal" data-bs-target="#modalAgregarEgreso">Agregar Egreso</button>
+            <button type="button" class="btnAdd" data-bs-toggle="modal" data-bs-target="#modalAgregarRegistro">Agregar Registro</button>
         </div>
     
-        <!-- Modal para agregar ingresos -->
-        <div id="modalAgregarIngreso" class="modal">
-            <div class="modal-content">
-                <span class="close" data-modal="modalAgregarIngreso">&times;</span>
-                <h2>Agregar Ingreso</h2>
-                <form id="formularioIngreso">
-                    <div class="form-group">
-                      <label for="tipoIngreso">Tipo de Ingreso:</label>
-                      <select id="tipoIngreso" name="tipoIngreso">
-                        <option value="salario">Salario</option>
-                        <option value="ingresosPasivos">Ingresos Pasivos</option>
-                        <option value="cobroDeuda">Cobro de Deuda</option>
-                      </select>
-                    </div>
-                    <div class="form-group">
-                      <label for="emailIngreso">Correo:</label>
-                      <input type="email" class="form-control email-field" id="emailIngreso" name="emailIngreso" readonly>
-                    </div>
-                    <div class="form-group">
-                      <label for="fechaIngreso">Fecha:</label>
-                      <input type="date" id="fechaIngreso" name="fechaIngreso">
-                    </div>
-                    <div class="form-group">
-                      <label for="montoIngreso">Monto:</label>
-                      <input type="number" id="montoIngreso" name="montoIngreso">
-                    </div>
-                    <button type="submit" class="btn btn-primary">Agregar</button>
-                  </form>
-            </div>
+        <!-- Modal Agregar Registro -->
+<div id="modalAgregarRegistro" class="modal">
+    <div class="modal-content">
+      <span class="close" data-modal="modalAgregarRegistro">&times;</span>
+      <h2>Agregar Registro</h2>
+      <form id="formulario">
+        <div class="form-group">
+          <label for="categoria">Categoría:</label>
+          <select id="categoria" name="Categoria">
+            <option value="factura">Factura</option>
+            <option value="servicios">Servicios</option>
+            <option value="recibosHogar">Recibos del Hogar</option>
+            <option value="microgasto">Microgasto</option>
+          </select>
         </div>
-
-        <div id="modalAgregarEgreso" class="modal">
-        <div class="modal-content">
-            <span class="close" data-modal="modalAgregarEgreso">&times;</span>
-            <h2>Agregar Egreso</h2>
-            <form id="formularioEgreso">
-            <div class="form-group">
-              <label for="categoriaEgreso">Categoría:</label>
-              <select id="categoriaEgreso" name="categoriaEgreso">
-                <option value="factura">Factura</option>
-                <option value="servicios">Servicios</option>
-                <option value="recibosHogar">Recibos del Hogar</option>
-                <option value="microgasto">Microgasto</option>
-              </select>
-            </div>
-            <div class="form-group">
-              <label for="emailEgreso">Correo:</label>
-              <input type="email" class="form-control email-field" id="emailEgreso" name="emailEgreso" readonly>
-            </div>
-            <div class="form-group">
-              <label for="fechaEgreso">Fecha:</label>
-              <input type="date" id="fechaEgreso" name="fechaEgreso">
-            </div>
-            <div class="form-group">
-              <label for="montoEgreso">Monto:</label>
-              <input type="number" id="montoEgreso" name="montoEgreso">
-            </div>
-            <button type="submit" class="btn btn-primary">Agregar</button>
-          </form>
+        <div class="form-group">
+          <label for="email">Correo:</label>
+          <input type="email" class="form-control email-field" id="email" name="Correo" readonly>
+        </div>
+        <div class="form-group">
+          <label for="fecha">Fecha:</label>
+          <input type="date" id="fecha" name="Fecha">
+        </div>
+        <div class="form-group">
+          <label for="tipo">Tipo:</label>
+          <select id="tipo" name="Tipo">
+            <option value="ingreso">Ingreso</option>
+            <option value="egreso">Egreso</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label for="valor">Valor:</label>
+          <input type="number" id="valor" name="Valor">
+        </div>
+        <button type="submit" class="btn btn-primary">Agregar</button>
+      </form>
     </div>
-    </div>
+  </div>
 
         <ul class="accordion">
-            <li>
-                <input type="radio" name="accordion" id="first" >
-                <label for="first">
-                    <div class="registro">
-                    <h1>02</h1>
-                
-                    <div class="derecho">
-                        <div class="texto-arriba">Martes</div>
-                        <div class="texto-abajo">Abril 2024</div>
-                    </div>
-                    <div class="izquierdo">
-                        <div class="texto-arribaM">$36.500</div>
-                        <div class="texto-abajoM">$0.00</div>
-                    </div>
-                </div>
-            </label>
-
-            <div class="content">
-                <div class="info-registro">
-                    <div class="iconos">
-                        <i class="fas fa-dollar-sign"></i>
-                        <i class="fas fa-coins"></i>
-                    </div>
-                    
-                    <div class="derecho">
-                        <div class="texto-arriba">Salario</div>
-                        <div class="texto-abajo">Ingresos</div>
-                        <div class="texto-arriba">Bonificación</div>
-                        <div class="texto-abajo">Ingresos adicionales</div>
-                    </div>
-                    <div class="izquierdo">
-                        <div class="texto-arribaM">$30.000</div>
-                        <div class="texto-abajoM-Margin">$30.000</div>
-                        <div class="texto-arribaM">$5.000</div>
-                        <div class="texto-abajoM">$5.000</div>
-                    </div>
-                </div>
-            </div>
-            
-            </li> 
-
-
-            <li>
-                <input type="radio" name="accordion" id="second" >
-                <label for="second">
-                    <div class="registro">
-                    <h1>02</h1>
-                
-                    <div class="derecho">
-                        <div class="texto-arriba">Martes</div>
-                        <div class="texto-abajo">Abril 2024</div>
-                    </div>
-                    <div class="izquierdo">
-                        <div class="texto-arribaM">$36.500</div>
-                        <div class="texto-abajoM">$0.00</div>
-                    </div>
-                </div>
-            </label>
-
-            <div class="content">
-                <div class="info-registro">
-                    <div class="iconos">
-                        <i class="fas fa-dollar-sign"></i>
-                        <i class="fas fa-coins"></i>
-                    </div>
-                    
-                    <div class="derecho">
-                        <div class="texto-arriba">Salario</div>
-                        <div class="texto-abajo">Ingresos</div>
-                        <div class="texto-arriba">Bonificación</div>
-                        <div class="texto-abajo">Ingresos adicionales</div>
-                    </div>
-                    <div class="izquierdo">
-                        <div class="texto-arribaM">$30.000</div>
-                        <div class="texto-abajoM-Margin">$30.000</div>
-                        <div class="texto-arribaM">$5.000</div>
-                        <div class="texto-abajoM">$5.000</div>
-                    </div>
-                </div>
-            </div>
-            
-            </li>     
         
 
         </ul>
@@ -277,5 +171,6 @@
 </script>
 <script type="module"  src="/js/auth.js"></script>
 <script type="module" src="/js/formu.js" ></script>
+<script type="module" src="/js/registros.js" ></script>
 </body>
 </html>

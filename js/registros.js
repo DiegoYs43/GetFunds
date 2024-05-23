@@ -4,10 +4,10 @@ import { getFirestore, collection, query, where, getDocs } from "https://www.gst
 function getAuthenticatedUserEmail(callback) {
     const email = localStorage.getItem('userEmail');
     if (email) {
-      callback(email);
+        callback(email);
     } else {
-      console.log("No hay usuario autenticado");
-      callback(null);
+        console.log("No hay usuario autenticado");
+        callback(null);
     }
 }
 
@@ -16,36 +16,33 @@ async function mostrarRegistrosPorCorreo(correo) {
     try {
         const firestore = getFirestore(); // Inicialización de Firestore
 
-        // Referencias a las colecciones "ingresos" y "gastos"
-        const ingresosRef = collection(firestore, "ingresos");
-        const gastosRef = collection(firestore, "gastos");
+        // Referencia a la colección "Registros"
+        const registrosRef = collection(firestore, "Registros");
 
-        // Queries para filtrar por correo
-        const ingresosQuery = query(ingresosRef, where("correo", "==", correo));
-        const gastosQuery = query(gastosRef, where("correo", "==", correo));
+        // Query para filtrar por correo
+        const registrosQuery = query(registrosRef, where("Correo", "==", correo));
 
         // Obtener los documentos
-        const ingresosSnapshot = await getDocs(ingresosQuery);
-        const gastosSnapshot = await getDocs(gastosQuery);
+        const registrosSnapshot = await getDocs(registrosQuery);
 
         // Contenedor del acordeón
         const accordion = document.querySelector('.accordion');
         accordion.innerHTML = ''; // Limpiar contenido existente
 
         // Función para crear un elemento de registro
-        function crearRegistro(id, tipo, descripcion, fecha, monto) {
+        function crearRegistro(id, Tipo, Categoria, Fecha, Valor) {
             return `
                 <li>
                     <input type="radio" name="accordion" id="${id}">
                     <label for="${id}">
                         <div class="registro">
-                            <h1>${new Date(fecha).getDate()}</h1>
+                            <h1>${new Date(Fecha.seconds * 1000).getDate()}</h1>
                             <div class="derecho">
-                                <div class="texto-arriba">${new Date(fecha).toLocaleDateString('es-ES', { weekday: 'long' })}</div>
-                                <div class="texto-abajo">${new Date(fecha).toLocaleDateString('es-ES', { month: 'long', year: 'numeric' })}</div>
+                                <div class="texto-arriba">${new Date(Fecha.seconds * 1000).toLocaleDateString('es-ES', { weekday: 'long' })}</div>
+                                <div class="texto-abajo">${new Date(Fecha.seconds * 1000).toLocaleDateString('es-ES', { month: 'long', year: 'numeric' })}</div>
                             </div>
                             <div class="izquierdo">
-                                <div class="texto-arribaM">$${monto.toFixed(2)}</div>
+                                <div class="texto-arribaM">$${Valor.toFixed(2)}</div>
                             </div>
                         </div>
                     </label>
@@ -55,27 +52,21 @@ async function mostrarRegistrosPorCorreo(correo) {
                                 <i class="fas fa-dollar-sign"></i>
                             </div>
                             <div class="derecho">
-                                <div class="texto-arriba">${tipo}</div>
-                                <div class="texto-abajo">${descripcion}</div>
+                                <div class="texto-arriba">${Tipo}</div>
+                                <div class="texto-abajo">${Categoria}</div>
                             </div>
                             <div class="izquierdo">
-                                <div class="texto-arribaM">$${monto.toFixed(2)}</div>
+                                <div class="texto-arribaM">$${Valor.toFixed(2)}</div>
                             </div>
                         </div>
                     </div>
                 </li>`;
         }
 
-        // Añadir registros de ingresos
-        ingresosSnapshot.forEach((doc) => {
-            const ingreso = doc.data();
-            accordion.innerHTML += crearRegistro(doc.id, ingreso.tipo, ingreso.descripcion, ingreso.fecha, ingreso.monto);
-        });
-
-        // Añadir registros de gastos
-        gastosSnapshot.forEach((doc) => {
-            const gasto = doc.data();
-            accordion.innerHTML += crearRegistro(doc.id, gasto.categoria, gasto.descripcion, gasto.fecha, gasto.monto);
+        // Añadir registros
+        registrosSnapshot.forEach((doc) => {
+            const registro = doc.data();
+            accordion.innerHTML += crearRegistro(doc.id, registro.Tipo, registro.Categoria, registro.Fecha, registro.Valor);
         });
 
     } catch (error) {
