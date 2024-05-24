@@ -45,11 +45,22 @@ document.addEventListener('DOMContentLoaded', async () => {
     const auth = getAuth(); // Obtener la instancia de autenticación
 
     // Obtener el correo del usuario autenticado y rellenar el formulario
-    auth.onAuthStateChanged((user) => {
+    auth.onAuthStateChanged(async (user) => {
         if (user) {
             const email = user.email;
             document.getElementById('correoPerfil').value = email;
             console.log('Correo electrónico capturado:', email);
+
+            // Obtener el nombre del usuario desde Firestore
+            try {
+                const nombre = await obtenerNombreUsuario(email);
+                if (nombre) {
+                    document.getElementById('nombre').value = nombre;
+                    document.querySelector('.text-container p').textContent = nombre;
+                }
+            } catch (error) {
+                console.error('Error al obtener el nombre del usuario:', error);
+            }
         } else {
             console.error('No se pudo capturar el correo electrónico del usuario.');
             throw new Error('No se pudo capturar el correo electrónico del usuario.');
@@ -69,6 +80,7 @@ document.addEventListener('DOMContentLoaded', async () => {
         try {
             await updateNombreUsuario(email, nombre);
             alert('Nombre actualizado correctamente');
+            document.querySelector('.text-container p').textContent = nombre;
         } catch (error) {
             console.error('Error al actualizar el nombre:', error);
             alert('Error al actualizar el nombre');
@@ -78,6 +90,23 @@ document.addEventListener('DOMContentLoaded', async () => {
         modalPerfil.style.display = 'none';
     });
 });
+
+async function obtenerNombreUsuario(email) {
+    try {
+        const firestore = getFirestore(); // Obtener la instancia de Firestore
+        const userQuery = query(collection(firestore, 'usuarios'), where('correo', '==', email));
+        const userSnapshot = await getDocs(userQuery);
+        if (!userSnapshot.empty) {
+            const userDoc = userSnapshot.docs[0];
+            return userDoc.data().nombre;
+        } else {
+            throw new Error('Usuario no encontrado');
+        }
+    } catch (error) {
+        console.error('Error al obtener el nombre del usuario:', error);
+        throw error;
+    }
+}
 
 async function updateNombreUsuario(email, nombre) {
     try {

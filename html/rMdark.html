@@ -123,56 +123,26 @@
 <div id="modalPerfil" class="modal">
     <div class="modal-content">
         <span class="close" data-modal="modalPerfil">&times;</span>
-        <h2>Perfil</h2>
-        <p>Contenido del perfil...</p>
+        <h2>Editar Perfil</h2>
+        <form id="perfilForm">
+            <div class="form-group">
+                <label for="correoPerfil">Correo:</label>
+                <input type="email" id="correoPerfil" name="correoPerfil" readonly>
+            </div>
+            <div class="form-group">
+                <label for="nombrePerfil">Nombre:</label>
+                <input type="text" id="nombre" name="nombrePerfil" required>
+            </div>
+            <div class="form-group">
+                <button type="submit">Guardar Cambios</button>
+            </div>
+        </form>
     </div>
 </div>
 
-
-<script>
-    document.addEventListener('DOMContentLoaded', (event) => {
-    const configuracionLink = document.getElementById('configuracion-link');
-    const dropdownContent = document.getElementById('dropdown-content');
-    
-    configuracionLink.addEventListener('click', (e) => {
-        e.preventDefault();
-        dropdownContent.classList.toggle('show');
-    });
-
-    window.addEventListener('click', (e) => {
-        if (!e.target.matches('#configuracion-link') && !e.target.matches('#dropdown-content') && !e.target.closest('#dropdown-content')) {
-            if (dropdownContent.classList.contains('show')) {
-                dropdownContent.classList.remove('show');
-            }
-        }
-    });
-
-    // Modal
-    const modalPerfil = document.getElementById('modalPerfil');
-    const closeModalButtons = document.querySelectorAll('.close');
-
-    document.querySelector('.dropdown-content a[href="#perfil"]').addEventListener('click', (e) => {
-        e.preventDefault();
-        modalPerfil.style.display = 'block';
-    });
-
-    closeModalButtons.forEach((button) => {
-        button.addEventListener('click', () => {
-            const modal = document.getElementById(button.getAttribute('data-modal'));
-            modal.style.display = 'none';
-        });
-    });
-
-    window.addEventListener('click', (event) => {
-        if (event.target === modalPerfil) {
-            modalPerfil.style.display = 'none';
-        }
-    });
-});
-
-</script>
 <script type="module"  src="/js/auth.js"></script>
 <script type="module" src="/js/formu.js" ></script>
 <script type="module" src="/js/registros.js" ></script>
+<script type="module" src="/js/rM.js"></script>
 </body>
 </html>
