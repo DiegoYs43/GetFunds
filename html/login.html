@@ -8,7 +8,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Jost:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="/css/login.css">
-  <title>Inicar Sesión</title>
+  <title>Iniciar Sesión</title>
   <link rel="shortcut icon" href="../img/Flecha.png" type="image/x-icon">
 </head>
 <body>
@@ -17,7 +17,7 @@
       <h1>Iniciar Sesión</h1>
       <img src="/img/google.png" alt="Logo de Google" class="google-logo">
 
-      <form>
+      <form id="loginForm">
         <div class="input-group">
           <i class='bx bxs-envelope'></i>
           <input type="email" id="correo" name="correo" placeholder="Correo Electrónico" required>
@@ -30,12 +30,25 @@
         
         <button type="submit">Iniciar Sesión</button>
       </form>
-      <a href="">¿Olvidaste tu contraseña?</a>
+      <a href="#" id="forgotPasswordLink">¿Olvidaste tu contraseña?</a>
       <p>¿No te has registrado? <a href="registro.html">Registrarme</a></p>
     </div>
     <div class="left">
       <img src="/img/img.png" alt="Imagen de fondo">
     </div>
+  </div>
+
+  <!-- Modal para recuperar contraseña -->
+  <div id="forgotPasswordModal">
+    <h2>Recuperar Contraseña</h2>
+    <form id="forgotPasswordForm">
+      <div class="input-group">
+        <i class='bx bxs-envelope'></i>
+        <input type="email" id="forgotEmail" name="forgotEmail" placeholder="Correo Electrónico" required>
+      </div>
+      <button type="submit">Enviar</button>
+    </form>
+    <button id="closeModal">Cerrar</button>
   </div>
 
   <!-- Agrega estas líneas para cargar Firebase Authentication -->
