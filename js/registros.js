@@ -10,7 +10,6 @@ function getAuthenticatedUserEmail(callback) {
         callback(null);
     }
 }
-
 // Función para mostrar los registros filtrados por correo
 async function mostrarRegistrosPorCorreo(correo) {
     try {
@@ -28,6 +27,9 @@ async function mostrarRegistrosPorCorreo(correo) {
         // Contenedor del acordeón
         const accordion = document.querySelector('.accordion');
         accordion.innerHTML = ''; // Limpiar contenido existente
+
+        let totalIngresos = 0;
+        let totalEgresos = 0;
 
         // Función para crear un elemento de registro
         function crearRegistro(id, Tipo, Categoria, Fecha, Valor) {
@@ -67,7 +69,20 @@ async function mostrarRegistrosPorCorreo(correo) {
         registrosSnapshot.forEach((doc) => {
             const registro = doc.data();
             accordion.innerHTML += crearRegistro(doc.id, registro.Tipo, registro.Categoria, registro.Fecha, registro.Valor);
+
+            // Calcular totales
+            if (registro.Tipo === 'ingreso') {
+                totalIngresos += registro.Valor;
+            } else if (registro.Tipo === 'egreso') {
+                totalEgresos += registro.Valor;
+            }
         });
+
+        // Actualizar valores en el HTML
+        document.getElementById('totalIngresos').textContent = `$${totalIngresos.toFixed(2)}`;
+        document.getElementById('totalEgresos').textContent = `$${totalEgresos.toFixed(2)}`;
+        document.getElementById('saldoTotal').textContent = `$${(totalIngresos - totalEgresos).toFixed(2)}`;
+        document.getElementById('balance').textContent = `$${(totalIngresos - totalEgresos).toFixed(2)}`;
 
     } catch (error) {
         console.error("Error al obtener registros: ", error);
