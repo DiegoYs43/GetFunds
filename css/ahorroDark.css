@@ -8,19 +8,21 @@
     font-weight: 100;
     font-style: normal;
 }
-
+body {
+    background-color: #121212;
+    color: #E0E0E0;
+}
 /* Container del nav */
 .container {
     display: flex;
     min-width: 100vh;
-    background-color: #2A3B47;
 }
 
 .sidebar {
     width: 250px;
     height: 690px;
     padding: 20px;
-    background-color: #2A3B47;
+    background-color: #1F1F1F;
 }
 
 .sidebar ul {
@@ -39,7 +41,7 @@
     justify-content: space-between;
     align-items: center;
     text-decoration: none;
-    color: gray;
+    color: #E0E0E0;
     padding: 10px;
 }
 
@@ -59,7 +61,7 @@
     position: absolute;
     left: 100%;
     top: 0;
-    background-color: #2A3B47;
+    background-color: #333;
     min-width: 160px;
     box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
     z-index: 1;
@@ -69,7 +71,7 @@
 .dropdown-content a {
     padding: 8px 10px;
     display: block;
-    color: gray;
+    color: #E0E0E0;
 }
 
 .dropdown-content a:hover {
@@ -84,7 +86,7 @@
 .right-container {
     width: 150vh;
     height: 690px;
-    background-color: #212E36;
+    background-color: #1F1F1F;
     padding: 20px;
     border-radius: 20px;
 }
@@ -94,19 +96,18 @@
     justify-content: space-between;
     align-items: center;
     margin-bottom: 20px;
-    border-radius: 20px;
 }
 
 .header h1 {
     margin: 0;
     font-size: 24px;
-    color: #333;
+    color: #E0E0E0;
 }
 
 .header h2 {
+    color: white;
     margin-left: 62px;
     margin-right: 20px;
-    color: gray;
 }
 
 .btnAdd {
@@ -123,23 +124,18 @@
     background-color: #38713a;
 }
 
-.imagen {
-    border-radius: 20px;
-}
-
-.imagen img{
+.imagen img {
     width: 200px;
     height: 200px;
     margin-left: 350px;
 }
-
 
 .registro {
     display: flex;
     align-items: flex-start;
     width: 80%;
     margin: 0 auto;
-    background-color: #2A3B47;
+    background-color: #333;
     padding: 10px;
     box-shadow: 0 5px rgba(0, 0, 0, 0.1);
     min-height: 20px;
@@ -151,6 +147,7 @@
     font-size: 30px;
     margin-right: 20px;
     margin-top: 17px;
+    color: #4CAF50;
 }
 
 .derecho {
@@ -161,6 +158,7 @@
 
 .texto-arriba {
     font-size: 15px;
+    color: #C2C3CC;
     margin-top: 10px;
 }
 
@@ -176,7 +174,7 @@
     padding: 20px;
     border-radius: 20px;
     display: flex;
-    background-color: #2A3B47;
+    background-color: #1F1F1F;
 }
 
 .header-info {
@@ -206,6 +204,7 @@
 .text-container p {
     margin: 5px 0;
     font-size: 24px;
+    color: #E0E0E0;
 }
 
 .text-container h3 {
@@ -216,7 +215,7 @@
     display: flex;
     width: 70%;
     margin: 0 auto;
-    background-color: #212E36;
+    background-color: #333;
     padding: 30px;
     min-height: 300px;
     border-radius: 20px;
@@ -226,26 +225,23 @@
 .dato-info {
     display: flex;
     flex-grow: 1;
-    background-color: #212E36;
 }
 
 .texto-info-cuenta {
     font-size: 20px;
     color: #C2C3CC;
     margin-top: 10px;
-    background-color: #212E36;
 }
 
 .texto-info {
     font-size: 17px;
-    background-color: #212E36;
+    color: #E0E0E0;
 }
 
 .icon-text i {
     font-size: 20px;
     color: #45a049;
     margin-top: 20px;
-    background-color: #212E36;
 }
 
 .icon-text {
@@ -253,7 +249,6 @@
     align-items: center;
     justify-content: space-between;
     margin-top: 20px;
-    background-color: #212E36;
 }
 
 .icon-text span {
@@ -261,7 +256,6 @@
     margin-left: 70px;
     color: #45a049;
     font-size: 17px;
-    background-color: #212E36;
 }
 
 /* Estilos para los modales */
@@ -284,13 +278,14 @@
 }
 
 .modal-content {
-    background-color: #2A3B47;
+    background-color: #2B2B2B;
     margin: 15% auto;
     padding: 20px;
-    border: 1px solid #212E36;
+    border: 1px solid #888;
     width: 80%;
     border-radius: 10px;
     box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+    color: #E0E0E0;
 }
 
 .close {
@@ -302,15 +297,7 @@
 
 .close:hover,
 .close:focus {
-    color: black;
+    color: white;
     text-decoration: none;
     cursor: pointer;
-}
-
-.modal h2{
-    color: gray;
-}
-
-.modal p{
-    color: white;
 }

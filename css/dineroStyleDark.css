@@ -1,8 +1,10 @@
 * {
     font-family: "Jost", sans-serif;
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
+}
+
+body {
+    background-color: #121212;
+    color: #E0E0E0;
 }
 
 .jost {
@@ -10,24 +12,19 @@
     font-optical-sizing: auto;
     font-weight: 100;
     font-style: normal;
-  }
-  
-
+}
 
 /* Container del nav */
-
-
-
 .container {
     display: flex;
     min-width: 100vh;
-    background-color: #2A3B47;
 }
 
-.sidebar{
+.sidebar {
     width: 250px;
     height: 690px;
     padding: 20px;
+    background-color: #1F1F1F;
 }
 
 .sidebar ul {
@@ -40,16 +37,15 @@
     margin-bottom: 10px;
     position: relative; 
 }
+
 .sidebar a {
     display: block;
     justify-content: space-between;
     align-items: center;
     text-decoration: none;
-    color: gray;
+    color: #E0E0E0;
     padding: 10px;
 }
-
-
 
 .sidebar img {
     width: 100%;
@@ -57,8 +53,8 @@
     padding-bottom: 100px;
 }
 
-.sidebar a:hover{
-    color: #45a049;
+.sidebar a:hover {
+    color: #4CAF50;
 }
 
 /* Estilo del dropdown */
@@ -67,7 +63,7 @@
     position: absolute;
     left: 100%;
     top: 0;
-    background-color: #2A3B47;
+    background-color: #333;
     min-width: 160px;
     box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
     z-index: 1;
@@ -77,7 +73,7 @@
 .dropdown-content a {
     padding: 8px 10px;
     display: block;
-    color: gray;
+    color: #E0E0E0;
 }
 
 .dropdown-content a:hover {
@@ -88,39 +84,34 @@
     display: block;
 }
 
-
-/*  container de registros monetarios  */
-
-
+/* Container de registros monetarios */
 .right-container {
     width: 150vh;
     height: 690px;
-    background-color:#212E36;
+    background-color: #1F1F1F;
     padding: 20px;
     border-radius: 20px;
 }
 
-.header{
+.header {
     display: flex;
     justify-content: space-between;
     align-items: center;
     margin-bottom: 20px;
-    border-radius: 20px;
 }
 
-.header h1{
+.header h1 {
     margin: 0;
     font-size: 24px;
-    color: #333;
+    color: #E0E0E0;
 }
 
-.header h2{
+.header h2 {
     margin-left: 62px;
     margin-right: 270px;
-    color: gray;
 }
 
-.btnAdd{
+.btnAdd {
     padding: 5px 20px;
     background-color: #4CAF50;
     color: white;
@@ -130,11 +121,11 @@
     margin-right: 8px;
 }
 
-.btnAdd:hover{
+.btnAdd:hover {
     background-color: #38713a;
 }
 
-.btn{
+.btn {
     padding: 5px 20px;
     background-color: red;
     color: white;
@@ -144,19 +135,16 @@
     margin-right: 80px;
 }
 
-.btn:hover{
+.btn:hover {
     background-color: rgb(175, 22, 22);
 }
 
-
-
-
-.registro{
+.registro {
     display: flex;
     align-items: flex-start;
     width: 80%;
     margin: 0 auto;
-    background-color: #2A3B47;
+    background-color:  #333;
     padding: 10px;
     box-shadow: 0 5px rgba(0, 0, 0, 0.1);
     min-height: 20px;
@@ -164,69 +152,63 @@
     margin-top: 20px;
 }
 
-.registro h1{
+.registro h1 {
     font-size: 25px;
     margin-right: 20px;
-    color: gray;
+    color: #E0E0E0;
 }
 
-
-.derecho{
+.derecho {
     display: flex;
     flex-direction: column;
     flex-grow: 1;
 }
 
-.texto-arriba{
+.texto-arriba {
     font-size: 15px;
     color: #C2C3CC;
     margin-top: 10px;
 }
 
-.texto-abajo{
+.texto-abajo {
     font-size: 15px;
 }
 
-.izquierdo{
+.izquierdo {
     display: flex;
     flex-direction: column;
     flex-grow: 1;
     align-items: end;
 }
 
-.texto-arribaM{
+.texto-arribaM {
     font-size: 15px;
     margin-top: 10px;
     color: #45a049;
 }
 
-.texto-abajoM{
+.texto-abajoM {
     font-size: 15px;
     color: red;
 }
 
-.accordion {
-    background-color: #212E36;
-}
-
-.accordion li{
+.accordion li {
     list-style: none;
-
 }
 
-.accordion li label{
+.accordion li label {
     margin-left: 0;
     padding-left: 0;
     display: block;
-
+    color: #E0E0E0;
 }
-input[type="radio"]{
+
+input[type="radio"] {
     display: none;
 }
 
-
-.accordion .content{
-    color: #555;
+.accordion .content {
+    color: #E0E0E0;
     padding: 0 10px;
     line-height: 26px;
     max-height: 0;
@@ -234,151 +216,124 @@ input[type="radio"]{
     transition: max-height 0.5s, padding 0.5s;
 }
 
+.content .info-registro{
+    background-color: #333;
+}
 .accordion input[type="radio"]:checked + label + .content {
     max-height: 400px;
     padding: 10px 10px 20px;
 }
 
-.contenedor1 {
-    background-color: #212E36;
-}
-
-
-
-/*  container de la informacion de la cuenta  */
-
-.container-info{
+/* Container de la información de la cuenta */
+.container-info {
     width: 50vh;
     height: 690px;
-  
     padding: 20px;
     border-radius: 20px;
     display: flex;
-   
+    background-color: #1F1F1F;
 }
 
-.header-info{
+.header-info {
     display: flex;
     flex-direction: column;
     align-items: start;
     margin-top: 30px;
 }
 
-.imagen-container{
+.imagen-container {
     width: 10vh;
     height: 10vh;
     border-radius: 50%;
     overflow: hidden;
-    
 }
-.imagen-container img{
+
+.imagen-container img {
     width: 100%;
     height: 100%;
     object-fit: cover;
 }
 
-.text-container{
+.text-container {
     margin-top: 20px;
-   
 }
 
-.text-container p{
+.text-container p {
     margin: 5px 0;
     font-size: 24px;
 }
 
-
-.text-container h3{
+.text-container h3 {
     color: #787878fd;
 }
 
-.datos-container{
+.datos-container {
     display: flex;
     width: 70%;
     margin: 0 auto;
-    background-color:#212E36;
+    background-color: #333;
     padding: 30px;
     min-height: 300px;
     border-radius: 20px;
     margin-top: 20px;
-
-
-
 }
 
-.dato-info{
+.dato-info {
     display: flex;
     flex-grow: 1;
-
 }
 
-.datos-info{
-    background-color: #212E36;
-}
-
-.texto-info-cuenta{
+.texto-info-cuenta {
     font-size: 20px;
     color: #C2C3CC;
     margin-top: 10px;
-    background-color: #212E36;
 }
 
-.texto-info{
+.texto-info {
     font-size: 17px;
-    background-color: #212E36;
-    color: white;
 }
 
 .icon-text i {
     font-size: 20px;
     color: #45a049;
     margin-top: 20px;
-    background-color: #212E36;
 }
 
-.icon-text{
+.icon-text {
     display: flex;
     align-items: center;
     justify-content: space-between;
     margin-top: 20px;
-    background-color: #212E36;
 }
 
-.icon-text span{
+.icon-text span {
     margin-top: 20px;
     margin-left: 70px;
     color: #45a049;
     font-size: 17px;
-    background-color: #212E36;
 }
 
-
-
-
-/*  informacion de los registros monetarios   */
-
-
-.info-registro{
+/* Información de los registros monetarios */
+.info-registro {
     display: flex;
     align-items: flex-start;
     width: 60%;
     margin: 0 auto;
-    background-color: white;
+    background-color: #1F1F1F;
     padding: 10px;
     box-shadow: 0 5px rgba(0, 0, 0, 0.1);
     min-height: 20px;
     border-radius: 20px;
     margin-top: 10px;
-    background-color: #2A3B47;
 }
 
-.iconos{
+.iconos {
     display: flex;
     flex-direction: column;
     align-items: center;    
 }
 
-.iconos i{
+.iconos i {
     font-size: 25px;
     margin-right: 20px;
     margin-left: 5px;
@@ -387,38 +342,37 @@ input[type="radio"]{
     color: #4CAF50;
 }
 
-
-.derecho{
+.derecho {
     display: flex;
     flex-direction: column;
     flex-grow: 1;
 }
 
-.texto-arriba{
+.texto-arriba {
     font-size: 15px;
     color: #C2C3CC;
     margin-top: 10px;
 }
 
-.texto-abajo{
+.texto-abajo {
     font-size: 15px;
     margin-bottom: 20px;
 }
 
-.izquierdo{
+.izquierdo {
     display: flex;
     flex-direction: column;
     flex-grow: 1;
     align-items: end;
 }
 
-.texto-arribaM{
+.texto-arribaM {
     font-size: 15px;
     margin-top: 10px;
     color: #45a049;
 }
 
-.texto-abajoM-Margin{
+.texto-abajoM-Margin {
     font-size: 15px;
     color: red;
     margin-bottom: 20px;
@@ -444,10 +398,10 @@ input[type="radio"]{
 }
 
 .modal-content {
-    background-color: #2A3B47;
+    background-color: #333;
     margin: 15% auto;
     padding: 20px;
-    border: 1px solid #212E36;
+    border: 1px solid #888;
     width: 80%;
     border-radius: 10px;
     box-shadow: 0 5px 15px rgba(0,0,0,0.3);
@@ -462,22 +416,53 @@ input[type="radio"]{
 
 .close:hover,
 .close:focus {
-    color: black;
+    color: white;
     text-decoration: none;
     cursor: pointer;
 }
 
-.modal h2{
-    color: gray;
+.form-group {
+    margin-bottom: 15px;
 }
 
-.modal p{
+.form-group label {
+    display: block;
+    margin-bottom: 5px;
+    color: #E0E0E0;
+}
+
+.form-group input[type="text"],
+.form-group input[type="file"] {
+    width: 100%;
+    padding: 8px;
+    box-sizing: border-box;
+    background-color: #333;
+    color: #E0E0E0;
+    border: 1px solid #555;
+    border-radius: 5px;
+}
+
+.form-group button {
+    background-color: #4CAF50;
     color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.form-group button:hover {
+    background-color: #45a049;
+}
+
+.scroll-container {
+    max-height: 600px;
+    overflow-y: auto; 
 }
 
 /* CSS para mis form hecho por Diego (alguien mateme no usar css) */
 form {
-    background: #fff;
+    background: #2B2B2B;
     padding: 20px;
     margin: 20px 0;
     border-radius: 8px;
@@ -492,6 +477,7 @@ form {
     display: block;
     font-weight: bold;
     margin-bottom: 5px;
+    color: #E0E0E0;
   }
   
   .form-group input,
@@ -499,9 +485,11 @@ form {
   .form-group textarea {
     width: 100%;
     padding: 10px;
-    border: 1px solid #ddd;
+    border: 1px solid #555;
     border-radius: 4px;
     box-sizing: border-box;
+    background-color: #333;
+    color: #E0E0E0;
   }
   
   .form-group textarea {
