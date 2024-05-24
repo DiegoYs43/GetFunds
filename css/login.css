@@ -119,7 +119,7 @@
     padding: 20px;
     box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
     border-radius: 8px;
-    width: 800px;
+    width: 600px;
     text-align: center;
     animation: fadeIn 0.3s ease-in-out;
   }
@@ -148,15 +148,12 @@
   #forgotPasswordModal .input-group {
     margin-bottom: 15px;
     display: flex;
-  
+    width: 500px;
+    margin-left: 30px;
+    margin-top: 20px;
     border: 1px solid #ddd;
     border-radius: 4px;
     padding: 10px;
-  }
-  
-  #forgotPasswordModal .input-group i {
-    margin-right: 10px;
-    color: #555;
   }
   
   #forgotPasswordModal .input-group input {
@@ -165,21 +162,7 @@
     outline: none;
     padding: 10px;
   }
-  
-  #forgotPasswordModal button {
-    margin-top: 10px;
-    background-color: #4CAF50;
-    color: white;
-    border: none;
-    padding: 10px 20px;
-    text-align: center;
-    text-decoration: none;
-    display: inline-block;
-    font-size: 16px;
-    border-radius: 4px;
-    cursor: pointer;
-  }
-  
+
   #forgotPasswordModal button#closeModal {
     background-color: red;
     margin-top: 20px;
@@ -194,3 +177,23 @@
   #forgotPasswordModal button#closeModal:focus {
     background-color: darkred;
   }
+  #forgotPasswordModal .button-group {
+    display: flex;
+    justify-content: center;
+  }
+  
+  #forgotPasswordModal .button-group button {
+    margin: 0 10px; 
+    margin-top: 21px;
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    border-radius: 4px;
+    cursor: pointer;
+  }
+  

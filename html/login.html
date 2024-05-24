@@ -38,18 +38,19 @@
     </div>
   </div>
 
-  <!-- Modal para recuperar contraseña -->
-  <div id="forgotPasswordModal">
-    <h2>Recuperar Contraseña</h2>
-    <form id="forgotPasswordForm">
-      <div class="input-group">
-        <i class='bx bxs-envelope'></i>
-        <input type="email" id="forgotEmail" name="forgotEmail" placeholder="Correo Electrónico" required>
-      </div>
+ <!-- Modal para recuperar contraseña -->
+<div id="forgotPasswordModal">
+  <h2>Recuperar Contraseña</h2>
+  <form id="forgotPasswordForm">
+    <div class="input-group">
+      <input type="email" id="forgotEmail" name="forgotEmail" placeholder="Correo Electrónico" required>
+    </div>
+    <div class="button-group">
       <button type="submit">Enviar</button>
-    </form>
-    <button id="closeModal">Cerrar</button>
-  </div>
+      <button id="closeModal">Cerrar</button>
+    </div>
+  </form>
+</div>
 
   <!-- Agrega estas líneas para cargar Firebase Authentication -->
   <script type="module" src="https://www.gstatic.com/firebasejs/10.9.0/firebase-app.js"></script>
