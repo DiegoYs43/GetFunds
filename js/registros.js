@@ -33,36 +33,69 @@ async function mostrarRegistrosPorCorreo(correo) {
 
         // Función para crear un elemento de registro
         function crearRegistro(id, Tipo, Categoria, Fecha, Valor) {
-            return `
-                <li>
-                    <input type="radio" name="accordion" id="${id}">
-                    <label for="${id}">
-                        <div class="registro">
-                            <h1>${new Date(Fecha.seconds * 1000).getDate()}</h1>
-                            <div class="derecho">
-                                <div class="texto-arriba">${new Date(Fecha.seconds * 1000).toLocaleDateString('es-ES', { weekday: 'long' })}</div>
-                                <div class="texto-abajo">${new Date(Fecha.seconds * 1000).toLocaleDateString('es-ES', { month: 'long', year: 'numeric' })}</div>
+            if (Tipo === 'egreso') {
+                return `
+                    <li>
+                        <input type="radio" name="accordion" id="${id}">
+                        <label for="${id}">
+                            <div class="registro">
+                                <h1>${new Date(Fecha.seconds * 1000).getDate()}</h1>
+                                <div class="derecho">
+                                    <div class="texto-arriba">${new Date(Fecha.seconds * 1000).toLocaleDateString('es-ES', { weekday: 'long' })}</div>
+                                    <div class="texto-abajo">${new Date(Fecha.seconds * 1000).toLocaleDateString('es-ES', { month: 'long', year: 'numeric' })}</div>
+                                </div>
+                                <div class="izquierdo">
+                                    <div class="texto-arribaM-margin">$${Valor.toFixed(2)}</div>
+                                </div>
                             </div>
-                            <div class="izquierdo">
-                                <div class="texto-arribaM">$${Valor.toFixed(2)}</div>
+                        </label>
+                        <div class="content">
+                            <div class="info-registro">
+                                <div class="iconos">
+                                <i class="fas fa-coins" style="color: red;"></i>
+                                </div>
+                                <div class="derecho">
+                                    <div class="texto-arriba">${Tipo}</div>
+                                    <div class="texto-abajo">${Categoria}</div>
+                                </div>
+                                <div class="izquierdo">
+                                    <div class="texto-arribaM-margin">$${Valor.toFixed(2)}</div>
+                                </div>
                             </div>
                         </div>
-                    </label>
-                    <div class="content">
-                        <div class="info-registro">
-                            <div class="iconos">
-                                <i class="fas fa-dollar-sign"></i>
+                    </li>`;
+            } else {
+                return `
+                    <li>
+                        <input type="radio" name="accordion" id="${id}">
+                        <label for="${id}">
+                            <div class="registro">
+                                <h1>${new Date(Fecha.seconds * 1000).getDate()}</h1>
+                                <div class="derecho">
+                                    <div class="texto-arriba">${new Date(Fecha.seconds * 1000).toLocaleDateString('es-ES', { weekday: 'long' })}</div>
+                                    <div class="texto-abajo">${new Date(Fecha.seconds * 1000).toLocaleDateString('es-ES', { month: 'long', year: 'numeric' })}</div>
+                                </div>
+                                <div class="izquierdo">
+                                    <div class="texto-arribaM">$${Valor.toFixed(2)}</div>
+                                </div>
                             </div>
-                            <div class="derecho">
-                                <div class="texto-arriba">${Tipo}</div>
-                                <div class="texto-abajo">${Categoria}</div>
-                            </div>
-                            <div class="izquierdo">
-                                <div class="texto-arribaM">$${Valor.toFixed(2)}</div>
+                        </label>
+                        <div class="content">
+                            <div class="info-registro">
+                                <div class="iconos">
+                                    <i class="fas fa-dollar-sign"></i>
+                                </div>
+                                <div class="derecho">
+                                    <div class="texto-arriba">${Tipo}</div>
+                                    <div class="texto-abajo">${Categoria}</div>
+                                </div>
+                                <div class="izquierdo">
+                                    <div class="texto-arribaM">$${Valor.toFixed(2)}</div>
+                                </div>
                             </div>
                         </div>
-                    </div>
-                </li>`;
+                    </li>`;
+            }
         }
 
         // Añadir registros

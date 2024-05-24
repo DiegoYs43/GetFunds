@@ -137,13 +137,11 @@
     display: flex;
     align-items: flex-start;
     width: 80%;
-    margin: 0 auto;
+    margin: 20px auto 0;
     background-color: white;
     padding: 10px;
     box-shadow: 0 5px rgba(0, 0, 0, 0.1);
-    min-height: 20px;
     border-radius: 20px;
-    margin-top: 20px;
 }
 
 .registro h1 {
@@ -170,19 +168,12 @@
 .izquierdo {
     display: flex;
     flex-direction: column;
-    flex-grow: 1;
-    align-items: end;
+    align-items: flex-end;
 }
 
-.texto-arribaM {
-    font-size: 15px;
-    margin-top: 10px;
-    color: #45a049;
-}
-
-.texto-abajoM {
-    font-size: 15px;
-    color: red;
+.izquierdo .texto-arribaM{
+    color: #4CAF50;
+    margin-top: 25px;
 }
 
 .accordion li {
@@ -190,9 +181,8 @@
 }
 
 .accordion li label {
-    margin-left: 0;
-    padding-left: 0;
     display: block;
+    padding-left: 0;
 }
 
 input[type="radio"] {
@@ -211,6 +201,11 @@ input[type="radio"] {
 .accordion input[type="radio"]:checked + label + .content {
     max-height: 400px;
     padding: 10px 10px 20px;
+}
+
+.texto-arribaM-margin {
+    color: red;
+    margin-top: 25px;
 }
 
 /* Container de la información de la cuenta */
