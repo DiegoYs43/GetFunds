@@ -16,6 +16,7 @@ body {
 .container {
     display: flex;
     min-width: 100vh;
+    justify-content: space-between;
 }
 
 .sidebar {
@@ -23,6 +24,7 @@ body {
     height: 690px;
     padding: 20px;
     background-color: #1F1F1F;
+    margin-right: 20px;
 }
 
 .sidebar ul {
@@ -84,11 +86,12 @@ body {
 
 /* Container de registros monetarios */
 .right-container {
-    width: 150vh;
+    width: 100vh;
     height: 690px;
     background-color: #1F1F1F;
     padding: 20px;
     border-radius: 20px;
+    margin-right: 20px;
 }
 
 .header {

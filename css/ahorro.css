@@ -292,3 +292,32 @@
     text-decoration: none;
     cursor: pointer;
 }
+
+#formAgregarMeta {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+#formAgregarMeta label {
+    font-weight: bold;
+}
+
+#formAgregarMeta input {
+    padding: 5px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+}
+
+#formAgregarMeta button {
+    padding: 10px;
+    border: none;
+    background-color: #4CAF50;
+    color: white;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+#formAgregarMeta button:hover {
+    background-color: #45a049;
+}

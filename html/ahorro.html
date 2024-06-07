@@ -90,6 +90,23 @@
     </div>
 </div>
 
+<div id="modalAgregarMeta" class="modal">
+    <div class="modal-content">
+        <span class="close" data-modal="modalAgregarMeta">&times;</span>
+        <h2>Agregar Meta</h2>
+        <form id="formAgregarMeta">
+            <label for="nombreMeta">Nombre de la Meta:</label>
+            <input type="text" id="nombreMeta" name="nombreMeta" required>
+            
+            <label for="montoMeta">Monto de la Meta:</label>
+            <input type="number" id="montoMeta" name="montoMeta" required>
+            
+            <button type="submit">Guardar Meta</button>
+        </form>
+    </div>
+</div>
+
+
 
 <div id="modalPerfil" class="modal">
     <div class="modal-content">
@@ -119,11 +136,17 @@
 
     // Modal
     const modalPerfil = document.getElementById('modalPerfil');
+    const modalAgregarMeta = document.getElementById('modalAgregarMeta');
     const closeModalButtons = document.querySelectorAll('.close');
 
     document.querySelector('.dropdown-content a[href="#perfil"]').addEventListener('click', (e) => {
         e.preventDefault();
         modalPerfil.style.display = 'block';
+    });
+
+    document.querySelector('.btnAdd').addEventListener('click', (e) => {
+        e.preventDefault();
+        modalAgregarMeta.style.display = 'block';
     });
 
     closeModalButtons.forEach((button) => {
@@ -137,8 +160,12 @@
         if (event.target === modalPerfil) {
             modalPerfil.style.display = 'none';
         }
+        if (event.target === modalAgregarMeta) {
+            modalAgregarMeta.style.display = 'none';
+        }
     });
 });
+
 </script>
 
 </body>
