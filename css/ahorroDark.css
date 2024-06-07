@@ -262,6 +262,7 @@ body {
 }
 
 /* Estilos para los modales */
+
 .modal {
     display: none;
     position: fixed;
@@ -281,14 +282,13 @@ body {
 }
 
 .modal-content {
-    background-color: #2B2B2B;
+    background-color: #333;
     margin: 15% auto;
     padding: 20px;
     border: 1px solid #888;
     width: 80%;
     border-radius: 10px;
     box-shadow: 0 5px 15px rgba(0,0,0,0.3);
-    color: #E0E0E0;
 }
 
 .close {
@@ -300,7 +300,41 @@ body {
 
 .close:hover,
 .close:focus {
-    color: white;
+    color: black;
     text-decoration: none;
     cursor: pointer;
 }
+
+#formAgregarMeta {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+#formAgregarMeta label {
+    font-weight: bold;
+}
+
+#formAgregarMeta input {
+    padding: 5px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+}
+
+#formAgregarMeta button {
+    padding: 10px;
+    border: none;
+    background-color: #4CAF50;
+    color: white;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+#formAgregarMeta button:hover {
+    background-color: #45a049;
+}
+
+#formAgregarMeta input {
+    background-color: #1F1F1F;
+}
+
