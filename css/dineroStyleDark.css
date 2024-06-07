@@ -27,6 +27,7 @@ body {
     padding: 20px;
     background-color: #1F1F1F;
     margin-right: 20px;
+    border-radius: 10px;
 }
 
 .sidebar ul {
