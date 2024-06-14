@@ -10,8 +10,8 @@
     <link href="https://fonts.googleapis.com/css2?family=Jost:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js" integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r" crossorigin="anonymous"></script>    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.min.js" integrity="sha384-0pUGZvbkm6XF6gxjEnlmuGrJXVbNuzT9qBBavbLwCsOGabYfZo0T0to5eqruptLy" crossorigin="anonymous"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-
-    <link rel="stylesheet" href="/css/dineroStyleDark.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <link rel="stylesheet" href="/css/estadisticasDark.css">
     <title>Registro Monetario</title>
 </head>
 <body>
@@ -20,9 +20,9 @@
     <div class="sidebar">
         <img src="/img/LogoBlanco.png" alt="">
         <ul>
-            <li><a href="#"> <i class="fas fa-home" style="font-size: 30px; margin-right: 10px;  color: #45a049;"></i>Inicio </a></li>
+            <li><a href="../html/rMdark.html"> <i class="fas fa-home" style="font-size: 30px; margin-right: 10px;  color: #C2C3CC;"></i>Inicio </a></li>
             <li><a href="../html/ahorroDark.html"> <i class="fas fa-piggy-bank" style="font-size: 30px; margin-right: 10px; color: #C2C3CC; "></i>Ahorro</a></li>
-            <li><a href="#"> <i class="fas fa-chart-bar" style="font-size: 30px; margin-right: 10px;  color: #C2C3CC" ></i>Estadisticas</a></li>
+            <li><a href="../html/estadisticasDark.html"> <i class="fas fa-chart-bar" style="font-size: 30px; margin-right: 10px;  color: #45a049" ></i>Estadisticas</a></li>
             <li class="dropdown">
                 <a href="#" id="configuracion-link"> <i class="fas fa-cog" style="font-size: 30px; margin-right: 10px" ></i>Configuración</a>
                 <ul class="dropdown-content" id="dropdown-content">
@@ -38,9 +38,10 @@
     <div class="right-container">
         <div class="header">
             <h2>Estadisticas</h2>
-            <button type="button" class="btnAdd" data-bs-toggle="modal" data-bs-target="#modalAgregarRegistro">Agregar Registro</button>
         </div>
-    
+        <div class="chart-container">
+            <canvas id="myPieChart"></canvas>
+        </div>
         <!-- Modal Agregar Registro -->
 <div id="modalAgregarRegistro" class="modal">
     <div class="modal-content">
@@ -144,5 +145,6 @@
 <script type="module" src="/js/formu.js" ></script>
 <script type="module" src="/js/registros.js" ></script>
 <script type="module" src="/js/rM.js"></script>
+<script type="module" src="/js/grafica.js"></script>
 </body>
 </html>
