@@ -16,22 +16,30 @@
     <div class="sidebar">
         <img src="/img/logo.png" alt="">
         <ul>
+<<<<<<< HEAD
             <li><a href="/html/rM.html"> <i class="fas fa-home" style="font-size: 30px; margin-right: 10px;  color: #C2C3CC;"></i>Inicio </a></li>
 
             <li><a href="../html/ahorro.html"> <i class="fas fa-piggy-bank" style="font-size: 30px; margin-right: 10px; color: #45a049; "></i>Ahorro</a></li>
             <li><a href="../html/estadisticas.html"> <i class="fas fa-chart-bar" style="font-size: 30px; margin-right: 10px;  color: #C2C3CC" ></i>Estadisticas</a></li>
+=======
+            <li><a href="#"> <i class="fas fa-home" style="font-size: 30px; margin-right: 10px; color: #C2C3CC;"></i>Inicio </a></li>
+            <li><a href="../html/ahorro.html"> <i class="fas fa-piggy-bank" style="font-size: 30px; margin-right: 10px; color: #C2C3CC;"></i>Ahorro</a></li>
+            <li><a href="#"> <i class="fas fa-chart-bar" style="font-size: 30px; margin-right: 10px; color: #C2C3CC;"></i>Estadisticas</a></li>
+>>>>>>> 0c07d92d1c6336d729d07d28d5a1389c64ed81fd
             <li class="dropdown">
-                <a href="#" id="configuracion-link"> <i class="fas fa-cog" style="font-size: 30px; margin-right: 10px" ></i>Configuración</a>
+                <a href="#" id="configuracion-link"> <i class="fas fa-cog" style="font-size: 30px; margin-right: 10px; color:#C2C3CC;"></i>Configuración</a>
                 <ul class="dropdown-content" id="dropdown-content">
-                    <li><a href="#perfil"><i class="fas fa-user" style=" margin-right: 10px;"></i>Perfil</a></li>
-                    <li><a href="../html/terminos.html"><i class="fas fa-file" style=" margin-right: 10px;"></i>Terminos</a></li>
-                    <li><a href="../html/ayuda.html"><i class="fas fa-info" style=" margin-right: 10px;"></i>Ayuda</a></li>
-                    <li><a href="#" style="color: red;">Cerrar sesión</a></li>
+                    <li><a href="#perfil"><i class="fas fa-user" style="margin-right: 10px;"></i>Perfil</a></li>
+                    <li><a href="/html/terminos.html"><i class="fas fa-file" style="margin-right: 10px;"></i>Terminos</a></li>
+                    <li><a href="/html/ayuda.html"><i class="fas fa-info" style="margin-right: 10px;"></i>Ayuda</a></li>
+                    <li><a href="/html/home.html" style="color: red;">Cerrar sesión</a></li>
                 </ul>
             </li>
-            <li><a href="../html/ahorroDark.html"> <i class="fas fa-moon" aria-hidden="true" style="font-size: 30px; margin-right: 10px"></i>Tema Oscuro</a></li>
+            <li><a href="../html/rMdark.html"> <i class="fas fa-moon" aria-hidden="true" style="font-size: 30px; margin-right: 10px; color:#C2C3CC"></i>Tema Oscuro</a></li>
         </ul>
     </div>
+
+
     <div class="right-container">
         <div class="header">
             <h2>Crea tu Meta</h2>
@@ -40,54 +48,81 @@
         <div class="imagen">
             <img src="/img/banco.png" alt="">
         </div>
-
-                    <div class="registro">
-                    <i class="fas fa-wallet " style="color: #4CAF50;"></i>
-                    <div class="derecho">
-                        <div class="texto-arriba">Viajes</div>
-                        <div class="texto-abajo">$250.000</div>
-                    </div>
-                </div>
-
-                <div class="registro">
-                    <i class="fas fa-wallet " style="color: #4CAF50;"></i>
-                    <div class="derecho">
-                        <div class="texto-arriba">Viajes</div>
-                        <div class="texto-abajo">$250.000</div>
-                    </div>
-                </div>
-
     </div>
+
+          
     <div class="container-info">
         <div class="header-info">
             <div class="imagen-container">
-                <img src="/img/facebook.png" alt="">
+                <img id="profileImage" class="profile-image" src="" alt="Imagen de perfil">
             </div>
             <div class="text-container">
-                <p>David Sneyder</p>
+                <p></p>
                 <h3>Desarrollador de Software</h3>
             </div>
+
+
             <div class="datos-container">
                 <div class="datos-info">
                     <div class="texto-info-cuenta">Saldo Total</div>
-                    <div class="texto-info">$125.000.00</div>
+                    <div class="texto-info" id="saldoTotal">$0.00</div>
                     <div class="icon-text">
                         <i class="fas fa-arrow-up"></i>
-                        <span class="texto-monot">$127.000</span>
+                        <span class="texto-monot" id="totalIngresos">$0.00</span>
                     </div>
                     <div class="icon-text">
-                        <i class="fas fa-arrow-down " style="color: red;"></i>
-                        <span class="texto-monot" style="color: red;">$127.000</span>
+                        <i class="fas fa-arrow-down" style="color: red;"></i>
+                        <span class="texto-monot" id="totalEgresos" style="color: red;">$0.00</span>
                     </div>
                     <div class="icon-text">
                         <i class="fas fa-balance-scale" style="color: #C2C3CC;"></i>
-                        <span class="texto-monot" style="color: #C2C3CC;">$127.000</span>
+                        <span class="texto-monot" id="balance" style="color: #C2C3CC;">$0.00</span>
                     </div>
                 </div>
             </div>
         </div>
-        
     </div>
+</div>
+
+<!-- Modal para editar perfil -->
+<div id="modalPerfil" class="modal">
+<div class="modal-content profile-modal">
+    <span class="close" data-modal="modalPerfil">&times;</span>
+    <h2>Editar Perfil</h2>
+
+    <form id="perfilForm">
+        <input type="hidden" id="correoPerfil" name="correoPerfil" readonly>
+        <div class="form-group">
+            <label for="nombrePerfil">Nombre:</label>
+            <input type="text" id="nombre" name="nombrePerfil" required>
+        </div>
+        <div class="form-group">
+            <label for="fileUpload">Subir Imagen:</label>
+            <input type="file" id="fileUpload" name="fileUpload">
+        </div>
+        <!-- Contenedor de la imagen actual -->
+        <div class="current-image-container">
+            <label>Imagen actual:</label>
+            <div class="profile-image-container">
+                <img id="modalProfileImage" class="profile-image" src="/img/default-profile.png" alt="Imagen de perfil">
+            </div>
+            <div class="profile-image-actions">
+                <button id="deleteCurrentImage" class="delete-image-button" title="Eliminar imagen actual">
+                    <i class="fas fa-trash-alt"></i>
+                </button>
+            </div>
+        </div>
+
+        <!-- Galería de imágenes adicionales -->
+        <div id="imageGallery" class="image-gallery">
+            <!-- Aquí se mostrarán las imágenes adicionales -->
+        </div>
+
+        <div class="form-group">
+            <button type="submit">Guardar Cambios</button>
+        </div>
+    </form>
+</div>
 </div>
 
 <div id="modalAgregarMeta" class="modal">
@@ -116,57 +151,11 @@
     </div>
 </div>
 
-<script>
- document.addEventListener('DOMContentLoaded', (event) => {
-    const configuracionLink = document.getElementById('configuracion-link');
-    const dropdownContent = document.getElementById('dropdown-content');
-    
-    configuracionLink.addEventListener('click', (e) => {
-        e.preventDefault();
-        dropdownContent.classList.toggle('show');
-    });
-
-    window.addEventListener('click', (e) => {
-        if (!e.target.matches('#configuracion-link') && !e.target.matches('#dropdown-content') && !e.target.closest('#dropdown-content')) {
-            if (dropdownContent.classList.contains('show')) {
-                dropdownContent.classList.remove('show');
-            }
-        }
-    });
-
-    // Modal
-    const modalPerfil = document.getElementById('modalPerfil');
-    const modalAgregarMeta = document.getElementById('modalAgregarMeta');
-    const closeModalButtons = document.querySelectorAll('.close');
-
-    document.querySelector('.dropdown-content a[href="#perfil"]').addEventListener('click', (e) => {
-        e.preventDefault();
-        modalPerfil.style.display = 'block';
-    });
-
-    document.querySelector('.btnAdd').addEventListener('click', (e) => {
-        e.preventDefault();
-        modalAgregarMeta.style.display = 'block';
-    });
-
-    closeModalButtons.forEach((button) => {
-        button.addEventListener('click', () => {
-            const modal = document.getElementById(button.getAttribute('data-modal'));
-            modal.style.display = 'none';
-        });
-    });
-
-    window.addEventListener('click', (event) => {
-        if (event.target === modalPerfil) {
-            modalPerfil.style.display = 'none';
-        }
-        if (event.target === modalAgregarMeta) {
-            modalAgregarMeta.style.display = 'none';
-        }
-    });
-});
-
-</script>
+<script src="/js/ahorro.js"> </script>
+<script type="module" src="/js/auth.js"></script>
+<script type="module" src="/js/formu.js"></script>
+<script type="module" src="/js/registros.js"></script>
+<script type="module" src="/js/rM.js"></script>
 
 </body>
 </html>
