@@ -1,26 +1,10 @@
 // Importaciones de Firebase
-import { 
-    getAuth 
-} from "https://www.gstatic.com/firebasejs/10.9.0/firebase-auth.js";
-import { 
-    getFirestore, 
-    query, 
-    collection, 
-    getDocs, 
-    updateDoc, 
-    doc, 
-    where 
-} from "https://www.gstatic.com/firebasejs/10.9.0/firebase-firestore.js";
-import { 
-    getStorage, 
-    ref, 
-    uploadBytes, 
-    getDownloadURL, 
-    deleteObject 
-} from "https://www.gstatic.com/firebasejs/10.9.0/firebase-storage.js";
+import { getAuth, onAuthStateChanged } from "https://www.gstatic.com/firebasejs/10.9.0/firebase-auth.js";
+import { getFirestore, query, collection, getDocs, updateDoc, doc, where } from "https://www.gstatic.com/firebasejs/10.9.0/firebase-firestore.js";
+import { getStorage, ref, uploadBytes, getDownloadURL, deleteObject } from "https://www.gstatic.com/firebasejs/10.9.0/firebase-storage.js";
 
-// Importación del archivo formu.js donde se inicializa Firebase
-import './formu.js';
+// Importación del archivo firebase_config.js donde se inicializa Firebase
+import { firestore, auth } from './firebase_config.js';
 
 // Función para ejecutar código después de que el DOM está completamente cargado
 document.addEventListener('DOMContentLoaded', async () => {
@@ -172,7 +156,6 @@ document.addEventListener('DOMContentLoaded', async () => {
 
 async function obtenerUsuario(email) {
     try {
-        const firestore = getFirestore(); // Obtener la instancia de Firestore
         const userQuery = query(collection(firestore, 'usuarios'), where('correo', '==', email));
         const userSnapshot = await getDocs(userQuery);
         if (!userSnapshot.empty) {
@@ -189,7 +172,6 @@ async function obtenerUsuario(email) {
 
 async function updateUsuario(email, nombre, imageURL) {
     try {
-        const firestore = getFirestore(); // Obtener la instancia de Firestore
         const userQuery = query(collection(firestore, 'usuarios'), where('correo', '==', email));
         const userSnapshot = await getDocs(userQuery);
         if (!userSnapshot.empty) {
@@ -212,7 +194,6 @@ async function updateUsuario(email, nombre, imageURL) {
 
 async function eliminarImagenPerfil(email) {
     try {
-        const firestore = getFirestore(); // Obtener la instancia de Firestore
         const userQuery = query(collection(firestore, 'usuarios'), where('correo', '==', email));
         const userSnapshot = await getDocs(userQuery);
         if (!userSnapshot.empty) {

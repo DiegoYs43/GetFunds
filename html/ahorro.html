@@ -16,16 +16,9 @@
     <div class="sidebar">
         <img src="/img/logo.png" alt="">
         <ul>
-<<<<<<< HEAD
-            <li><a href="/html/rM.html"> <i class="fas fa-home" style="font-size: 30px; margin-right: 10px;  color: #C2C3CC;"></i>Inicio </a></li>
-
-            <li><a href="../html/ahorro.html"> <i class="fas fa-piggy-bank" style="font-size: 30px; margin-right: 10px; color: #45a049; "></i>Ahorro</a></li>
-            <li><a href="../html/estadisticas.html"> <i class="fas fa-chart-bar" style="font-size: 30px; margin-right: 10px;  color: #C2C3CC" ></i>Estadisticas</a></li>
-=======
-            <li><a href="#"> <i class="fas fa-home" style="font-size: 30px; margin-right: 10px; color: #C2C3CC;"></i>Inicio </a></li>
+            <li><a href="./rM.html"> <i class="fas fa-home" style="font-size: 30px; margin-right: 10px; color: #C2C3CC;"></i>Inicio </a></li>
             <li><a href="../html/ahorro.html"> <i class="fas fa-piggy-bank" style="font-size: 30px; margin-right: 10px; color: #C2C3CC;"></i>Ahorro</a></li>
             <li><a href="#"> <i class="fas fa-chart-bar" style="font-size: 30px; margin-right: 10px; color: #C2C3CC;"></i>Estadisticas</a></li>
->>>>>>> 0c07d92d1c6336d729d07d28d5a1389c64ed81fd
             <li class="dropdown">
                 <a href="#" id="configuracion-link"> <i class="fas fa-cog" style="font-size: 30px; margin-right: 10px; color:#C2C3CC;"></i>Configuración</a>
                 <ul class="dropdown-content" id="dropdown-content">
@@ -86,27 +79,15 @@
 
 <!-- Modal para editar perfil -->
 <div id="modalPerfil" class="modal">
-<div class="modal-content profile-modal">
-    <span class="close" data-modal="modalPerfil">&times;</span>
-    <h2>Editar Perfil</h2>
+    <div class="modal-content profile-modal">
+        <span class="close" data-modal="modalPerfil">&times;</span>
+        <h2>Editar Perfil</h2>
 
-    <form id="perfilForm">
-        <input type="hidden" id="correoPerfil" name="correoPerfil" readonly>
-        <div class="form-group">
-            <label for="nombrePerfil">Nombre:</label>
-            <input type="text" id="nombre" name="nombrePerfil" required>
-        </div>
-        <div class="form-group">
-            <label for="fileUpload">Subir Imagen:</label>
-            <input type="file" id="fileUpload" name="fileUpload">
-        </div>
         <!-- Contenedor de la imagen actual -->
         <div class="current-image-container">
-            <label>Imagen actual:</label>
+            <label>Imagen de Usario</label>
             <div class="profile-image-container">
                 <img id="modalProfileImage" class="profile-image" src="/img/default-profile.png" alt="Imagen de perfil">
-            </div>
-            <div class="profile-image-actions">
                 <button id="deleteCurrentImage" class="delete-image-button" title="Eliminar imagen actual">
                     <i class="fas fa-trash-alt"></i>
                 </button>
@@ -118,25 +99,19 @@
             <!-- Aquí se mostrarán las imágenes adicionales -->
         </div>
 
-        <div class="form-group">
-            <button type="submit">Guardar Cambios</button>
-        </div>
-    </form>
-</div>
-</div>
-
-<div id="modalAgregarMeta" class="modal">
-    <div class="modal-content">
-        <span class="close" data-modal="modalAgregarMeta">&times;</span>
-        <h2>Agregar Meta</h2>
-        <form id="formAgregarMeta">
-            <label for="nombreMeta">Nombre de la Meta:</label>
-            <input type="text" id="nombreMeta" name="nombreMeta" required>
-            
-            <label for="montoMeta">Monto de la Meta:</label>
-            <input type="number" id="montoMeta" name="montoMeta" required>
-            
-            <button type="submit">Guardar Meta</button>
+        <form id="perfilForm">
+            <input type="hidden" id="correoPerfil" name="correoPerfil" readonly>
+            <div class="form-group">
+                <label for="nombrePerfil">Nombre:</label>
+                <input type="text" id="nombre" name="nombrePerfil" required>
+            </div>
+            <div class="form-group">
+                <label for="fileUpload">Subir Imagen:</label>
+                <input type="file" id="fileUpload" name="fileUpload">
+            </div>
+            <div class="form-group">
+                <button type="submit">Guardar Cambios</button>
+            </div>
         </form>
     </div>
 </div>

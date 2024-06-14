@@ -1,5 +1,8 @@
+// ahorro.js
+import { auth, firestore, storage } from './firebase_config.js';
+
 // Función para crear un elemento de registro de meta
-  function crearRegistroMeta(nombreMeta, montoMeta) {
+function crearRegistroMeta(nombreMeta, montoMeta) {
     return `
         <div class="registro">
             <i class="fas fa-wallet" style="color: #4CAF50;"></i>
@@ -10,29 +13,79 @@
         </div>`;
 }
 
-// Manejo del evento de envío del formulario para agregar una nueva meta
-document.getElementById('formAgregarMeta').addEventListener('submit', function(event) {
-    event.preventDefault(); // Evitar el envío del formulario
+// Función para obtener y mostrar la imagen de perfil del usuario
+async function mostrarImagenPerfil(email) {
+    try {
+        const userProfile = await obtenerUsuario(email);
+        if (userProfile && userProfile.Avatar) {
+            const imageUrl = userProfile.Avatar;
+            document.querySelector('.imagen-container img').src = imageUrl;
+        } else {
+            document.querySelector('.imagen-container img').src = '/img/default-profile.png';
+        }
+    } catch (error) {
+        console.error('Error al obtener la imagen de perfil:', error);
+    }
+}
 
-    // Obtener los valores del formulario
-    const nombreMeta = document.getElementById('nombreMeta').value;
-    const montoMeta = parseFloat(document.getElementById('montoMeta').value);
+// Función para obtener el nombre del usuario
+async function mostrarNombreUsuario(email) {
+    try {
+        const userProfile = await obtenerUsuario(email);
+        if (userProfile && userProfile.Nombre) {
+            document.querySelector('.text-container p').textContent = userProfile.Nombre;
+        }
+    } catch (error) {
+        console.error('Error al obtener el nombre de usuario:', error);
+    }
+}
 
-    // Llamar a la función crearRegistroMeta con estos valores y agregar el resultado al contenedor de registros
-    const contenedorRegistros = document.querySelector('.right-container');
-    contenedorRegistros.innerHTML += crearRegistroMeta(nombreMeta, montoMeta);
+// Función para obtener el saldo total del usuario y mostrarlo en la página
+async function mostrarSaldoTotal(email) {
+    try {
+        const userProfile = await obtenerUsuario(email);
+        if (userProfile && userProfile.SaldoTotal) {
+            document.getElementById('saldoTotal').textContent = `$${userProfile.SaldoTotal.toFixed(2)}`;
+        }
+    } catch (error) {
+        console.error('Error al obtener el saldo total:', error);
+    }
+}
 
-    // Cerrar el modal después de agregar la meta
-    const modal = document.getElementById('modalAgregarMeta');
-    modal.style.display = 'none';
+// Función para obtener datos del usuario desde Firestore
+async function obtenerUsuario(email) {
+    try {
+        const userQuery = query(collection(firestore, 'usuarios'), where('Correo', '==', email));
+        const userSnapshot = await getDocs(userQuery);
+        if (!userSnapshot.empty) {
+            const userDoc = userSnapshot.docs[0];
+            return userDoc.data();
+        } else {
+            throw new Error('Usuario no encontrado');
+        }
+    } catch (error) {
+        console.error('Error al obtener los datos del usuario:', error);
+        throw error;
+    }
+}
 
-    
-});
+// Función para inicializar las funciones al cargar el DOM
+document.addEventListener('DOMContentLoaded', async () => {
+    auth.onAuthStateChanged(async (user) => {
+        if (user) {
+            const email = user.email;
+            await mostrarImagenPerfil(email);
+            await mostrarNombreUsuario(email);
+            await mostrarSaldoTotal(email);
+        } else {
+            console.error('No se pudo capturar el correo electrónico del usuario.');
+            throw new Error('No se pudo capturar el correo electrónico del usuario.');
+        }
+    });
 
- document.addEventListener('DOMContentLoaded', (event) => {
+    // Configuración del menú desplegable y los modales
     const configuracionLink = document.getElementById('configuracion-link');
     const dropdownContent = document.getElementById('dropdown-content');
-    
     configuracionLink.addEventListener('click', (e) => {
         e.preventDefault();
         dropdownContent.classList.toggle('show');
@@ -46,7 +99,6 @@ document.getElementById('formAgregarMeta').addEventListener('submit', function(e
         }
     });
 
-    // Modal
     const modalPerfil = document.getElementById('modalPerfil');
     const modalAgregarMeta = document.getElementById('modalAgregarMeta');
     const closeModalButtons = document.querySelectorAll('.close');

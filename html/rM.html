@@ -38,41 +38,41 @@
                 <h2>Tus registros</h2>
                 <button type="button" class="btnAdd" data-bs-toggle="modal" data-bs-target="#modalAgregarRegistro">Agregar Registro</button>
             </div>
+            
             <!-- Modal Agregar Registro -->
-            <div id="modalAgregarRegistro" class="modal">
-                <div class="modal-content">
-                    <span class="close" data-modal="modalAgregarRegistro">&times;</span>
-                    <h2>Agregar Registro</h2>
-                    <form id="formulario">
-                        <div class="form-group">
-                            <label for="categoria">Categoría:</label>
-                            <select id="categoria" name="Categoria">
-                                <option value="factura">Factura</option>
-                                <option value="servicios">Servicios</option>
-                                <option value="recibosHogar">Recibos del Hogar</option>
-                                <option value="microgasto">Microgasto</option>
-                            </select>
-                        </div>
-                        <input type="hidden" class="form-control email-field" id="email" name="Correo" readonly>
-                        <div class="form-group">
-                            <label for="fecha">Fecha:</label>
-                            <input type="date" id="fecha" name="Fecha">
-                        </div>
-                        <div class="form-group">
-                            <label for="tipo">Tipo:</label>
-                            <select id="tipo" name="Tipo">
-                                <option value="ingreso">Ingreso</option>
-                                <option value="egreso">Egreso</option>
-                            </select>
-                        </div>
-                        <div class="form-group">
-                            <label for="valor">Valor:</label>
-                            <input type="number" id="valor" name="Valor">
-                        </div>
-                        <button type="submit" class="btn btn-primary">Agregar</button>
-                    </form>
-                </div>
+<div id="modalAgregarRegistro" class="modal">
+    <div class="modal-content">
+        <span class="close" data-modal="modalAgregarRegistro">&times;</span>
+        <h2>Agregar Registro</h2>
+        <form id="formulario">
+            <div class="form-group">
+                <label for="tipo">Tipo:</label>
+                <select id="tipo" name="Tipo">
+                    <option value="ingreso">Ingreso</option>
+                    <option value="egreso">Egreso</option>
+                </select>
             </div>
+            <div class="form-group">
+                <label for="categoria">Categoría:</label>
+                <select id="categoria" name="Categoria">
+                    <!-- Opciones de categoría que se cargarán dinámicamente -->
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="valor">Valor:</label>
+                <input type="number" id="valor" name="Valor">
+            </div>
+            <div class="form-group">
+                <label for="fecha">Fecha:</label>
+                <input type="date" id="fecha" name="Fecha">
+            </div>
+            <input type="hidden" class="form-control email-field" id="email" name="Correo" readonly>
+            <button type="submit" class="btn btn-primary">Agregar</button>
+        </form>
+    </div>
+</div>
+
+
             <div class="scroll-container">
                 <ul class="accordion">
                 </ul>
@@ -118,6 +118,22 @@
         <span class="close" data-modal="modalPerfil">&times;</span>
         <h2>Editar Perfil</h2>
 
+        <!-- Contenedor de la imagen actual -->
+        <div class="current-image-container">
+            <label>Imagen de Usario</label>
+            <div class="profile-image-container">
+                <img id="modalProfileImage" class="profile-image" src="/img/default-profile.png" alt="Imagen de perfil">
+                <button id="deleteCurrentImage" class="delete-image-button" title="Eliminar imagen actual">
+                    <i class="fas fa-trash-alt"></i>
+                </button>
+            </div>
+        </div>
+
+        <!-- Galería de imágenes adicionales -->
+        <div id="imageGallery" class="image-gallery">
+            <!-- Aquí se mostrarán las imágenes adicionales -->
+        </div>
+
         <form id="perfilForm">
             <input type="hidden" id="correoPerfil" name="correoPerfil" readonly>
             <div class="form-group">
@@ -128,30 +144,13 @@
                 <label for="fileUpload">Subir Imagen:</label>
                 <input type="file" id="fileUpload" name="fileUpload">
             </div>
-            <!-- Contenedor de la imagen actual -->
-            <div class="current-image-container">
-                <label>Imagen actual:</label>
-                <div class="profile-image-container">
-                    <img id="modalProfileImage" class="profile-image" src="/img/default-profile.png" alt="Imagen de perfil">
-                </div>
-                <div class="profile-image-actions">
-                    <button id="deleteCurrentImage" class="delete-image-button" title="Eliminar imagen actual">
-                        <i class="fas fa-trash-alt"></i>
-                    </button>
-                </div>
-            </div>
-
-            <!-- Galería de imágenes adicionales -->
-            <div id="imageGallery" class="image-gallery">
-                <!-- Aquí se mostrarán las imágenes adicionales -->
-            </div>
-
             <div class="form-group">
                 <button type="submit">Guardar Cambios</button>
             </div>
         </form>
     </div>
 </div>
+
 
 
 

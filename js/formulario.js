@@ -1,24 +1,9 @@
-import { getApps, initializeApp } from "https://www.gstatic.com/firebasejs/10.9.0/firebase-app.js";
-import { getFirestore, collection, addDoc, query, where, getDocs } from "https://www.gstatic.com/firebasejs/10.9.0/firebase-firestore.js";
-import { getAuth, createUserWithEmailAndPassword } from "https://www.gstatic.com/firebasejs/10.9.0/firebase-auth.js";
+// Importar configuración de Firebase
+import { firestore, auth } from './firebase_config.js';
+import { collection, addDoc, query, where, getDocs } from 'https://www.gstatic.com/firebasejs/10.9.0/firebase-firestore.js';
+import { createUserWithEmailAndPassword } from 'https://www.gstatic.com/firebasejs/10.9.0/firebase-auth.js';
 
-// Verificar si la aplicación de Firebase ya está inicializada
-if (!getApps().length) {
-    const firebaseConfig = {
-      apiKey: "AIzaSyCOX4l0eA8l-NNtX6j0XN96PBnZepzWBh0",
-      authDomain: "getfunds-d99f9.firebaseapp.com",
-      projectId: "getfunds-d99f9",
-      storageBucket: "getfunds-d99f9.appspot.com",
-      messagingSenderId: "915683707396",
-      appId: "1:915683707396:web:4b8c39399776e2a62a8351"
-    };
-    
-    initializeApp(firebaseConfig);
-}
-
-const firestore = getFirestore();
-const auth = getAuth();
-
+// Manejar el evento 'submit' del formulario de registro
 document.getElementById("registroForm").addEventListener("submit", async function (event) {
   event.preventDefault();
 
@@ -40,7 +25,7 @@ document.getElementById("registroForm").addEventListener("submit", async functio
   }
 
   // Validación de correo electrónico duplicado en Firestore
-  const emailQuerySnapshot = await getDocs(query(collection(firestore, "usuarios"), where("correo", "==", correo)));
+  const emailQuerySnapshot = await getDocs(query(collection(firestore, "usuarios"), where("Correo", "==", correo)));
   if (!emailQuerySnapshot.empty) {
     alert("Este correo electrónico ya está registrado. Por favor, utiliza otro correo electrónico.");
     return;
@@ -53,9 +38,9 @@ document.getElementById("registroForm").addEventListener("submit", async functio
 
     // Registro de usuario en la colección "usuarios" en Firestore
     await addDoc(collection(firestore, "usuarios"), {
-      uid: user.uid,
-      nombre: nombre,
-      correo: correo
+      UID: user.uid,
+      Nombre: nombre,
+      Correo: correo
     });
 
     alert("Registro exitoso. ¡Bienvenido!");

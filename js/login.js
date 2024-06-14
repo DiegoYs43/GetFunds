@@ -1,20 +1,7 @@
-import { initializeApp } from "https://www.gstatic.com/firebasejs/10.9.0/firebase-app.js";
-import { getFirestore, collection, query, where, getDocs } from "https://www.gstatic.com/firebasejs/10.9.0/firebase-firestore.js";
-import { getAuth, signInWithEmailAndPassword, sendPasswordResetEmail } from "https://www.gstatic.com/firebasejs/10.9.0/firebase-auth.js";
-
-const firebaseConfig = {
-  apiKey: "AIzaSyCOX4l0eA8l-NNtX6j0XN96PBnZepzWBh0",
-  authDomain: "getfunds-d99f9.firebaseapp.com",
-  projectId: "getfunds-d99f9",
-  storageBucket: "getfunds-d99f9.appspot.com",
-  messagingSenderId: "915683707396",
-  appId: "1:915683707396:web:4b8c39399776e2a62a8351"
-};
-
-// Inicializar Firebase
-const app = initializeApp(firebaseConfig);
-const auth = getAuth(app);
-const firestore = getFirestore(app);
+// Importar configuración de Firebase
+import { firestore, auth } from './firebase_config.js';
+import { collection, query, where, getDocs } from 'https://www.gstatic.com/firebasejs/10.9.0/firebase-firestore.js';
+import { signInWithEmailAndPassword, sendPasswordResetEmail } from 'https://www.gstatic.com/firebasejs/10.9.0/firebase-auth.js';
 
 // Manejar el inicio de sesión
 document.querySelector("form").addEventListener("submit", async function(event) {
@@ -28,10 +15,10 @@ document.querySelector("form").addEventListener("submit", async function(event) 
     const user = userCredential.user;
 
     // Obtener el nombre del usuario desde Firestore
-    const userDoc = await getDocs(query(collection(firestore, "usuarios"), where("correo", "==", correo)));
+    const userDoc = await getDocs(query(collection(firestore, "usuarios"), where("Correo", "==", correo)));
     if (!userDoc.empty) {
       const userData = userDoc.docs[0].data();
-      const nombre = userData.nombre;
+      const nombre = userData.Nombre; // Utilizar Nombre con mayúscula
 
       alert(`¡Hola ${nombre}! Bienvenido`);
     } else {
