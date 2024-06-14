@@ -1,5 +1,7 @@
 // ahorro.js
-import { auth, firestore, storage } from './firebase_config.js';
+import { auth, firestore } from './firebase_config.js';
+import { getStorage, ref, uploadBytes, getDownloadURL, deleteObject } from 'https://www.gstatic.com/firebasejs/10.9.0/firebase-storage.js';
+import { query, collection, getDocs, where } from 'https://www.gstatic.com/firebasejs/10.9.0/firebase-firestore.js';
 
 // Función para crear un elemento de registro de meta
 function crearRegistroMeta(nombreMeta, montoMeta) {
@@ -25,6 +27,7 @@ async function mostrarImagenPerfil(email) {
         }
     } catch (error) {
         console.error('Error al obtener la imagen de perfil:', error);
+        document.querySelector('.imagen-container img').src = '/img/default-profile.png'; // Imagen por defecto en caso de error
     }
 }
 

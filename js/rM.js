@@ -66,17 +66,17 @@ document.addEventListener('DOMContentLoaded', async () => {
             try {
                 const userProfile = await obtenerUsuario(email);
                 if (userProfile) {
-                    document.getElementById('nombre').value = userProfile.nombre;
-                    document.querySelector('.text-container p').textContent = userProfile.nombre;
+                    document.getElementById('nombre').value = userProfile.Nombre;
+                    document.querySelector('.text-container p').textContent = userProfile.Nombre;
 
                     // Mostrar la imagen de perfil si está disponible en el modal
-                    if (userProfile.imagen) {
-                        document.getElementById('modalProfileImage').src = userProfile.imagen;
+                    if (userProfile.Avatar) {
+                        document.getElementById('modalProfileImage').src = userProfile.Avatar;
                     }
 
                     // Mostrar la imagen de perfil estática si está disponible en la página rM.html
-                    if (userProfile.imagen) {
-                        document.getElementById('profileImage').src = userProfile.imagen;
+                    if (userProfile.Avatar) {
+                        document.getElementById('profileImage').src = userProfile.Avatar;
                     }
                 }
             } catch (error) {
@@ -156,7 +156,7 @@ document.addEventListener('DOMContentLoaded', async () => {
 
 async function obtenerUsuario(email) {
     try {
-        const userQuery = query(collection(firestore, 'usuarios'), where('correo', '==', email));
+        const userQuery = query(collection(firestore, 'usuarios'), where('Correo', '==', email));
         const userSnapshot = await getDocs(userQuery);
         if (!userSnapshot.empty) {
             const userDoc = userSnapshot.docs[0];
@@ -172,14 +172,14 @@ async function obtenerUsuario(email) {
 
 async function updateUsuario(email, nombre, imageURL) {
     try {
-        const userQuery = query(collection(firestore, 'usuarios'), where('correo', '==', email));
+        const userQuery = query(collection(firestore, 'usuarios'), where('Correo', '==', email));
         const userSnapshot = await getDocs(userQuery);
         if (!userSnapshot.empty) {
             const userDoc = userSnapshot.docs[0];
-            const updateData = { nombre: nombre };
+            const updateData = { Nombre: nombre };
 
             if (imageURL) {
-                updateData.imagen = imageURL;
+                updateData.Avatar = imageURL; // Cambiado a 'Avatar'
             }
 
             await updateDoc(doc(firestore, 'usuarios', userDoc.id), updateData);
@@ -194,20 +194,20 @@ async function updateUsuario(email, nombre, imageURL) {
 
 async function eliminarImagenPerfil(email) {
     try {
-        const userQuery = query(collection(firestore, 'usuarios'), where('correo', '==', email));
+        const userQuery = query(collection(firestore, 'usuarios'), where('Correo', '==', email));
         const userSnapshot = await getDocs(userQuery);
         if (!userSnapshot.empty) {
             const userDoc = userSnapshot.docs[0];
             const userData = userDoc.data();
 
-            if (userData.imagen) {
+            if (userData.Avatar) {
                 // Eliminar la imagen del storage
                 const storage = getStorage(); // Obtener la instancia de Firebase Storage
-                const imageRef = ref(storage, userData.imagen);
+                const imageRef = ref(storage, userData.Avatar);
                 await deleteObject(imageRef);
 
                 // Eliminar el campo de imagen en Firestore
-                await updateDoc(doc(firestore, 'usuarios', userDoc.id), { imagen: null });
+                await updateDoc(doc(firestore, 'usuarios', userDoc.id), { Avatar: null });
             }
         } else {
             throw new Error('Usuario no encontrado');
