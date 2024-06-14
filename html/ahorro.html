@@ -16,20 +16,19 @@
     <div class="sidebar">
         <img src="/img/logo.png" alt="">
         <ul>
-            <li><a href="/html/rM.html"> <i class="fas fa-home" style="font-size: 30px; margin-right: 10px;  color: #45a049;"></i>Inicio </a></li>
-
-            <li><a href="../html/ahorro.html"> <i class="fas fa-piggy-bank" style="font-size: 30px; margin-right: 10px; color: #C2C3CC; "></i>Ahorro</a></li>
-            <li><a href="#"> <i class="fas fa-chart-bar" style="font-size: 30px; margin-right: 10px;  color: #C2C3CC" ></i>Estadisticas</a></li>
+            <li><a href="#"> <i class="fas fa-home" style="font-size: 30px; margin-right: 10px; color: #C2C3CC;"></i>Inicio </a></li>
+            <li><a href="../html/ahorro.html"> <i class="fas fa-piggy-bank" style="font-size: 30px; margin-right: 10px; color: #C2C3CC;"></i>Ahorro</a></li>
+            <li><a href="#"> <i class="fas fa-chart-bar" style="font-size: 30px; margin-right: 10px; color: #C2C3CC;"></i>Estadisticas</a></li>
             <li class="dropdown">
-                <a href="#" id="configuracion-link"> <i class="fas fa-cog" style="font-size: 30px; margin-right: 10px" ></i>Configuración</a>
+                <a href="#" id="configuracion-link"> <i class="fas fa-cog" style="font-size: 30px; margin-right: 10px; color:#C2C3CC;"></i>Configuración</a>
                 <ul class="dropdown-content" id="dropdown-content">
-                    <li><a href="#perfil"><i class="fas fa-user" style=" margin-right: 10px;"></i>Perfil</a></li>
-                    <li><a href="../html/terminos.html"><i class="fas fa-file" style=" margin-right: 10px;"></i>Terminos</a></li>
-                    <li><a href="../html/ayuda.html"><i class="fas fa-info" style=" margin-right: 10px;"></i>Ayuda</a></li>
-                    <li><a href="#" style="color: red;">Cerrar sesión</a></li>
+                    <li><a href="#perfil"><i class="fas fa-user" style="margin-right: 10px;"></i>Perfil</a></li>
+                    <li><a href="/html/terminos.html"><i class="fas fa-file" style="margin-right: 10px;"></i>Terminos</a></li>
+                    <li><a href="/html/ayuda.html"><i class="fas fa-info" style="margin-right: 10px;"></i>Ayuda</a></li>
+                    <li><a href="/html/home.html" style="color: red;">Cerrar sesión</a></li>
                 </ul>
             </li>
-            <li><a href="../html/ahorroDark.html"> <i class="fas fa-moon" aria-hidden="true" style="font-size: 30px; margin-right: 10px"></i>Tema Oscuro</a></li>
+            <li><a href="../html/rMdark.html"> <i class="fas fa-moon" aria-hidden="true" style="font-size: 30px; margin-right: 10px; color:#C2C3CC"></i>Tema Oscuro</a></li>
         </ul>
     </div>
 
@@ -44,15 +43,18 @@
         </div>
     </div>
 
+          
     <div class="container-info">
         <div class="header-info">
             <div class="imagen-container">
-                <img src="/img/facebook.png" alt="">
+                <img id="profileImage" class="profile-image" src="" alt="Imagen de perfil">
             </div>
             <div class="text-container">
                 <p></p>
                 <h3>Desarrollador de Software</h3>
             </div>
+
+
             <div class="datos-container">
                 <div class="datos-info">
                     <div class="texto-info-cuenta">Saldo Total</div>
@@ -70,12 +72,52 @@
                         <span class="texto-monot" id="balance" style="color: #C2C3CC;">$0.00</span>
                     </div>
                 </div>
-                
             </div>
         </div>
-        
     </div>
 </div>
+
+<!-- Modal para editar perfil -->
+<div id="modalPerfil" class="modal">
+<div class="modal-content profile-modal">
+    <span class="close" data-modal="modalPerfil">&times;</span>
+    <h2>Editar Perfil</h2>
+
+    <form id="perfilForm">
+        <input type="hidden" id="correoPerfil" name="correoPerfil" readonly>
+        <div class="form-group">
+            <label for="nombrePerfil">Nombre:</label>
+            <input type="text" id="nombre" name="nombrePerfil" required>
+        </div>
+        <div class="form-group">
+            <label for="fileUpload">Subir Imagen:</label>
+            <input type="file" id="fileUpload" name="fileUpload">
+        </div>
+        <!-- Contenedor de la imagen actual -->
+        <div class="current-image-container">
+            <label>Imagen actual:</label>
+            <div class="profile-image-container">
+                <img id="modalProfileImage" class="profile-image" src="/img/default-profile.png" alt="Imagen de perfil">
+            </div>
+            <div class="profile-image-actions">
+                <button id="deleteCurrentImage" class="delete-image-button" title="Eliminar imagen actual">
+                    <i class="fas fa-trash-alt"></i>
+                </button>
+            </div>
+        </div>
+
+        <!-- Galería de imágenes adicionales -->
+        <div id="imageGallery" class="image-gallery">
+            <!-- Aquí se mostrarán las imágenes adicionales -->
+        </div>
+
+        <div class="form-group">
+            <button type="submit">Guardar Cambios</button>
+        </div>
+    </form>
+</div>
+</div>
+
 <div id="modalAgregarMeta" class="modal">
     <div class="modal-content">
         <span class="close" data-modal="modalAgregarMeta">&times;</span>
@@ -103,6 +145,10 @@
 </div>
 
 <script src="/js/ahorro.js"> </script>
+<script type="module" src="/js/auth.js"></script>
+<script type="module" src="/js/formu.js"></script>
+<script type="module" src="/js/registros.js"></script>
+<script type="module" src="/js/rM.js"></script>
 
 </body>
 </html>
