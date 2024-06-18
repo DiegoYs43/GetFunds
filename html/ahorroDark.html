@@ -89,12 +89,30 @@
             
             <label for="montoMeta">Monto de la Meta:</label>
             <input type="number" id="montoMeta" name="montoMeta" required>
+    
+            <input type="hidden" id="correoMeta" name="correoMeta">
+    
+            <label for="duracionMeta">Duración de la Meta (en meses):</label>
+            <select id="duracionMeta" name="duracionMeta" required>
+                <option value="1">1 mes</option>
+                <option value="2">2 meses</option>
+                <option value="3">3 meses</option>
+                <option value="4">4 meses</option>
+                <option value="5">5 meses</option>
+                <option value="6">6 meses</option>
+                <option value="7">7 meses</option>
+                <option value="8">8 meses</option>
+                <option value="9">9 meses</option>
+                <option value="10">10 meses</option>
+                <option value="11">11 meses</option>
+                <option value="12">12 meses</option>
+            </select>
             
             <button type="submit">Guardar Meta</button>
         </form>
+
     </div>
 </div>
-
 
  <!-- Modal para editar perfil -->
  <div id="modalPerfil" class="modal">
