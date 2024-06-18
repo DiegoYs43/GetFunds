@@ -40,15 +40,10 @@
         </div>
         <div class="imagen">
             <img src="/img/banco.png" alt="">
-
-            <div class="registro">
-                <i class="fas fa-wallet " style="color: #4CAF50;"></i>
-                <div class="derecho">
-                    <div class="texto-arriba">Viaje</div>
-                    <div class="texto-abajo">$200.000</div>
-                    <div class="eliminar" style="cursor: pointer;"><i class="fas fa-times-circle" style=" font-size: 20px; color:#38713a"></i></div>
-                </div>
-            </div>
+        </div>
+        <!-- Elemento html de metas -->
+        <div class="metas-container">
+            <!-- Aquí se cargarán las metas -->
         </div>
     </div>
 
@@ -97,9 +92,28 @@
             
             <label for="montoMeta">Monto de la Meta:</label>
             <input type="number" id="montoMeta" name="montoMeta" required>
+    
+            <input type="hidden" id="correoMeta" name="correoMeta">
+    
+            <label for="duracionMeta">Duración de la Meta (en meses):</label>
+            <select id="duracionMeta" name="duracionMeta" required>
+                <option value="1">1 mes</option>
+                <option value="2">2 meses</option>
+                <option value="3">3 meses</option>
+                <option value="4">4 meses</option>
+                <option value="5">5 meses</option>
+                <option value="6">6 meses</option>
+                <option value="7">7 meses</option>
+                <option value="8">8 meses</option>
+                <option value="9">9 meses</option>
+                <option value="10">10 meses</option>
+                <option value="11">11 meses</option>
+                <option value="12">12 meses</option>
+            </select>
             
             <button type="submit">Guardar Meta</button>
         </form>
+
     </div>
 </div>
 
@@ -145,8 +159,10 @@
 
 
 
-
-<script type="module" src="/js/ahorro.js"> </script>
+<script type="module" src="/js/auth.js"></script>
+<script type="module" src="/js/ahorrosjs/ahorro.js"> </script>
+<script type="module" src="/js/IGMT.js"></script>
+<script type="module" src="/js/ahorrosjs/formumeta.js"></script>
 
 
 </body>

@@ -1,5 +1,5 @@
 // Importaciones de Firebase
-import { firestore, auth } from './firebase_config.js';
+import { firestore, auth } from '../firebase_config.js';
 import { collection, addDoc, Timestamp } from 'https://www.gstatic.com/firebasejs/10.9.0/firebase-firestore.js';
 
 // Función para manejar el cambio en el tipo (Ingreso / Egreso)

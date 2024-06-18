@@ -162,8 +162,8 @@ body {
 
 .texto-arriba {
     font-size: 15px;
-    color: #C2C3CC;
     margin-top: 10px;
+    color: #C2C3CC; 
 }
 
 .texto-abajo {
@@ -263,6 +263,7 @@ body {
 }
 
 /* Estilos para los modales */
+
 .modal {
     display: none;
     position: fixed;
@@ -282,7 +283,7 @@ body {
 }
 
 .modal-content {
-    background-color: #333;
+    background-color: #1F1F1F;
     margin: auto; /* Centra el modal */
     position: relative;
     top: 50%;
@@ -350,7 +351,6 @@ body {
     overflow-y: auto; 
 }
 
-/* CSS para mis form hecho por Diego (alguien mateme no usar css) */
 form {
     background: #2B2B2B;
     padding: 20px;

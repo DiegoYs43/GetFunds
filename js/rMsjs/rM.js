@@ -4,7 +4,7 @@ import { getFirestore, query, collection, getDocs, updateDoc, doc, where } from 
 import { getStorage, ref, uploadBytes, getDownloadURL, deleteObject } from "https://www.gstatic.com/firebasejs/10.9.0/firebase-storage.js";
 
 // Importación del archivo firebase_config.js donde se inicializa Firebase
-import { firestore, auth } from './firebase_config.js';
+import { firestore, auth } from '../firebase_config.js';
 
 // Función para ejecutar código después de que el DOM está completamente cargado
 document.addEventListener('DOMContentLoaded', async () => {

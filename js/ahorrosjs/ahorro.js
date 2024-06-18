@@ -1,117 +1,74 @@
 // Importaciones de Firebase
-import { auth, firestore } from './firebase_config.js';
+import { auth, firestore } from '../firebase_config.js';
 import { getStorage, ref, uploadBytes, getDownloadURL, deleteObject } from 'https://www.gstatic.com/firebasejs/10.9.0/firebase-storage.js';
 import { query, collection, getDocs, updateDoc, where, doc } from 'https://www.gstatic.com/firebasejs/10.9.0/firebase-firestore.js';
 
-// Función para crear un elemento de registro de meta
-function crearRegistroMeta(nombreMeta, montoMeta) {
-    return `
-        <div class="registro">
-            <i class="fas fa-wallet" style="color: #4CAF50;"></i>
-            <div class="derecho">
-                <div class="texto-arriba">${nombreMeta}</div>
-                <div class="texto-abajo">$${montoMeta.toFixed(2)}</div>
-            </div>
-        </div>`;
-}
 
 // Función para obtener datos del usuario desde Firestore
-async function obtenerUsuario(email) {
-    try {
-        const userQuery = query(collection(firestore, 'usuarios'), where('Correo', '==', email));
-        const userSnapshot = await getDocs(userQuery);
-        if (!userSnapshot.empty) {
-            const userDoc = userSnapshot.docs[0];
-            return userDoc.data();
-        } else {
-            throw new Error('Usuario no encontrado');
-        }
-    } catch (error) {
-        console.error('Error al obtener los datos del usuario:', error);
-        throw error;
+const obtenerUsuario = async (email) => {
+    const userQuery = query(collection(firestore, 'usuarios'), where('Correo', '==', email));
+    const userSnapshot = await getDocs(userQuery);
+    if (!userSnapshot.empty) {
+        return userSnapshot.docs[0].data();
     }
-}
+    throw new Error('Usuario no encontrado');
+};
 
 // Función para mostrar la imagen de perfil del usuario
-async function mostrarImagenPerfil(email) {
+const mostrarImagenPerfil = async (email) => {
     try {
         const userProfile = await obtenerUsuario(email);
-        if (userProfile && userProfile.Avatar) {
-            const imageUrl = userProfile.Avatar;
-            document.querySelector('.imagen-container img').src = imageUrl;
-        } else {
-            document.querySelector('.imagen-container img').src = '/img/default-profile.png';
-        }
-    } catch (error) {
-        console.error('Error al obtener la imagen de perfil:', error);
-        document.querySelector('.imagen-container img').src = '/img/default-profile.png'; // Imagen por defecto en caso de error
+        const imageUrl = userProfile.Avatar || '/img/default-profile.png';
+        document.querySelector('.imagen-container img').src = imageUrl;
+    } catch {
+        document.querySelector('.imagen-container img').src = '/img/default-profile.png';
     }
-}
+};
 
 // Función para mostrar el nombre del usuario
-async function mostrarNombreUsuario(email) {
+const mostrarNombreUsuario = async (email) => {
     try {
         const userProfile = await obtenerUsuario(email);
-        if (userProfile && userProfile.Nombre) {
+        if (userProfile.Nombre) {
             document.querySelector('.text-container p').textContent = userProfile.Nombre;
         }
     } catch (error) {
         console.error('Error al obtener el nombre de usuario:', error);
     }
-}
+};
 
 // Función para actualizar el perfil del usuario
-async function updateUsuario(email, nombre, imageURL) {
-    try {
-        const userQuery = query(collection(firestore, 'usuarios'), where('Correo', '==', email));
-        const userSnapshot = await getDocs(userQuery);
-        if (!userSnapshot.empty) {
-            const userDoc = userSnapshot.docs[0];
-            const updateData = { Nombre: nombre };
-
-            if (imageURL) {
-                updateData.Avatar = imageURL; // Cambiado a 'Avatar'
-            }
-
-            await updateDoc(doc(firestore, 'usuarios', userDoc.id), updateData);
-        } else {
-            throw new Error('Usuario no encontrado');
-        }
-    } catch (error) {
-        console.error('Error al actualizar el perfil:', error);
-        throw error;
+const updateUsuario = async (email, nombre, imageURL) => {
+    const userQuery = query(collection(firestore, 'usuarios'), where('Correo', '==', email));
+    const userSnapshot = await getDocs(userQuery);
+    if (!userSnapshot.empty) {
+        const userDoc = userSnapshot.docs[0];
+        const updateData = { Nombre: nombre, Avatar: imageURL || null };
+        await updateDoc(doc(firestore, 'usuarios', userDoc.id), updateData);
+    } else {
+        throw new Error('Usuario no encontrado');
     }
-}
+};
 
 // Función para eliminar la imagen de perfil del usuario
-async function eliminarImagenPerfil(email) {
-    try {
-        const userQuery = query(collection(firestore, 'usuarios'), where('Correo', '==', email));
-        const userSnapshot = await getDocs(userQuery);
-        if (!userSnapshot.empty) {
-            const userDoc = userSnapshot.docs[0];
-            const userData = userDoc.data();
-
-            if (userData.Avatar) {
-                // Eliminar la imagen del storage
-                const storage = getStorage(); // Obtener la instancia de Firebase Storage
-                const imageRef = ref(storage, userData.Avatar);
-                await deleteObject(imageRef);
-
-                // Eliminar el campo de imagen en Firestore
-                await updateDoc(doc(firestore, 'usuarios', userDoc.id), { Avatar: null });
-            }
-        } else {
-            throw new Error('Usuario no encontrado');
+const eliminarImagenPerfil = async (email) => {
+    const userQuery = query(collection(firestore, 'usuarios'), where('Correo', '==', email));
+    const userSnapshot = await getDocs(userQuery);
+    if (!userSnapshot.empty) {
+        const userDoc = userSnapshot.docs[0];
+        const userData = userDoc.data();
+        if (userData.Avatar) {
+            const storage = getStorage();
+            await deleteObject(ref(storage, userData.Avatar));
+            await updateDoc(doc(firestore, 'usuarios', userDoc.id), { Avatar: null });
         }
-    } catch (error) {
-        console.error('Error al eliminar la imagen de perfil:', error);
-        throw error;
+    } else {
+        throw new Error('Usuario no encontrado');
     }
-}
+};
 
 // Inicializar funciones al cargar el DOM
-document.addEventListener('DOMContentLoaded', async () => {
+document.addEventListener('DOMContentLoaded', () => {
     auth.onAuthStateChanged(async (user) => {
         if (user) {
             const email = user.email;
@@ -119,17 +76,15 @@ document.addEventListener('DOMContentLoaded', async () => {
             await mostrarNombreUsuario(email);
         } else {
             console.error('No se pudo capturar el correo electrónico del usuario.');
-            throw new Error('No se pudo capturar el correo electrónico del usuario.');
         }
     });
 
-    // Configuración del menú desplegable y los modales
     configurarMenuDesplegable();
     configurarModales();
 });
 
 // Configuración del menú desplegable
-function configurarMenuDesplegable() {
+const configurarMenuDesplegable = () => {
     const configuracionLink = document.getElementById('configuracion-link');
     const dropdownContent = document.getElementById('dropdown-content');
     configuracionLink.addEventListener('click', (e) => {
@@ -138,16 +93,14 @@ function configurarMenuDesplegable() {
     });
 
     window.addEventListener('click', (e) => {
-        if (!e.target.matches('#configuracion-link') && !e.target.matches('#dropdown-content') && !e.target.closest('#dropdown-content')) {
-            if (dropdownContent.classList.contains('show')) {
-                dropdownContent.classList.remove('show');
-            }
+        if (!e.target.closest('#configuracion-link, #dropdown-content')) {
+            dropdownContent.classList.remove('show');
         }
     });
-}
+};
 
 // Configuración de los modales
-function configurarModales() {
+const configurarModales = () => {
     const modalPerfil = document.getElementById('modalPerfil');
     const modalAgregarMeta = document.getElementById('modalAgregarMeta');
     const closeModalButtons = document.querySelectorAll('.close');
@@ -170,19 +123,15 @@ function configurarModales() {
     });
 
     window.addEventListener('click', (event) => {
-        if (event.target === modalPerfil) {
-            modalPerfil.style.display = 'none';
-        }
-        if (event.target === modalAgregarMeta) {
-            modalAgregarMeta.style.display = 'none';
-        }
+        if (event.target === modalPerfil) modalPerfil.style.display = 'none';
+        if (event.target === modalAgregarMeta) modalAgregarMeta.style.display = 'none';
     });
 
     configurarModalPerfil(modalPerfil);
-}
+};
 
 // Configuración del modal de perfil
-function configurarModalPerfil(modalPerfil) {
+const configurarModalPerfil = (modalPerfil) => {
     const perfilForm = document.getElementById('perfilForm');
     const deleteCurrentImage = document.getElementById('deleteCurrentImage');
 
@@ -196,10 +145,7 @@ function configurarModalPerfil(modalPerfil) {
                 if (userProfile) {
                     document.getElementById('nombre').value = userProfile.Nombre;
                     document.querySelector('.text-container p').textContent = userProfile.Nombre;
-
-                    if (userProfile.Avatar) {
-                        document.getElementById('modalProfileImage').src = userProfile.Avatar;
-                    }
+                    document.getElementById('modalProfileImage').src = userProfile.Avatar || '/img/default-profile.png';
                 }
             } catch (error) {
                 console.error('Error al obtener el perfil del usuario:', error);
@@ -209,7 +155,6 @@ function configurarModalPerfil(modalPerfil) {
 
     perfilForm.addEventListener('submit', async (e) => {
         e.preventDefault();
-
         const nombre = document.getElementById('nombre').value;
         const email = document.getElementById('correoPerfil').value;
         const fileInput = document.getElementById('fileUpload');
@@ -218,9 +163,8 @@ function configurarModalPerfil(modalPerfil) {
 
         if (file) {
             const storage = getStorage();
-
             try {
-                const storageRef = ref(storage, 'prueba/' + file.name);
+                const storageRef = ref(storage, `prueba/${file.name}`);
                 const snapshot = await uploadBytes(storageRef, file);
                 imageURL = await getDownloadURL(snapshot.ref);
             } catch (error) {
@@ -234,7 +178,6 @@ function configurarModalPerfil(modalPerfil) {
             await updateUsuario(email, nombre, imageURL);
             alert('Perfil actualizado correctamente');
             document.querySelector('.text-container p').textContent = nombre;
-
             if (imageURL) {
                 document.getElementById('modalProfileImage').src = imageURL;
             }
@@ -258,4 +201,4 @@ function configurarModalPerfil(modalPerfil) {
             alert('Error al eliminar la imagen de perfil');
         }
     });
-}
+};
