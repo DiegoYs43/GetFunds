@@ -204,8 +204,13 @@ input[type="radio"] {
 }
 
 .texto-arribaM-margin {
-    color: red;
     margin-top: 25px;
+    margin-right: 30px;
+}
+.eliminar{
+    margin-left: auto; /* Esto empuja el ícono a la derecha */
+    display: flex;
+    margin-top: -18px;
 }
 
 /* Container de la información de la cuenta */
