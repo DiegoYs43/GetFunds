@@ -338,4 +338,45 @@ body {
 #formAgregarMeta input {
     background-color: #1F1F1F;
 }
+/* Estilos para el modal de perfil */
+.modal-content.profile-modal {
+    max-width: 400px; /* Ancho máximo del modal */
+    padding: 20px;
+}
 
+/* Estilos para la imagen de perfil */
+.profile-image-container {
+    width: 100px; /* Tamaño deseado para la imagen circular */
+    height: 100px; /* Tamaño deseado para la imagen circular */
+    border-radius: 50%; /* Hacer la imagen circular */
+    overflow: hidden; /* Ocultar partes de la imagen fuera del contenedor circular */
+    margin-bottom: 10px;
+    border: 2px solid #ccc; /* Borde para la imagen circular */
+}
+
+.profile-image {
+    width: 100%; /* Asegurar que la imagen llene el contenedor circular */
+    height: 100%; /* Asegurar que la imagen llene el contenedor circular */
+    object-fit: cover; /* Ajustar la imagen dentro del contenedor sin deformarla */
+}
+
+.current-image-container {
+    margin-bottom: 20px;
+}
+
+.profile-image-actions {
+    display: flex;
+    justify-content: flex-end;
+}
+
+.delete-image-button {
+    background: none;
+    border: none;
+    cursor: pointer;
+    outline: none;
+    color: #dc3545;
+}
+
+.delete-image-button:hover {
+    color: #c82333;
+}

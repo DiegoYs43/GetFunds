@@ -76,9 +76,23 @@
         </div>
     </div>
 </div>
-
-<!-- Modal para editar perfil -->
-<div id="modalPerfil" class="modal">
+<div id="modalAgregarMeta" class="modal">
+    <div class="modal-content">
+        <span class="close" data-modal="modalAgregarMeta">&times;</span>
+        <h2>Agregar Meta</h2>
+        <form id="formAgregarMeta">
+            <label for="nombreMeta">Nombre de la Meta:</label>
+            <input type="text" id="nombreMeta" name="nombreMeta" required>
+            
+            <label for="montoMeta">Monto de la Meta:</label>
+            <input type="number" id="montoMeta" name="montoMeta" required>
+            
+            <button type="submit">Guardar Meta</button>
+        </form>
+    </div>
+</div>
+ <!-- Modal para editar perfil -->
+ <div id="modalPerfil" class="modal">
     <div class="modal-content profile-modal">
         <span class="close" data-modal="modalPerfil">&times;</span>
         <h2>Editar Perfil</h2>
@@ -118,16 +132,7 @@
 
 
 
-<div id="modalPerfil" class="modal">
-    <div class="modal-content">
-        <span class="close" data-modal="modalPerfil">&times;</span>
-        <h2>Perfil</h2>
-        <p>Contenido del perfil...</p>
-    </div>
-</div>
-
 <script type="module" src="/js/ahorro.js"> </script>
-<script type="module" src="/js/auth.js"></script>
 
 
 </body>
