@@ -139,6 +139,11 @@
     margin-top: 20px;
 }
 
+.ahorro i{
+    margin-top: 35px;
+    font-size: 30px;
+}
+
 .registro i {
     font-size: 30px;
     margin-right: 20px;
@@ -149,6 +154,7 @@
     display: flex;
     flex-direction: column;
     flex-grow: 1;
+    margin-left: 20px;
 }
 
 .texto-arriba {
@@ -161,9 +167,11 @@
     color: #4CAF50;
 }
 
-.eliminar{
-    margin-left: 640px;
-    margin-top: -50px;
+.eliminar-meta{
+    position: absolute;
+    z-index: 1; /* Ajusta el z-index para estar por encima de otros elementos */
+    margin-left: 620px;
+   
 }
 /* Container de la información de la cuenta */
 .container-info {

@@ -42,7 +42,7 @@ async function mostrarRegistrosPorCorreo(correo) {
                                     <div class="texto-abajo">${new Date(Fecha.seconds * 1000).toLocaleDateString('es-ES', { month: 'long', year: 'numeric' })}</div>
                                 </div>
                                 <div class="izquierdo">
-                                    <div class="texto-arribaM-margin">$${Valor.toFixed(2)}</div>
+                                    <div class="texto-arribaM-margin" style="color: red">$${Valor.toFixed(2)}</div>
                                     <div class="eliminar" data-id="${id}" style="cursor: pointer;"><i class="fas fa-times-circle"></i></div>
                                 </div>
                             </div>
@@ -57,7 +57,7 @@ async function mostrarRegistrosPorCorreo(correo) {
                                     <div class="texto-abajo">${Categoria}</div>
                                 </div>
                                 <div class="izquierdo">
-                                    <div class="texto-arribaM">$${Valor.toFixed(2)}</div>
+                                    <div class="texto-arribaM" style="color: red">$${Valor.toFixed(2)}</div>
                                 </div>
                             </div>
                         </div>
@@ -74,7 +74,7 @@ async function mostrarRegistrosPorCorreo(correo) {
                                     <div class="texto-abajo">${new Date(Fecha.seconds * 1000).toLocaleDateString('es-ES', { month: 'long', year: 'numeric' })}</div>
                                 </div>
                                 <div class="izquierdo">
-                                    <div class="texto-arribaM-margin">$${Valor.toFixed(2)}</div>
+                                    <div class="texto-arribaM-margin" style="color: green">$${Valor.toFixed(2)}</div>
                                     <div class="eliminar" data-id="${id}" style="cursor: pointer;"><i class="fas fa-times-circle"></i></div>
                                 </div>
                             </div>
@@ -89,7 +89,7 @@ async function mostrarRegistrosPorCorreo(correo) {
                                     <div class="texto-abajo">${Categoria}</div>
                                 </div>
                                 <div class="izquierdo">
-                                    <div class="texto-arribaM">$${Valor.toFixed(2)}</div>
+                                    <div class="texto-arribaM" style="color: green">$${Valor.toFixed(2)}</div>
                                 </div>
                             </div>
                         </div>

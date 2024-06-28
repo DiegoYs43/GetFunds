@@ -42,7 +42,7 @@ export async function obtenerMetasUsuario() {
                         <div class="texto-arriba">${meta.Nombre}</div>
                         <div class="texto-abajo">$${meta.Monto_Mensual.toFixed(2)}</div>
                         <div class="texto-duracion">Duración: ${meta.Duracion_Meses} meses</div> <!-- Nuevo -->
-                        <div class="eliminar-meta" style="cursor: pointer;"><i class="fas fa-times-circle" style=" font-size: 20px; color:#38713a"></i></div>
+                        <div class="eliminar-meta" style="cursor: pointer;"><i class="fas fa-times-circle" style=" font-size: 20px;"></i></div>
                     </div>
                 </div>
             `;

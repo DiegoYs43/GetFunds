@@ -133,43 +133,58 @@ body {
     height: 200px;
     margin-left: 350px;
 }
-
-.registro {
+.ahorro {
     display: flex;
     align-items: flex-start;
     width: 80%;
     margin: 0 auto;
-    background-color: #333;
+    background-color: #333; /* Cambio de color de fondo a oscuro */
     padding: 10px;
-    box-shadow: 0 5px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 5px rgba(255, 255, 255, 0.1); /* Sombra con color invertido */
     min-height: 20px;
     border-radius: 20px;
     margin-top: 20px;
+}
+
+.ahorro i {
+    margin-top: 35px;
+    font-size: 30px;
+    color: #f0f0f0; /* Color de ícono en modo oscuro */
 }
 
 .registro i {
     font-size: 30px;
     margin-right: 20px;
     margin-top: 17px;
-    color: #4CAF50;
+    color: #f0f0f0; /* Color de ícono en modo oscuro */
 }
 
 .derecho {
     display: flex;
     flex-direction: column;
     flex-grow: 1;
+    margin-left: 20px;
+    color: #f0f0f0; /* Color de texto en modo oscuro */
 }
 
 .texto-arriba {
     font-size: 15px;
     margin-top: 10px;
-    color: #C2C3CC; 
+    color: #bbb; /* Color de texto secundario en modo oscuro */
 }
 
 .texto-abajo {
     font-size: 15px;
     color: #4CAF50;
 }
+
+.eliminar-meta {
+    position: absolute;
+    z-index: 1; /* Ajusta el z-index para estar por encima de otros elementos */
+    margin-left: 620px;
+    color: #f44336; /* Color rojo para la 'x' en modo oscuro */
+}
+
 
 /* Container de la información de la cuenta */
 .container-info {
