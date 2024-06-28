@@ -122,18 +122,37 @@
     </div>
 </div>
 
+<!-- Modal para editar perfil -->
 <div id="modalPerfil" class="modal">
-    <div class="modal-content">
+    <div class="modal-content profile-modal">
         <span class="close" data-modal="modalPerfil">&times;</span>
         <h2>Editar Perfil</h2>
-        <form id="perfilForm">
-            <div class="form-group">
-                <label for="correoPerfil">Correo:</label>
-                <input type="email" id="correoPerfil" name="correoPerfil" readonly>
+
+        <!-- Contenedor de la imagen actual -->
+        <div class="current-image-container">
+            <label>Imagen de Usario</label>
+            <div class="profile-image-container">
+                <img id="modalProfileImage" class="profile-image" src="/img/default-profile.png" alt="Imagen de perfil">
+                <button id="deleteCurrentImage" class="delete-image-button" title="Eliminar imagen actual">
+                    <i class="fas fa-trash-alt"></i>
+                </button>
             </div>
+        </div>
+
+        <!-- Galería de imágenes adicionales -->
+        <div id="imageGallery" class="image-gallery">
+            <!-- Aquí se mostrarán las imágenes adicionales -->
+        </div>
+
+        <form id="perfilForm">
+            <input type="hidden" id="correoPerfil" name="correoPerfil" readonly>
             <div class="form-group">
                 <label for="nombrePerfil">Nombre:</label>
                 <input type="text" id="nombre" name="nombrePerfil" required>
+            </div>
+            <div class="form-group">
+                <label for="fileUpload">Subir Imagen:</label>
+                <input type="file" id="fileUpload" name="fileUpload">
             </div>
             <div class="form-group">
                 <button type="submit">Guardar Cambios</button>
@@ -143,9 +162,7 @@
 </div>
 
 <script type="module"  src="/js/auth.js"></script>
-<script type="module" src="/js/formu.js" ></script>
-<script type="module" src="/js/registros.js" ></script>
-<script type="module" src="/js/rM.js"></script>
 <script type="module" src="/js/grafica.js"></script>
+<script type="module" src="/js/IGMT.js"></script>
 </body>
 </html>
