@@ -738,3 +738,6 @@ form {
 .carousel-button:hover {
     color: #666;
 }
+.continerg{
+    display: flex;
+}

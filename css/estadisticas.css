@@ -637,3 +637,6 @@ form {
     width: 30%; /* Ajusta el tamaño como necesites */
     text-align: center; /* Centra el canvas dentro del contenedor */
 }
+.continerg{
+    display: flex;
+}

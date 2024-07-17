@@ -150,7 +150,7 @@ const updateUsuario = async (email, nombre) => {
 // Configuración de las gráficas
 const configurarGraficas = async (email) => {
     try {
-        // Contar documentos en 'Registros' por tipo para el usuario específico
+        // Contar documentos en 'Registros' por tipo y sumar valores para el usuario específico
         const registrosQuery = query(collection(firestore, 'Registros'), where('Correo', '==', email));
         const registrosSnapshot = await getDocs(registrosQuery);
 
@@ -158,22 +158,34 @@ const configurarGraficas = async (email) => {
         let ingreso = 0;
         let gasto = 0;
 
+        // Sumas de valores de Ingreso y Gasto
+        let valorIngreso = 0;
+        let valorGasto = 0;
+
         registrosSnapshot.forEach((doc) => {
-            const tipo = doc.data().Tipo.toLowerCase(); // Asegurar que sea minúscula
+            const data = doc.data();
+            const tipo = data.Tipo.toLowerCase(); // Asegurar que sea minúscula
+            const valor = parseFloat(data.Valor) || 0;
+
             if (tipo === 'ingreso') {
                 ingreso++;
+                valorIngreso += valor;
             } else if (tipo === 'egreso') {
                 gasto++;
+                valorGasto += valor;
             }
         });
 
-        // Imprimir los contadores por consola para verificar
+        // Imprimir los contadores y sumas por consola para verificar
         console.log('Contadores de ingresos y gastos para el usuario', email);
         console.log('Ingreso:', ingreso);
         console.log('Gasto:', gasto);
+        console.log('Suma de valores de Ingreso:', valorIngreso);
+        console.log('Suma de valores de Gasto:', valorGasto);
 
         // Actualizar gráfica de pie con los nuevos datos
         actualizarGraficaPie(ingreso, gasto);
+        actualizarGraficaValorPie(valorIngreso, valorGasto);
 
     } catch (error) {
         console.error('Error al configurar las gráficas:', error);
@@ -189,7 +201,7 @@ const actualizarGraficaPie = (ingreso, gasto) => {
     // Acceder al contexto del canvas de la gráfica de pie
     const ctxPie = document.getElementById('myPieChart')?.getContext('2d');
     if (ctxPie) {
-        const myPieChart = new Chart(ctxPie, {
+        new Chart(ctxPie, {
             type: 'pie',
             data: {
                 labels: labels,
@@ -220,104 +232,48 @@ const actualizarGraficaPie = (ingreso, gasto) => {
     }
 };
 
+// Función para actualizar la nueva gráfica de pie con valores
+const actualizarGraficaValorPie = (valorIngreso, valorGasto) => {
+    // Datos para la gráfica de pie de valores
+    const pieData = [valorIngreso, valorGasto];
+    const labels = ['Valor de Ingreso', 'Valor de Gasto'];
+
+    // Acceder al contexto del canvas de la nueva gráfica de pie
+    const ctxPie = document.getElementById('myValuePieChart')?.getContext('2d');
+    if (ctxPie) {
+        new Chart(ctxPie, {
+            type: 'pie',
+            data: {
+                labels: labels,
+                datasets: [{
+                    data: pieData,
+                    backgroundColor: ['#4CAF50', '#FF6384'],
+                    hoverBackgroundColor: ['#4CAF50', '#FF6384']
+                }]
+            },
+            options: {
+                responsive: true,
+                plugins: {
+                    legend: {
+                        position: 'top',
+                    },
+                    tooltip: {
+                        callbacks: {
+                            label: function(tooltipItem) {
+                                return tooltipItem.label + ': $' + tooltipItem.raw.toFixed(2);
+                            }
+                        }
+                    }
+                }
+            }
+        });
+    } else {
+        console.error('Elemento canvas para gráfica de pie no encontrado.');
+    }
+};
+
 // Manejador de errores global
 window.onerror = function(message, source, lineno, colno, error) {
     console.error('Error:', message, 'en', source, 'linea', lineno);
     return true;
 };
-
-
-// Gráfica de EGRESOS
-const ctxGastos = document.getElementById('myGastosChart').getContext('2d');
-const myGastosChart = new Chart(ctxGastos, {
-    type: 'bar',
-    data: {
-        labels: ['Enero', 'Febrero', 'Marzo', 'Abril'],
-        datasets: [{
-            label: 'Egresos',
-            data: [300, 400, 500, 600],
-            backgroundColor: 'red',
-            borderColor: 'red',
-            borderWidth: 1
-        }]
-    },
-    options: {
-        responsive: true,
-        scales: {
-            y: {
-                beginAtZero: true
-            }
-        },
-        plugins: {
-            legend: { position: 'top' }
-        }
-    }
-});
-
-// Gráfica de Ingresos
-const ctxIngresos = document.getElementById('myIngresosChart').getContext('2d');
-const myIngresosChart = new Chart(ctxIngresos, {
-    type: 'bar',
-    data: {
-        labels: ['Enero', 'Febrero', 'Marzo', 'Abril'],
-        datasets: [{
-            label: 'Ingresos',
-            data: [400, 500, 600, 700],
-            backgroundColor: '#4CAF50',
-            borderColor: '#4CAF50',
-            borderWidth: 1
-        }]
-    },
-    options: {
-        responsive: true,
-        scales: {
-            y: {
-                beginAtZero: true
-            }
-        },
-        plugins: {
-            legend: { position: 'top' }
-        }
-    }
-});
-
-
-
-//FUNCIONAMIENTO DEL CAROUSEL 
-
-document.addEventListener('DOMContentLoaded', () => {
-    const carouselImages = document.querySelectorAll('.carousel-image');
-    const profileImage = document.getElementById('modalProfileImage');
-    const prevButton = document.getElementById('carouselPrev');
-    const nextButton = document.getElementById('carouselNext');
-    let currentIndex = 0;
-
-    function showImage(index) {
-        carouselImages.forEach((img, i) => {
-            img.style.display = i === index ? 'block' : 'none';
-        });
-    }
-
-    function updateProfileImage(src) {
-        profileImage.src = src;
-    }
-
-    carouselImages.forEach((img, index) => {
-        img.addEventListener('click', () => {
-            updateProfileImage(img.src);
-        });
-    });
-
-    prevButton.addEventListener('click', () => {
-        currentIndex = (currentIndex > 0) ? currentIndex - 1 : carouselImages.length - 1;
-        showImage(currentIndex);
-    });
-
-    nextButton.addEventListener('click', () => {
-        currentIndex = (currentIndex < carouselImages.length - 1) ? currentIndex + 1 : 0;
-        showImage(currentIndex);
-    });
-
-    // Mostrar la primera imagen inicialmente
-    showImage(currentIndex);
-});
