@@ -1,6 +1,7 @@
 // Importaciones de Firebase
 import { auth, firestore } from './firebase_config.js';
 import { query, collection, getDocs, updateDoc, where, doc } from 'https://www.gstatic.com/firebasejs/10.9.0/firebase-firestore.js';
+import Chart from 'https://cdn.jsdelivr.net/npm/chart.js';
 
 // Función para obtener datos del usuario desde Firestore
 const obtenerUsuario = async (email) => {
@@ -35,6 +36,113 @@ const mostrarNombreUsuario = async (email) => {
     }
 };
 
+// Función para obtener datos de la colección "registros"
+const obtenerRegistros = async (email) => {
+    const registrosQuery = query(collection(firestore, 'registros'), where('Correo', '==', email));
+    const registrosSnapshot = await getDocs(registrosQuery);
+    if (!registrosSnapshot.empty) {
+        return registrosSnapshot.docs.map(doc => doc.data());
+    }
+    return [];
+};
+
+// Función para inicializar las gráficas
+const inicializarGraficas = (registros) => {
+    const ctxPie = document.getElementById('myPieChart').getContext('2d');
+    const ctxGastos = document.getElementById('myGastosChart').getContext('2d');
+    const ctxIngresos = document.getElementById('myIngresosChart').getContext('2d');
+
+    // Procesar los datos para las gráficas
+    console.log('Registros obtenidos:', registros);
+
+    const categorias = ['Factura', 'Servicios', 'Recibos del Hogar', 'Microgasto'];
+    const dataPie = categorias.map(categoria => registros.filter(r => r.Categoria === categoria && r.Tipo === 'Gasto').reduce((acc, curr) => acc + curr.Valor, 0));
+    const dataGastos = ['Enero', 'Febrero', 'Marzo', 'Abril'].map((mes, index) => registros.filter(r => new Date(r.Fecha).getMonth() === index && r.Tipo === 'Gasto').reduce((acc, curr) => acc + curr.Valor, 0));
+    const dataIngresos = ['Enero', 'Febrero', 'Marzo', 'Abril'].map((mes, index) => registros.filter(r => new Date(r.Fecha).getMonth() === index && r.Tipo === 'Ingreso').reduce((acc, curr) => acc + curr.Valor, 0));
+
+    console.log('Datos para Pie Chart:', dataPie);
+    console.log('Datos para Gastos Chart:', dataGastos);
+    console.log('Datos para Ingresos Chart:', dataIngresos);
+
+    // Pie Chart
+    new Chart(ctxPie, {
+        type: 'pie',
+        data: {
+            labels: categorias,
+            datasets: [{
+                data: dataPie,
+                backgroundColor: ['#FF6384', '#36A2EB', '#FFCE56', '#4CAF50'],
+                hoverBackgroundColor: ['#FF6384', '#36A2EB', '#FFCE56', '#4CAF50']
+            }]
+        },
+        options: {
+            responsive: true,
+            plugins: {
+                legend: { position: 'top' },
+                tooltip: {
+                    callbacks: {
+                        label: function(tooltipItem) {
+                            return tooltipItem.label + ': ' + tooltipItem.raw + '%';
+                        }
+                    }
+                }
+            }
+        }
+    });
+
+    // Gráfica de Gastos
+    new Chart(ctxGastos, {
+        type: 'bar',
+        data: {
+            labels: ['Enero', 'Febrero', 'Marzo', 'Abril'],
+            datasets: [{
+                label: 'Gastos',
+                data: dataGastos,
+                backgroundColor: 'red',
+                borderColor: 'red',
+                borderWidth: 1
+            }]
+        },
+        options: {
+            responsive: true,
+            scales: {
+                y: {
+                    beginAtZero: true
+                }
+            },
+            plugins: {
+                legend: { position: 'top' }
+            }
+        }
+    });
+
+    // Gráfica de Ingresos
+    new Chart(ctxIngresos, {
+        type: 'bar',
+        data: {
+            labels: ['Enero', 'Febrero', 'Marzo', 'Abril'],
+            datasets: [{
+                label: 'Ingresos',
+                data: dataIngresos,
+                backgroundColor: '#4CAF50',
+                borderColor: '#4CAF50',
+                borderWidth: 1
+            }]
+        },
+        options: {
+            responsive: true,
+            scales: {
+                y: {
+                    beginAtZero: true
+                }
+            },
+            plugins: {
+                legend: { position: 'top' }
+            }
+        }
+    });
+};
+
 // Inicializar funciones al cargar el DOM
 document.addEventListener('DOMContentLoaded', () => {
     auth.onAuthStateChanged(async (user) => {
@@ -42,6 +150,9 @@ document.addEventListener('DOMContentLoaded', () => {
             const email = user.email;
             await mostrarImagenPerfil(email);
             await mostrarNombreUsuario(email);
+
+            const registros = await obtenerRegistros(email);
+            inicializarGraficas(registros);
         } else {
             console.error('No se pudo capturar el correo electrónico del usuario.');
         }
@@ -147,88 +258,14 @@ const updateUsuario = async (email, nombre) => {
 // Manejador de errores global
 window.onerror = function(message, source, lineno, colno, error) {
     console.error('Error:', message, 'en', source, 'linea', lineno);
-    return true;
 };
 
+// Pie Chart
 document.addEventListener('DOMContentLoaded', function() {
-    // Pie Chart
-    const ctxPie = document.getElementById('myPieChart').getContext('2d');
-    const myPieChart = new Chart(ctxPie, {
-        type: 'pie',
-        data: {
-            labels: ['Factura', 'Servicios', 'Recibos del Hogar', 'Microgasto'],
-            datasets: [{
-                data: [10, 20, 30, 40],
-                backgroundColor: ['#FF6384', '#36A2EB', '#FFCE56', '#4CAF50'],
-                hoverBackgroundColor: ['#FF6384', '#36A2EB', '#FFCE56', '#4CAF50']
-            }]
-        },
-        options: {
-            responsive: true,
-            plugins: {
-                legend: { position: 'top' },
-                tooltip: {
-                    callbacks: {
-                        label: function(tooltipItem) {
-                            return tooltipItem.label + ': ' + tooltipItem.raw + '%';
-                        }
-                    }
-                }
-            }
-        }
-    });
-// Gráfica de Gastos
-const ctxGastos = document.getElementById('myGastosChart').getContext('2d');
-const myGastosChart = new Chart(ctxGastos, {
-    type: 'bar',
-    data: {
-        labels: ['Enero', 'Febrero', 'Marzo', 'Abril'],
-        datasets: [{
-            label: 'Gastos',
-            data: [300, 400, 500, 600],
-            backgroundColor: 'red',
-            borderColor: 'red',
-            borderWidth: 1
-        }]
-    },
-    options: {
-        responsive: true,
-        scales: {
-            y: {
-                beginAtZero: true
-            }
-        },
-        plugins: {
-            legend: { position: 'top' }
-        }
+    // Inicializar funciones de gráficos si los elementos HTML están presentes
+    if (document.getElementById('myPieChart') && document.getElementById('myGastosChart') && document.getElementById('myIngresosChart')) {
+        const ctxPie = document.getElementById('myPieChart').getContext('2d');
+        const ctxGastos = document.getElementById('myGastosChart').getContext('2d');
+        const ctxIngresos = document.getElementById('myIngresosChart').getContext('2d');
     }
-});
-
-// Gráfica de Ingresos
-const ctxIngresos = document.getElementById('myIngresosChart').getContext('2d');
-const myIngresosChart = new Chart(ctxIngresos, {
-    type: 'bar',
-    data: {
-        labels: ['Enero', 'Febrero', 'Marzo', 'Abril'],
-        datasets: [{
-            label: 'Ingresos',
-            data: [400, 500, 600, 700],
-            backgroundColor: '#4CAF50',
-            borderColor: '#4CAF50',
-            borderWidth: 1
-        }]
-    },
-    options: {
-        responsive: true,
-        scales: {
-            y: {
-                beginAtZero: true
-            }
-        },
-        plugins: {
-            legend: { position: 'top' }
-        }
-    }
-});
-
 });

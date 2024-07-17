@@ -114,36 +114,45 @@
     </div>
 </div>
 
-    <!-- Modal para editar perfil -->
-    <div id="modalPerfil" class="modal">
-        <div class="modal-content profile-modal">
-            <span class="close" data-modal="modalPerfil">&times;</span>
-            <h2>Editar Perfil</h2>
-    
-            <!-- Carrusel de imágenes pre-cargadas -->
-            <div id="imageCarousel" class="image-carousel">
-                <button class="carousel-button" id="carouselPrev">&#10094;</button>
-                <div class="carousel-images">
-                    <img class="carousel-image" src="/img/logo.png" alt="Avatar 1">
-                    <img class="carousel-image" src="/img/Flecha.png" alt="Avatar 2">
-                    <img class="carousel-image" src="/img/instagram.png" alt="Avatar 3">
-                    <!-- Añadir más imágenes según sea necesario -->
-                </div>
-                <button class="carousel-button" id="carouselNext">&#10095;</button>
+ <!-- Modal para editar perfil -->
+ <div id="modalPerfil" class="modal">
+    <div class="modal-content profile-modal">
+        <span class="close" data-modal="modalPerfil">&times;</span>
+        <h2>Editar Perfil</h2>
+
+        <!-- Contenedor de la imagen actual -->
+        <div class="current-image-container">
+            <label>Imagen de Usario</label>
+            <div class="profile-image-container">
+                <img id="modalProfileImage" class="profile-image" src="/img/default-profile.png" alt="Imagen de perfil">
+                <button id="deleteCurrentImage" class="delete-image-button" title="Eliminar imagen actual">
+                    <i class="fas fa-trash-alt"></i>
+                </button>
             </div>
-    
-            <form id="perfilForm">
-                <input type="hidden" id="correoPerfil" name="correoPerfil" readonly>
-                <div class="form-group">
-                    <label for="nombrePerfil">Nombre:</label>
-                    <input type="text" id="nombre" name="nombrePerfil" required>
-                </div>
-                <div class="form-group">
-                    <button type="submit">Guardar Cambios</button>
-                </div>
-            </form>
         </div>
+
+        <!-- Galería de imágenes adicionales -->
+        <div id="imageGallery" class="image-gallery">
+            <!-- Aquí se mostrarán las imágenes adicionales -->
+        </div>
+
+        <form id="perfilForm">
+            <input type="hidden" id="correoPerfil" name="correoPerfil" readonly>
+            <div class="form-group">
+                <label for="nombrePerfil">Nombre:</label>
+                <input type="text" id="nombre" name="nombrePerfil" required>
+            </div>
+            <div class="form-group">
+                <label for="fileUpload">Subir Imagen:</label>
+                <input type="file" id="fileUpload" name="fileUpload">
+            </div>
+            <div class="form-group">
+                <button type="submit">Guardar Cambios</button>
+            </div>
+        </form>
     </div>
+</div>
+
 <script type="module"  src="/js/auth.js"></script>
 <script type="module" src="/js/rMsjs/formu.js"></script>
 <script type="module" src="/js/rMsjs/registros.js"></script>

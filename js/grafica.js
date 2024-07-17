@@ -149,16 +149,15 @@ window.onerror = function(message, source, lineno, colno, error) {
     console.error('Error:', message, 'en', source, 'linea', lineno);
     return true;
 };
-
+//grafica integrda 
 document.addEventListener('DOMContentLoaded', function() {
-    // Pie Chart
-    const ctxPie = document.getElementById('myPieChart').getContext('2d');
-    const myPieChart = new Chart(ctxPie, {
+    const ctx = document.getElementById('myPieChart').getContext('2d');
+    const myPieChart = new Chart(ctx, {
         type: 'pie',
         data: {
             labels: ['Factura', 'Servicios', 'Recibos del Hogar', 'Microgasto'],
             datasets: [{
-                data: [10, 20, 30, 40],
+                data: [10, 20, 30, 40],  // Replace with your data
                 backgroundColor: ['#FF6384', '#36A2EB', '#FFCE56', '#4CAF50'],
                 hoverBackgroundColor: ['#FF6384', '#36A2EB', '#FFCE56', '#4CAF50']
             }]
@@ -166,7 +165,9 @@ document.addEventListener('DOMContentLoaded', function() {
         options: {
             responsive: true,
             plugins: {
-                legend: { position: 'top' },
+                legend: {
+                    position: 'top',
+                },
                 tooltip: {
                     callbacks: {
                         label: function(tooltipItem) {
@@ -177,97 +178,4 @@ document.addEventListener('DOMContentLoaded', function() {
             }
         }
     });
-// Gráfica de Gastos
-const ctxGastos = document.getElementById('myGastosChart').getContext('2d');
-const myGastosChart = new Chart(ctxGastos, {
-    type: 'bar',
-    data: {
-        labels: ['Enero', 'Febrero', 'Marzo', 'Abril'],
-        datasets: [{
-            label: 'Gastos',
-            data: [300, 400, 500, 600],
-            backgroundColor: 'red',
-            borderColor: 'red',
-            borderWidth: 1
-        }]
-    },
-    options: {
-        responsive: true,
-        scales: {
-            y: {
-                beginAtZero: true
-            }
-        },
-        plugins: {
-            legend: { position: 'top' }
-        }
-    }
-});
-
-// Gráfica de Ingresos
-const ctxIngresos = document.getElementById('myIngresosChart').getContext('2d');
-const myIngresosChart = new Chart(ctxIngresos, {
-    type: 'bar',
-    data: {
-        labels: ['Enero', 'Febrero', 'Marzo', 'Abril'],
-        datasets: [{
-            label: 'Ingresos',
-            data: [400, 500, 600, 700],
-            backgroundColor: '#4CAF50',
-            borderColor: '#4CAF50',
-            borderWidth: 1
-        }]
-    },
-    options: {
-        responsive: true,
-        scales: {
-            y: {
-                beginAtZero: true
-            }
-        },
-        plugins: {
-            legend: { position: 'top' }
-        }
-    }
-});
-
-});
-
-//FUNCIONAMIENTO DEL CAROUSEL 
-
-document.addEventListener('DOMContentLoaded', () => {
-    const carouselImages = document.querySelectorAll('.carousel-image');
-    const profileImage = document.getElementById('modalProfileImage');
-    const prevButton = document.getElementById('carouselPrev');
-    const nextButton = document.getElementById('carouselNext');
-    let currentIndex = 0;
-
-    function showImage(index) {
-        carouselImages.forEach((img, i) => {
-            img.style.display = i === index ? 'block' : 'none';
-        });
-    }
-
-    function updateProfileImage(src) {
-        profileImage.src = src;
-    }
-
-    carouselImages.forEach((img, index) => {
-        img.addEventListener('click', () => {
-            updateProfileImage(img.src);
-        });
-    });
-
-    prevButton.addEventListener('click', () => {
-        currentIndex = (currentIndex > 0) ? currentIndex - 1 : carouselImages.length - 1;
-        showImage(currentIndex);
-    });
-
-    nextButton.addEventListener('click', () => {
-        currentIndex = (currentIndex < carouselImages.length - 1) ? currentIndex + 1 : 0;
-        showImage(currentIndex);
-    });
-
-    // Mostrar la primera imagen inicialmente
-    showImage(currentIndex);
 });
