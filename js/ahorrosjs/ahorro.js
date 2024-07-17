@@ -202,3 +202,46 @@ const configurarModalPerfil = (modalPerfil) => {
         }
     });
 };
+
+
+
+
+
+//FUNCIONAMIENTO DEL CAROUSEL 
+
+document.addEventListener('DOMContentLoaded', () => {
+    const carouselImages = document.querySelectorAll('.carousel-image');
+    const profileImage = document.getElementById('modalProfileImage');
+    const prevButton = document.getElementById('carouselPrev');
+    const nextButton = document.getElementById('carouselNext');
+    let currentIndex = 0;
+
+    function showImage(index) {
+        carouselImages.forEach((img, i) => {
+            img.style.display = i === index ? 'block' : 'none';
+        });
+    }
+
+    function updateProfileImage(src) {
+        profileImage.src = src;
+    }
+
+    carouselImages.forEach((img, index) => {
+        img.addEventListener('click', () => {
+            updateProfileImage(img.src);
+        });
+    });
+
+    prevButton.addEventListener('click', () => {
+        currentIndex = (currentIndex > 0) ? currentIndex - 1 : carouselImages.length - 1;
+        showImage(currentIndex);
+    });
+
+    nextButton.addEventListener('click', () => {
+        currentIndex = (currentIndex < carouselImages.length - 1) ? currentIndex + 1 : 0;
+        showImage(currentIndex);
+    });
+
+    // Mostrar la primera imagen inicialmente
+    showImage(currentIndex);
+});

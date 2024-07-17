@@ -269,3 +269,60 @@ document.addEventListener('DOMContentLoaded', function() {
         const ctxIngresos = document.getElementById('myIngresosChart').getContext('2d');
     }
 });
+
+
+
+// Gráfica de Gastos
+const ctxGastos = document.getElementById('myGastosChart').getContext('2d');
+const myGastosChart = new Chart(ctxGastos, {
+    type: 'bar',
+    data: {
+        labels: ['Enero', 'Febrero', 'Marzo', 'Abril'],
+        datasets: [{
+            label: 'Egresos',
+            data: [300, 400, 500, 600],
+            backgroundColor: 'red',
+            borderColor: 'red',
+            borderWidth: 1
+        }]
+    },
+    options: {
+        responsive: true,
+        scales: {
+            y: {
+                beginAtZero: true
+            }
+        },
+        plugins: {
+            legend: { position: 'top' }
+        }
+    }
+});
+
+// Gráfica de Ingresos
+const ctxIngresos = document.getElementById('myIngresosChart').getContext('2d');
+const myIngresosChart = new Chart(ctxIngresos, {
+    type: 'bar',
+    data: {
+        labels: ['Enero', 'Febrero', 'Marzo', 'Abril'],
+        datasets: [{
+            label: 'Ingresos',
+            data: [400, 500, 600, 700],
+            backgroundColor: '#4CAF50',
+            borderColor: '#4CAF50',
+            borderWidth: 1
+        }]
+    },
+    options: {
+        responsive: true,
+        scales: {
+            y: {
+                beginAtZero: true
+            }
+        },
+        plugins: {
+            legend: { position: 'top' }
+        }
+    }
+});
+
