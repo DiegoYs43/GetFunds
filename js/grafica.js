@@ -42,6 +42,9 @@ document.addEventListener('DOMContentLoaded', () => {
             const email = user.email;
             await mostrarImagenPerfil(email);
             await mostrarNombreUsuario(email);
+
+            // Configurar gráficas después de obtener el usuario
+            await configurarGraficas(email);
         } else {
             console.error('No se pudo capturar el correo electrónico del usuario.');
         }
@@ -144,38 +147,81 @@ const updateUsuario = async (email, nombre) => {
     }
 };
 
+// Configuración de las gráficas
+const configurarGraficas = async (email) => {
+    try {
+        // Contar documentos en 'Registros' por tipo para el usuario específico
+        const registrosQuery = query(collection(firestore, 'Registros'), where('Correo', '==', email));
+        const registrosSnapshot = await getDocs(registrosQuery);
+
+        // Contadores para Ingreso y Gasto
+        let ingreso = 0;
+        let gasto = 0;
+
+        registrosSnapshot.forEach((doc) => {
+            const tipo = doc.data().Tipo.toLowerCase(); // Asegurar que sea minúscula
+            if (tipo === 'ingreso') {
+                ingreso++;
+            } else if (tipo === 'egreso') {
+                gasto++;
+            }
+        });
+
+        // Imprimir los contadores por consola para verificar
+        console.log('Contadores de ingresos y gastos para el usuario', email);
+        console.log('Ingreso:', ingreso);
+        console.log('Gasto:', gasto);
+
+        // Actualizar gráfica de pie con los nuevos datos
+        actualizarGraficaPie(ingreso, gasto);
+
+    } catch (error) {
+        console.error('Error al configurar las gráficas:', error);
+    }
+};
+
+// Función para actualizar la gráfica de pie con nuevos datos
+const actualizarGraficaPie = (ingreso, gasto) => {
+    // Datos para la gráfica de pie
+    const pieData = [ingreso, gasto];
+    const labels = ['Ingreso', 'Gasto'];
+
+    // Acceder al contexto del canvas de la gráfica de pie
+    const ctxPie = document.getElementById('myPieChart')?.getContext('2d');
+    if (ctxPie) {
+        const myPieChart = new Chart(ctxPie, {
+            type: 'pie',
+            data: {
+                labels: labels,
+                datasets: [{
+                    data: pieData,
+                    backgroundColor: ['#4CAF50', '#FF6384'],
+                    hoverBackgroundColor: ['#4CAF50', '#FF6384']
+                }]
+            },
+            options: {
+                responsive: true,
+                plugins: {
+                    legend: {
+                        position: 'top',
+                    },
+                    tooltip: {
+                        callbacks: {
+                            label: function(tooltipItem) {
+                                return tooltipItem.label + ': ' + tooltipItem.raw + ' registros';
+                            }
+                        }
+                    }
+                }
+            }
+        });
+    } else {
+        console.error('Elemento canvas para gráfica de pie no encontrado.');
+    }
+};
+
 // Manejador de errores global
 window.onerror = function(message, source, lineno, colno, error) {
     console.error('Error:', message, 'en', source, 'linea', lineno);
     return true;
 };
-//grafica integrda 
-document.addEventListener('DOMContentLoaded', function() {
-    const ctx = document.getElementById('myPieChart').getContext('2d');
-    const myPieChart = new Chart(ctx, {
-        type: 'pie',
-        data: {
-            labels: ['Factura', 'Servicios', 'Recibos del Hogar', 'Microgasto'],
-            datasets: [{
-                data: [10, 20, 30, 40],  // Replace with your data
-                backgroundColor: ['#FF6384', '#36A2EB', '#FFCE56', '#4CAF50'],
-                hoverBackgroundColor: ['#FF6384', '#36A2EB', '#FFCE56', '#4CAF50']
-            }]
-        },
-        options: {
-            responsive: true,
-            plugins: {
-                legend: {
-                    position: 'top',
-                },
-                tooltip: {
-                    callbacks: {
-                        label: function(tooltipItem) {
-                            return tooltipItem.label + ': ' + tooltipItem.raw + '%';
-                        }
-                    }
-                }
-            }
-        }
-    });
-});
